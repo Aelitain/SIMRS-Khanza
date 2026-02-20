@@ -636,7 +636,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-01-2026 14:43:38" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-01-2026 16:57:01" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -2547,7 +2547,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
 
         ScrollMenu.setViewportView(FormMenu);
 
-        PanelAccor.add(ScrollMenu, java.awt.BorderLayout.CENTER);
+        PanelAccor.add(ScrollMenu, java.awt.BorderLayout.PAGE_START);
 
         internalFrame2.add(PanelAccor, java.awt.BorderLayout.WEST);
 
@@ -6590,7 +6590,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Plan</td>").
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Inst/Impl</td>").
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Evaluasi</td>").
-                                        append("</tr>");
+                                            append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>TTE</td>").
+                                    append("</tr>");
                             do{
                                 htmlContent.append("<tr class='isi'>").
                                                 append("<td align='center'>").append(rs2.getString("tgl_perawatan")).append("<br>").append(rs2.getString("jam_rawat")).append("</td>").
@@ -6601,6 +6602,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("<td align='left'>").append(rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
+//                                                append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan di RSU Al-Ittihad, Kab. Blitar. Ditandatangai secara elektronik oleh ").append(rs2.getString("nama")).append(" ").append(rs2.getString("nip")).append(" ").append(rs2.getString("tgl_perawatan")).append("&amp;size=100x100' alt='' '/>").append("<br>").
                                             append("</tr>");
                             }while(rs2.next());
                         }       
@@ -6639,6 +6641,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Plan</td>").
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Inst/Impl</td>").
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Evaluasi</td>").
+                                            append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>TTE</td>").
                                         append("</tr>");
                             do{
                                 htmlContent.append("<tr class='isi'>").
@@ -6650,6 +6653,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("<td align='left'>").append(rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
+                                                append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan'").append("</td>").
                                             append("</tr>");
                             }while(rs2.next());
                         }       
