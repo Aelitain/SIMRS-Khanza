@@ -6602,7 +6602,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("<td align='left'>").append(rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
-//                                                append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan di RSU Al-Ittihad, Kab. Blitar. Ditandatangai secara elektronik oleh ").append(rs2.getString("nama")).append(" ").append(rs2.getString("nip")).append(" ").append(rs2.getString("tgl_perawatan")).append("&amp;size=100x100' alt='' '/>").append("<br>").
+                                                append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan di RSU Al-Ittihad, Kab. Blitar. Ditandatangai secara elektronik oleh ").append(rs2.getString("nama")).append(" ").append(rs2.getString("nip")).append(" ").append(rs2.getString("tgl_perawatan")).append("&amp;size=100x100' alt='' '/>").append("<br>").
                                             append("</tr>");
                             }while(rs2.next());
                         }       
