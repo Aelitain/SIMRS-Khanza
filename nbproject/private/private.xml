@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="4">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="6">
         <file>
             <url>src/simrskhanza/DlgCariPeriksaRadiologi.java</url>
             <bookmark id="2">
@@ -17,11 +17,20 @@
                 <key/>
             </bookmark>
         </file>
+        <file>
+            <url>src/simrskhanza/DlgRawatJalan.java</url>
+            <bookmark id="6">
+                <name/>
+                <line>1477</line>
+                <key/>
+            </bookmark>
+        </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/DlgKasirRalan.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/frmUtama.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/bridging/ICareRiwayatPerawatan.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/DlgRawatJalan.java</file>
         </group>
     </open-files>
