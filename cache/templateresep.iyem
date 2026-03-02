@@ -1,0 +1,28 @@
+{
+  "templates": [
+    {
+      "nama": "Operasi SC 1",
+      "items": [
+        {"KodeBarang":"B000000106","Jml":"1","AturanPakai":"1x"},
+        {"KodeBarang":"B000000105","Jml":"1","AturanPakai":"1x"},
+        {"KodeBarang":"B000000109","Jml":"1","AturanPakai":"1x"}
+      ]
+    },
+    {
+      "nama": "Operasi SC 2",
+      "items": [
+        {"KodeBarang":"B000000102","Jml":"1","AturanPakai":"1x"},
+        {"KodeBarang":"B000000107","Jml":"3","AturanPakai":"1x"},
+        {"KodeBarang":"B000000109","Jml":"1","AturanPakai":"1x"},
+        {"KodeBarang":"B000000103","Jml":"1","AturanPakai":"1x"}
+      ]
+    },
+    {
+      "nama": "Operasi Katarak",
+      "items": [
+        {"KodeBarang":"B000000104","Jml":"1","AturanPakai":"1x"},
+        {"KodeBarang":"B000000108","Jml":"3","AturanPakai":"1x"}
+      ]
+    }
+  ]
+}
