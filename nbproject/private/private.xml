@@ -28,7 +28,11 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/frmUtama.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/inventory/DlgCopyResep.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/setting/database.xml</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/inventory/DlgResepObat.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/inventory/DlgPeresepanDokter.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/modifikasi/DlgTemplateResep.java</file>
         </group>
     </open-files>
 </project-private>

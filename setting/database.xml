@@ -7,7 +7,7 @@
     <entry key="PORT">nioxtijcpDaKSUiUiP5FAg==</entry>
     <entry key="USER">2ANg7uJWm+cFbdvWjTxI5w==</entry>
     <entry key="PAS">FStXn892PLMHEfIgqjL1fA==</entry>
-    <entry key="CARICEPAT">nonaktif</entry>
+    <entry key="CARICEPAT">aktif</entry>
     <entry key="HOSTHYBRIDWEB">wTTp9BrFdjTv2/M0nESVjw==</entry>
     <entry key="USERHYBRIDWEB">nmXqCKzrz9i8GTZlq7JruQ==</entry>
     <entry key="PASHYBRIDWEB">AsJ/0/gCnYnD+gK4fw9uKA==</entry>
@@ -20,7 +20,7 @@
     <entry key="ALARMAPOTEK">yes</entry>
     <entry key="RESEPRAJALKEPLAN">yes</entry>
     <entry key="FORMALARMAPOTEK">ralan + ranap</entry>
-    <entry key="STOKKOSONGRESEP">no</entry>
+    <entry key="STOKKOSONGRESEP">yes</entry>
     <entry key="TAMPILKANCOPYRESEPDOKTERLAIN">yes</entry>
     <entry key="HPPFARMASI">dasar</entry>
     <entry key="HPPTOKO">dasar</entry>
