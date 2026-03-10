@@ -6409,6 +6409,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel20.setName("jLabel20"); // NOI18N
         jLabel20.setPreferredSize(new java.awt.Dimension(120, 23));
         panelGlass8.add(jLabel20);
+        
 
         cmbStatusBayar.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Semua", "Sudah Bayar", "Belum Bayar" }));
         cmbStatusBayar.setName("cmbStatusBayar"); // NOI18N
@@ -15533,6 +15534,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Button BtnKeluar4;
     private widget.Button BtnPrint;
     private widget.Button BtnPrint2;
+    private widget.Button BtnICare;
     private widget.Button BtnPrint5;
     private widget.Button BtnSeek3;
     private widget.Button BtnSeek4;
@@ -18042,6 +18044,20 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSkriningParu.setName("MnSkriningParu"); 
         MnSkriningParu.setPreferredSize(new java.awt.Dimension(200, 26));
         
+        BtnICare = new widget.Button();
+        BtnICare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/42a.png"))); // NOI18N
+        BtnICare.setMnemonic('T');
+        BtnICare.setText("ICare");
+        BtnICare.setToolTipText("Alt+T");
+        BtnICare.setName("BtnICare"); // NOI18N
+        BtnICare.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnICare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //BtnICareActionPerformed(evt);
+            }
+        });        
+        BtnICare.setBounds(100, 50, 100, 30);
+        
         MnRMOperasi.add(MnPenilaianPreInduksi);
         MnRMOperasi.add(MnChecklistPreOperasi);
         MnRMOperasi.add(MnSignInSebelumAnestesi);
@@ -18244,5 +18260,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSuratPersetujuan.add(MnPersetujuanPemeriksaanHIV);
         MnSuratPersetujuan.add(MnPernyataanMemilihDPJP);
         MnSuratPersetujuan.add(MnSerahTerimaBarangAnggotaTubuh);
+        panelBiasa2.add(BtnICare);
+
     }
 }
