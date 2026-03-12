@@ -785,6 +785,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         internalFrame5 = new widget.InternalFrame();
         BtnCloseIn4 = new widget.Button();
         BtnSimpan4 = new widget.Button();
+        BtnICare = new widget.Button();
         jLabel18 = new widget.Label();
         kdpoli = new widget.TextBox();
         nmpoli = new widget.TextBox();
@@ -6307,6 +6308,21 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
                 BtnKeluarActionPerformed(evt);
             }
         });
+        
+        BtnICare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/42a.png"))); // NOI18N
+        BtnICare.setMnemonic('T');
+        BtnICare.setText("ICare");
+        BtnICare.setToolTipText("Alt+T");
+        BtnICare.setName("BtnICare"); // NOI18N
+        BtnICare.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnICare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                //BtnICareActionPerformed(evt);
+            }
+        });        
+        BtnICare.setBounds(100, 50, 100, 30);
+        
+
         BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BtnKeluarKeyPressed(evt);
@@ -18043,20 +18059,6 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSkriningParu.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         MnSkriningParu.setName("MnSkriningParu"); 
         MnSkriningParu.setPreferredSize(new java.awt.Dimension(200, 26));
-        
-        BtnICare = new widget.Button();
-        BtnICare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/42a.png"))); // NOI18N
-        BtnICare.setMnemonic('T');
-        BtnICare.setText("ICare");
-        BtnICare.setToolTipText("Alt+T");
-        BtnICare.setName("BtnICare"); // NOI18N
-        BtnICare.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnICare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //BtnICareActionPerformed(evt);
-            }
-        });        
-        BtnICare.setBounds(100, 50, 100, 30);
         
         MnRMOperasi.add(MnPenilaianPreInduksi);
         MnRMOperasi.add(MnChecklistPreOperasi);
