@@ -785,7 +785,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         internalFrame5 = new widget.InternalFrame();
         BtnCloseIn4 = new widget.Button();
         BtnSimpan4 = new widget.Button();
-        BtnICare = new widget.Button();
+       // BtnICare = new widget.Button();
         jLabel18 = new widget.Label();
         kdpoli = new widget.TextBox();
         nmpoli = new widget.TextBox();
@@ -878,6 +878,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         LCount = new widget.Label();
         BtnPrint = new widget.Button();
         BtnKeluar = new widget.Button();
+        BtnICare = new widget.Button();
         panelGlass7 = new widget.panelisi();
         jLabel14 = new widget.Label();
         CrPtg = new widget.TextBox();
@@ -6309,26 +6310,33 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         
-        BtnICare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/42a.png"))); // NOI18N
-        BtnICare.setMnemonic('T');
+        BtnICare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnICare.setMnemonic('I');
         BtnICare.setText("ICare");
-        BtnICare.setToolTipText("Alt+T");
+        BtnICare.setToolTipText("Alt+I");
         BtnICare.setName("BtnICare"); // NOI18N
         BtnICare.setPreferredSize(new java.awt.Dimension(100, 30));
         BtnICare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                //BtnICareActionPerformed(evt);
+                BtnICareActionPerformed(evt);
             }
-        });        
-        BtnICare.setBounds(100, 50, 100, 30);
+        });
         
-
         BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 BtnKeluarKeyPressed(evt);
             }
         });
+        
+        BtnICare.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnICareKeyPressed(evt);
+            }
+        });
+        
+        // Sampai Sini
         panelGlass6.add(BtnKeluar);
+        panelGlass6.add(BtnICare); //tombol ini dipindah ke panel atas
 
         jPanel2.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
 
@@ -6570,11 +6578,27 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         dispose();
 }//GEN-LAST:event_BtnKeluarActionPerformed
 
+    private void BtnICareActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnICareActionPerformed
+        Window[] wins = Window.getWindows();
+        for (Window win : wins) {
+            if (win instanceof JDialog) {
+                win.dispose();
+            }
+        }
+        dispose();
+}//GEN-LAST:event_BtnKICareActionPerformed
+
     private void BtnKeluarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluarKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             dispose();
         }else{Valid.pindah(evt,cmbStatus,TCari);}
 }//GEN-LAST:event_BtnKeluarKeyPressed
+
+    private void BtnICareKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnICareKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_SPACE){
+            dispose();
+        }else{Valid.pindah(evt,cmbStatus,TCari);}
+}//GEN-LAST:event_BtnICareKeyPressed
 
     private void BtnAllActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnAllActionPerformed
         if(namadokter.equals("")){
@@ -15546,11 +15570,11 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.Button BtnCloseIn4;
     private widget.Button BtnCloseIn5;
     private widget.Button BtnKeluar;
+    private widget.Button BtnICare;
     private widget.Button BtnKeluar2;
     private widget.Button BtnKeluar4;
     private widget.Button BtnPrint;
     private widget.Button BtnPrint2;
-    private widget.Button BtnICare;
     private widget.Button BtnPrint5;
     private widget.Button BtnSeek3;
     private widget.Button BtnSeek4;
@@ -16164,8 +16188,9 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
 
     public JButton getButton(){
         return BtnKeluar;
+        //return BtnICare;
     }
-    
+   
     public void isCek(){
         MnRawatJalan1.setEnabled(akses.gettindakan_ralan());
         MnPemberianObat.setEnabled(akses.getberi_obat());
@@ -18262,7 +18287,5 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
         MnSuratPersetujuan.add(MnPersetujuanPemeriksaanHIV);
         MnSuratPersetujuan.add(MnPernyataanMemilihDPJP);
         MnSuratPersetujuan.add(MnSerahTerimaBarangAnggotaTubuh);
-        panelBiasa2.add(BtnICare);
-
     }
 }
