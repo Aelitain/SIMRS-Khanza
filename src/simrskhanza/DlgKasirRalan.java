@@ -6310,33 +6310,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         
-        BtnICare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
-        BtnICare.setMnemonic('I');
-        BtnICare.setText("ICare");
-        BtnICare.setToolTipText("Alt+I");
-        BtnICare.setName("BtnICare"); // NOI18N
-        BtnICare.setPreferredSize(new java.awt.Dimension(100, 30));
-        BtnICare.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BtnICareActionPerformed(evt);
-            }
-        });
-        
-        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnKeluarKeyPressed(evt);
-            }
-        });
-        
-        BtnICare.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnICareKeyPressed(evt);
-            }
-        });
-        
-        // Sampai Sini
         panelGlass6.add(BtnKeluar);
-        panelGlass6.add(BtnICare); //tombol ini dipindah ke panel atas
 
         jPanel2.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
 
@@ -6555,11 +6529,38 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         jLabel8.setPreferredSize(new java.awt.Dimension(85, 23));
         panelGlass9.add(jLabel8);
 
+
         TPasienCari.setEditable(false);
         TPasienCari.setHighlighter(null);
         TPasienCari.setName("TPasienCari"); // NOI18N
         TPasienCari.setPreferredSize(new java.awt.Dimension(250, 23));
         panelGlass9.add(TPasienCari);
+
+        BtnICare.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/ICareJKN.png"))); // NOI18N
+        BtnICare.setMnemonic('I');
+        BtnICare.setText("ICare");
+        BtnICare.setToolTipText("Alt+I");
+        BtnICare.setName("BtnICare"); // NOI18N
+        BtnICare.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnICare.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MnRiwayatPerawatanICareNoKartuActionPerformed(evt);
+            }
+        });
+        
+        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnKeluarKeyPressed(evt);
+            }
+        });
+        
+        BtnICare.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnICareKeyPressed(evt);
+            }
+        });
+        
+        panelGlass9.add(BtnICare); //tombol ini dipindah ke panel atas
 
         internalFrame1.add(panelGlass9, java.awt.BorderLayout.PAGE_START);
 
