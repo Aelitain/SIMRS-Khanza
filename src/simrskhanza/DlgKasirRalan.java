@@ -785,7 +785,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         internalFrame5 = new widget.InternalFrame();
         BtnCloseIn4 = new widget.Button();
         BtnSimpan4 = new widget.Button();
-       // BtnICare = new widget.Button();
         jLabel18 = new widget.Label();
         kdpoli = new widget.TextBox();
         nmpoli = new widget.TextBox();
@@ -6310,6 +6309,12 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
             }
         });
         
+        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnKeluarKeyPressed(evt);
+            }
+        });
+        
         panelGlass6.add(BtnKeluar);
 
         jPanel2.add(panelGlass6, java.awt.BorderLayout.PAGE_END);
@@ -6545,12 +6550,6 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         BtnICare.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnRiwayatPerawatanICareNoKartuActionPerformed(evt);
-            }
-        });
-        
-        BtnKeluar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                BtnKeluarKeyPressed(evt);
             }
         });
         
