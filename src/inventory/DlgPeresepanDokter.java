@@ -20,6 +20,7 @@ import fungsi.koneksiDB;
 import fungsi.sekuel;
 import fungsi.validasi;
 import fungsi.akses;
+import fungsi.lokasidepoutama;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -63,7 +64,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private Connection koneksi=koneksiDB.condb();
     private PreparedStatement psresep,pscarikapasitas,psresepasuransi,ps2;
     private ResultSet rsobat,carikapasitas,rs2;
-    private double y=0,kenaikan=0,ttl=0,ppnobat=0,jumlahracik=0,persenracik=0,kapasitasracik=0;
+    private double y=0,kenaikan=0,ttl=0,ppnobat=0,jumlahracik=0,persenracik=0,kapasitasracik=0,MAKSIMALNOMINALRESEPRAJAL=0;
     private int i=0,z=0,row2=0,r=0;
     private boolean ubah=false,copy=false,sukses=true;
     private WarnaTable2 warna=new WarnaTable2();
@@ -71,7 +72,7 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
     private WarnaTable2 warna3=new WarnaTable2();
     private DlgCariDokter dokter;
     private String pilihiterasi="",noracik="",aktifkanbatch="no",STOKKOSONGRESEP="no",qrystokkosong="",tampilkan_ppnobat_ralan="",status="",bangsal="",resep="",DEPOAKTIFOBAT="",
-            kamar="",norawatibu="",kelas,bangsaldefault=Sequel.cariIsi("select set_lokasi.kd_bangsal from set_lokasi limit 1"),RESEPRAJALKEPLAN="no";
+            kamar="",norawatibu="",kelas,RESEPRAJALKEPLAN="no",NOTIFMAKSIMALNOMINALRESEPRAJAL="no";
     private File file;
     private FileWriter fileWriter;
     private ObjectMapper mapper = new ObjectMapper();
@@ -294,6 +295,18 @@ public final class DlgPeresepanDokter extends javax.swing.JDialog {
             RESEPRAJALKEPLAN=koneksiDB.RESEPRAJALKEPLAN();
         } catch (Exception e) {
             RESEPRAJALKEPLAN="no";
+        }
+        
+        try {
+            NOTIFMAKSIMALNOMINALRESEPRAJAL=koneksiDB.NOTIFMAKSIMALNOMINALRESEPRAJAL();
+        } catch (Exception e) {
+            NOTIFMAKSIMALNOMINALRESEPRAJAL="no";
+        }
+        
+        try {
+            MAKSIMALNOMINALRESEPRAJAL=koneksiDB.MAKSIMALNOMINALRESEPRAJAL();
+        } catch (Exception e) {
+            MAKSIMALNOMINALRESEPRAJAL=0;
         }
         
         try {
@@ -2085,7 +2098,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             if(status.equals("ralan")){
                 bangsal=Sequel.cariIsi("select set_depo_ralan.kd_bangsal from set_depo_ralan where set_depo_ralan.kd_poli=?",Sequel.cariIsi("select reg_periksa.kd_poli from reg_periksa where reg_periksa.no_rawat=?",TNoRw.getText()));
                 if(bangsal.equals("")){
-                    bangsal=bangsaldefault;
+                    if(lokasidepoutama.getDepoDefault().equals("")){
+                        lokasidepoutama.SetLokasiDepoUtama();
+                    }
+                    bangsal=lokasidepoutama.getDepoDefault();
                 }
             }else if(status.equals("ranap")){
                 bangsal=akses.getkdbangsal();
@@ -4222,6 +4238,15 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 ttl=ttl+y;
             }
         }
+        
+        if(status.equals("ralan")){
+            if(NOTIFMAKSIMALNOMINALRESEPRAJAL.equals("yes")){
+                if(ttl>MAKSIMALNOMINALRESEPRAJAL){
+                    JOptionPane.showMessageDialog(rootPane,"Maaf nominal obat sudah melebihi batas yang ditentukan..!!");
+                }
+            }
+        }
+        
         LTotal.setText(Valid.SetAngka(ttl));
         ppnobat=0;
         if(tampilkan_ppnobat_ralan.equals("Yes")){
