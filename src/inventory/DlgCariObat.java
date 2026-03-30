@@ -24,6 +24,7 @@ import fungsi.akses;
 import fungsi.akunobatralan;
 import fungsi.embalasetuslah;
 import fungsi.lokasidepoutama;
+import fungsi.ppnralan;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
@@ -77,7 +78,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private int i=0,z=0,row=0,row2,r;
     private Jurnal jur=new Jurnal();
     private String signa1="1",signa2="1",nokunjungan="",kdObatSK="",requestJson="",URL="",otorisasi,sql="",aktifpcare="no",no_batchcari="", tgl_kadaluarsacari="", no_fakturcari="", aktifkanbatch="no",kodedokter="",
-            namadokter="",noresep="",bangsal="",tampilkan_ppnobat_ralan="",hppfarmasi="",VALIDASIULANGBERIOBAT="",DEPOAKTIFOBAT="",utc="";
+            namadokter="",noresep="",bangsal="",hppfarmasi="",VALIDASIULANGBERIOBAT="",DEPOAKTIFOBAT="",utc="";
     private WarnaTable2 warna=new WarnaTable2();
     private WarnaTable2 warna2=new WarnaTable2();
     private WarnaTable2 warna3=new WarnaTable2();
@@ -99,6 +100,7 @@ public final class DlgCariObat extends javax.swing.JDialog {
     private String TANGGALMUNDUR="yes";
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
     private volatile boolean ceksukses = false;
+    private DlgCariAturanPakai aturanpakai;
     
     /** Creates new form DlgPenyakit
      * @param parent
@@ -354,7 +356,6 @@ public final class DlgCariObat extends javax.swing.JDialog {
             TANGGALMUNDUR="yes";
         }
         
-        tampilkan_ppnobat_ralan=Sequel.cariIsi("select set_nota.tampilkan_ppnobat_ralan from set_nota"); 
         jam();
     }    
     
@@ -1120,38 +1121,28 @@ public final class DlgCariObat extends javax.swing.JDialog {
                     }
                     hitungObat();
                 }else if(i==11){
-                    akses.setform("DlgCariObat");
-                    DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
-        
-                    aturanpakai.addWindowListener(new WindowListener() {
-                        @Override
-                        public void windowOpened(WindowEvent e) {}
-                        @Override
-                        public void windowClosing(WindowEvent e) {}
-                        @Override
-                        public void windowClosed(WindowEvent e) {
-                            if(aturanpakai.getTable().getSelectedRow()!= -1){  
-                                if(TabRawat.getSelectedIndex()==0){
+                    if (aturanpakai == null || !aturanpakai.isDisplayable()) {
+                        aturanpakai=new DlgCariAturanPakai(null,false);
+                        aturanpakai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        aturanpakai.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                if(aturanpakai.getTable().getSelectedRow()!= -1){  
                                     tbObat.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObat.getSelectedRow(),11);
                                     tbObat.requestFocus();
-                                }else if(TabRawat.getSelectedIndex()==1){
-                                    tbObatRacikan.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObatRacikan.getSelectedRow(),5);
-                                    tbObatRacikan.requestFocus();
-                                }                        
-                            }   
-                        }
-                        @Override
-                        public void windowIconified(WindowEvent e) {}
-                        @Override
-                        public void windowDeiconified(WindowEvent e) {}
-                        @Override
-                        public void windowActivated(WindowEvent e) {}
-                        @Override
-                        public void windowDeactivated(WindowEvent e) {}
-                    });
-                    
-                    aturanpakai.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                    aturanpakai.setLocationRelativeTo(internalFrame1);
+                                }
+                                aturanpakai=null;
+                            }
+                        });
+
+                        aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        aturanpakai.setLocationRelativeTo(internalFrame1);
+                    }
+                    if (aturanpakai == null) return;
+                    if (aturanpakai.isVisible()) {
+                        aturanpakai.toFront();
+                        return;
+                    }    
                     aturanpakai.setVisible(true);
                 }
             }   
@@ -1779,38 +1770,28 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
             i=tbObatRacikan.getSelectedColumn();
             if(evt.getKeyCode()==KeyEvent.VK_RIGHT){                
                 if(i==5){
-                    akses.setform("DlgCariObat");
-                    DlgCariAturanPakai aturanpakai=new DlgCariAturanPakai(null,false);
-        
-                    aturanpakai.addWindowListener(new WindowListener() {
-                        @Override
-                        public void windowOpened(WindowEvent e) {}
-                        @Override
-                        public void windowClosing(WindowEvent e) {}
-                        @Override
-                        public void windowClosed(WindowEvent e) {
-                            if(aturanpakai.getTable().getSelectedRow()!= -1){  
-                                if(TabRawat.getSelectedIndex()==0){
-                                    tbObat.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObat.getSelectedRow(),11);
-                                    tbObat.requestFocus();
-                                }else if(TabRawat.getSelectedIndex()==1){
+                    if (aturanpakai == null || !aturanpakai.isDisplayable()) {
+                        aturanpakai=new DlgCariAturanPakai(null,false);
+                        aturanpakai.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
+                        aturanpakai.addWindowListener(new WindowAdapter() {
+                            @Override
+                            public void windowClosed(WindowEvent e) {
+                                if(aturanpakai.getTable().getSelectedRow()!= -1){  
                                     tbObatRacikan.setValueAt(aturanpakai.getTable().getValueAt(aturanpakai.getTable().getSelectedRow(),0).toString(),tbObatRacikan.getSelectedRow(),5);
                                     tbObatRacikan.requestFocus();
-                                }                        
-                            }   
-                        }
-                        @Override
-                        public void windowIconified(WindowEvent e) {}
-                        @Override
-                        public void windowDeiconified(WindowEvent e) {}
-                        @Override
-                        public void windowActivated(WindowEvent e) {}
-                        @Override
-                        public void windowDeactivated(WindowEvent e) {}
-                    });
-                    
-                    aturanpakai.setSize(internalFrame1.getWidth(),internalFrame1.getHeight());
-                    aturanpakai.setLocationRelativeTo(internalFrame1);
+                                }
+                                aturanpakai=null;
+                            }
+                        });
+
+                        aturanpakai.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+                        aturanpakai.setLocationRelativeTo(internalFrame1);
+                    }
+                    if (aturanpakai == null) return;
+                    if (aturanpakai.isVisible()) {
+                        aturanpakai.toFront();
+                        return;
+                    }    
                     aturanpakai.setVisible(true);
                 }else if(i==3){
                     if(tbObatRacikan.getValueAt(tbObatRacikan.getSelectedRow(),1).equals("")){
@@ -2029,12 +2010,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
     }//GEN-LAST:event_ppStok1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        if(akunobatralan.getSuspen_Piutang_Obat_Ralan().equals("")){
-            akunobatralan.SetAkunObatRalan();
-        }
-        if(embalasetuslah.getEmbalase() == null){
-            embalasetuslah.SetEmbalaseTuslah();
-        }
+        runBackground(() -> LoadPengaturan());
         
         if(koneksiDB.CARICEPAT().equals("aktif")){
             TCari.getDocument().addDocumentListener(new javax.swing.event.DocumentListener(){
@@ -4005,7 +3981,7 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
         }
         LTotal.setText(Valid.SetAngka(ttl));
         ppnobat=0;
-        if(tampilkan_ppnobat_ralan.equals("Yes")){
+        if(ppnralan.getTampilPPNRalan().equals("Yes")){
             ppnobat=Math.round(ttl*0.11);
             ttl=ttl+ppnobat;
             LPpn.setText(Valid.SetAngka(ppnobat));
@@ -4284,6 +4260,20 @@ private void JeniskelasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:even
                 JOptionPane.showMessageDialog(null,"Data tidak ditemukan...!");
             }
         } 
+    }
+    
+    private void LoadPengaturan(){
+        if(ppnralan.getTampilPPNRalan().equals("")){
+            ppnralan.SetPPNRalan();
+        }
+        
+        if(akunobatralan.getSuspen_Piutang_Obat_Ralan().equals("")){
+            akunobatralan.SetAkunObatRalan();
+        }
+        
+        if(embalasetuslah.getEmbalase() == null){
+            embalasetuslah.SetEmbalaseTuslah();
+        }
     }
     
     private void runBackground(Runnable task) {
