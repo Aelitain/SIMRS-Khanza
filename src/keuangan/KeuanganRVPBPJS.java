@@ -850,7 +850,12 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
                 myObj.close();
             } catch (Exception e) {
                 System.out.println("Notif : "+e);
-            } 
+            } finally {
+                if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                response = null;
+                root = null;
+            }
+
             if(koderekening.equals("")){
                 JOptionPane.showMessageDialog(null,"Kode akun bayar tidak ditemukan, transaksi dibatalkan.\nPeriksa kembali data sebelum melanjutkan menyimpan..!!");
             }else{
@@ -5227,6 +5232,8 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
              iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -5247,6 +5254,10 @@ private void MnDetailPiutangActionPerformed(java.awt.event.ActionEvent evt) {//G
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     } 
 }

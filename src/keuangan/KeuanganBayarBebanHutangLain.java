@@ -838,6 +838,10 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
                         myObj.close();
                     } catch (Exception e) {
                         sukses=false;
+                    } finally {
+                        if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                        response = null;
+                        root = null;
                     } 
                     if(koderekening.equals("")){
                         JOptionPane.showMessageDialog(null,"Terjadi kesalahan akun bayar, silahkan hubungi administrator..!!");
@@ -864,6 +868,10 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
                                 myObj.close();
                             } catch (Exception e) {
                                 sukses=false;
+                            } finally {
+                                if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                                response = null;
+                                root = null;
                             }
 
                             Sequel.AutoComitFalse();
@@ -955,6 +963,10 @@ public final class KeuanganBayarBebanHutangLain extends javax.swing.JDialog {
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
+                } finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
                 }
                 Sequel.mengedit("beban_hutang_lain","no_hutang='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"'","status='Belum Lunas', sisahutang=sisahutang+"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString());                      
                 Sequel.queryu("delete from tampjurnal");                    
@@ -1636,6 +1648,8 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
              iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -1656,6 +1670,10 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     }
     
@@ -1666,16 +1684,22 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             try {
                 rs=ps.executeQuery();
                 if(rs.next()){
-                    file=new File("./cache/akunbankmandiri.iyem");
-                    file.createNewFile();
-                    fileWriter = new FileWriter(file);
-                    Host_to_Host_Bank_Mandiri=rs.getString("kd_rek");
-                    Akun_Biaya_Mandiri=rs.getString("kd_rek_biaya");
-                    kodemcm=rs.getString("kode_mcm");
-                    norekening=rs.getString("no_rekening");
-                    fileWriter.write("{\"akunbankmandiri\":\""+Host_to_Host_Bank_Mandiri+"\",\"kodemcm\":\""+kodemcm+"\",\"akunbiayabankmandiri\":\""+Akun_Biaya_Mandiri+"\",\"norekening\":\""+norekening+"\"}");
-                    fileWriter.flush();
-                    fileWriter.close();
+                    try{
+                        file=new File("./cache/akunbankmandiri.iyem");
+                        file.createNewFile();
+                        fileWriter = new FileWriter(file);
+                        Host_to_Host_Bank_Mandiri=rs.getString("kd_rek");
+                        Akun_Biaya_Mandiri=rs.getString("kd_rek_biaya");
+                        kodemcm=rs.getString("kode_mcm");
+                        norekening=rs.getString("no_rekening");
+                        fileWriter.write("{\"akunbankmandiri\":\""+Host_to_Host_Bank_Mandiri+"\",\"kodemcm\":\""+kodemcm+"\",\"akunbiayabankmandiri\":\""+Akun_Biaya_Mandiri+"\",\"norekening\":\""+norekening+"\"}");
+                        fileWriter.flush();
+                        fileWriter.close();
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally {
+                        if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
+                    }
                 }
             } catch (Exception e) {
                 Host_to_Host_Bank_Mandiri="";
@@ -1717,6 +1741,10 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
              Akun_Biaya_Mandiri="";
              kodemcm="";
              norekening="";
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     }
     

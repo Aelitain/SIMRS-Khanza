@@ -1781,6 +1781,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi Buat Cache : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }  
     }
     
@@ -1884,8 +1886,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             });
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeResep.addRow(new Object[] {
                                     false,"","",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Kandungan").asText(),
                                     Double.parseDouble(list.path("HargaKaryawan").asText()),list.path("Jenis").asText(),list.path("IndustriFarmasi").asText(),
@@ -1904,8 +1907,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             });
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeResep.addRow(new Object[] {
                                     false,"","",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Kandungan").asText(),
                                     Double.parseDouble(list.path("HargaRalan").asText()),list.path("Jenis").asText(),list.path("IndustriFarmasi").asText(),
@@ -1924,8 +1928,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             });
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeResep.addRow(new Object[] {
                                     false,"","",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Kandungan").asText(),
                                     Double.parseDouble(list.path("HargaBeliLuar").asText()),list.path("Jenis").asText(),list.path("IndustriFarmasi").asText(),
@@ -1944,8 +1949,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             });
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeResep.addRow(new Object[] {
                                     false,"","",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Kandungan").asText(),
                                     Double.parseDouble(list.path("HargaUtama").asText()),list.path("Jenis").asText(),list.path("IndustriFarmasi").asText(),
@@ -1964,8 +1970,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             });
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeResep.addRow(new Object[] {
                                     false,"","",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Kandungan").asText(),
                                     Double.parseDouble(list.path("HargaKelas1").asText()),list.path("Jenis").asText(),list.path("IndustriFarmasi").asText(),
@@ -1984,8 +1991,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             });
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeResep.addRow(new Object[] {
                                     false,"","",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Kandungan").asText(),
                                     Double.parseDouble(list.path("HargaKelas2").asText()),list.path("Jenis").asText(),list.path("IndustriFarmasi").asText(),
@@ -2004,8 +2012,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             });
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeResep.addRow(new Object[] {
                                     false,"","",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Kandungan").asText(),
                                     Double.parseDouble(list.path("HargaKelas3").asText()),list.path("Jenis").asText(),list.path("IndustriFarmasi").asText(),
@@ -2024,8 +2033,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             });
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeResep.addRow(new Object[] {
                                     false,"","",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Kandungan").asText(),
                                     Double.parseDouble(list.path("HargaVIP").asText()),list.path("Jenis").asText(),list.path("IndustriFarmasi").asText(),
@@ -2044,8 +2054,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             });
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeResep.addRow(new Object[] {
                                     false,"","",list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),list.path("Satuan").asText(),list.path("Kandungan").asText(),
                                     Double.parseDouble(list.path("HargaVVIP").asText()),list.path("Jenis").asText(),list.path("IndustriFarmasi").asText(),
@@ -2057,9 +2068,13 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                 } 
             }
             myObj.close();
-        }catch(Exception e){
+        } catch(Exception e){
             System.out.println("Notifikasi Tampil Cache : "+e);
-        }            
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
+        }           
     }
 
     public void emptTeksobat() {
@@ -2339,8 +2354,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }); 
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeDetailResepRacikan.addRow(new Object[] {
                                     tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),
                                     list.path("Satuan").asText(),Double.parseDouble(list.path("HargaKaryawan").asText()),Double.parseDouble(list.path("HargaBeli").asText()),
@@ -2361,8 +2377,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }); 
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeDetailResepRacikan.addRow(new Object[] {
                                     tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),
                                     list.path("Satuan").asText(),Double.parseDouble(list.path("HargaRalan").asText()),Double.parseDouble(list.path("HargaBeli").asText()),
@@ -2383,8 +2400,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }); 
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeDetailResepRacikan.addRow(new Object[] {
                                     tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),
                                     list.path("Satuan").asText(),Double.parseDouble(list.path("HargaBeliLuar").asText()),Double.parseDouble(list.path("HargaBeli").asText()),
@@ -2405,8 +2423,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }); 
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeDetailResepRacikan.addRow(new Object[] {
                                     tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),
                                     list.path("Satuan").asText(),Double.parseDouble(list.path("HargaUtama").asText()),Double.parseDouble(list.path("HargaBeli").asText()),
@@ -2427,8 +2446,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }); 
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeDetailResepRacikan.addRow(new Object[] {
                                     tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),
                                     list.path("Satuan").asText(),Double.parseDouble(list.path("HargaKelas1").asText()),Double.parseDouble(list.path("HargaBeli").asText()),
@@ -2449,8 +2469,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }); 
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeDetailResepRacikan.addRow(new Object[] {
                                     tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),
                                     list.path("Satuan").asText(),Double.parseDouble(list.path("HargaKelas2").asText()),Double.parseDouble(list.path("HargaBeli").asText()),
@@ -2471,8 +2492,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }); 
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeDetailResepRacikan.addRow(new Object[] {
                                     tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),
                                     list.path("Satuan").asText(),Double.parseDouble(list.path("HargaKelas3").asText()),Double.parseDouble(list.path("HargaBeli").asText()),
@@ -2493,8 +2515,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }); 
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeDetailResepRacikan.addRow(new Object[] {
                                     tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),
                                     list.path("Satuan").asText(),Double.parseDouble(list.path("HargaVIP").asText()),Double.parseDouble(list.path("HargaBeli").asText()),
@@ -2515,8 +2538,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
                             }); 
                         }
                     }else{
+                        String cari=TCari.getText().toLowerCase();
                         for(JsonNode list:response){
-                            if(list.path("KodeBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("NamaBarang").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Jenis").asText().toLowerCase().contains(TCari.getText().toLowerCase())||list.path("Kandungan").asText().toLowerCase().contains(TCari.getText().toLowerCase())){
+                            if(list.path("KodeBarang").asText().toLowerCase().contains(cari)||list.path("NamaBarang").asText().toLowerCase().contains(cari)||list.path("Jenis").asText().toLowerCase().contains(cari)||list.path("Kandungan").asText().toLowerCase().contains(cari)){
                                 tabModeDetailResepRacikan.addRow(new Object[] {
                                     tbObatResepRacikan.getValueAt(tbObatResepRacikan.getSelectedRow(),0).toString(),list.path("KodeBarang").asText(),list.path("NamaBarang").asText(),
                                     list.path("Satuan").asText(),Double.parseDouble(list.path("HargaVVIP").asText()),Double.parseDouble(list.path("HargaBeli").asText()),
@@ -2531,7 +2555,11 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             myObj.close();
         } catch(Exception e){
             System.out.println("Notifikasi Detail Racikan : "+e);
-        }           
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
+        }          
     }
 
     private void getDatadetailresepracikan() {

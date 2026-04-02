@@ -1044,6 +1044,8 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi 2 : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -1164,6 +1166,10 @@ private void BtnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             myObj.close(); 
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     }
     

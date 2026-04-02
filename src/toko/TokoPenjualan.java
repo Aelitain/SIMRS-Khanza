@@ -836,7 +836,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
-                } 
+                } finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
+                }
                 
                 if(Sequel.menyimpantf2("tokopenjualan","?,?,?,?,?,?,?,?,?,?,?,?","No.Nota",12,new String[]{
                         NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),kdptg.getText(),kdmem.getText(),nmmem.getText(),catatan.getText(),Jenisjual.getSelectedItem().toString(),ongkir+"",besarppn+"",kode_akun_bayar,tagihanppn+"",AkunBayar.getSelectedItem().toString()
@@ -1609,6 +1613,8 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
              iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
 
@@ -1627,6 +1633,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             myObj.close();
         } catch (Exception e) {
             Persenppn.setText("0");
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     }
     

@@ -4904,6 +4904,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -4957,6 +4959,10 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             myObj.close();
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     }
     
@@ -4993,6 +4999,8 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             iyembuilder=null;
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -5051,6 +5059,10 @@ public final class RMPenilaianAwalKeperawatanRalanGeriatri extends javax.swing.J
             myObj.close();
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     }
     

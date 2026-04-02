@@ -1079,8 +1079,9 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             iyem=null; 
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
-        
     }
     
     private void tampil2() {
@@ -1150,6 +1151,10 @@ private void ppBersihkanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }
         }catch(Exception e){
             System.out.println("Notifikasi : "+e);
+        }finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }*/
     }
 

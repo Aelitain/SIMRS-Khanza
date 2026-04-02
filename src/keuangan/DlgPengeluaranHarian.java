@@ -1618,17 +1618,23 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                 rs=ps.executeQuery();
                 if(rs.next()){
                     File file;
-                    FileWriter fileWriter;
-                    file=new File("./cache/akunbankmandiri.iyem");
-                    file.createNewFile();
-                    fileWriter = new FileWriter(file);
-                    Host_to_Host_Bank_Mandiri=rs.getString("kd_rek");
-                    Akun_Biaya_Mandiri=rs.getString("kd_rek_biaya");
-                    kodemcm=rs.getString("kode_mcm");
-                    norekening=rs.getString("no_rekening");
-                    fileWriter.write("{\"akunbankmandiri\":\""+Host_to_Host_Bank_Mandiri+"\",\"kodemcm\":\""+kodemcm+"\",\"akunbiayabankmandiri\":\""+Akun_Biaya_Mandiri+"\",\"norekening\":\""+norekening+"\"}");
-                    fileWriter.flush();
-                    fileWriter.close();
+                    FileWriter fileWriter=null;
+                    try{
+                        file=new File("./cache/akunbankmandiri.iyem");
+                        file.createNewFile();
+                        fileWriter = new FileWriter(file);
+                        Host_to_Host_Bank_Mandiri=rs.getString("kd_rek");
+                        Akun_Biaya_Mandiri=rs.getString("kd_rek_biaya");
+                        kodemcm=rs.getString("kode_mcm");
+                        norekening=rs.getString("no_rekening");
+                        fileWriter.write("{\"akunbankmandiri\":\""+Host_to_Host_Bank_Mandiri+"\",\"kodemcm\":\""+kodemcm+"\",\"akunbiayabankmandiri\":\""+Akun_Biaya_Mandiri+"\",\"norekening\":\""+norekening+"\"}");
+                        fileWriter.flush();
+                        fileWriter.close();
+                    } catch (Exception e) {
+                        System.out.println("Notifikasi : "+e);
+                    } finally {
+                        if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
+                    }   
                 }
             } catch (Exception e) {
                 Host_to_Host_Bank_Mandiri="";
@@ -1653,11 +1659,11 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
     }
     
     private void tampilAkunBankMandiri2() { 
+        ObjectMapper mapper = new ObjectMapper();
+        JsonNode root;
+        JsonNode response;
+        FileReader myObj=null;
         try{      
-             ObjectMapper mapper = new ObjectMapper();
-             JsonNode root;
-             JsonNode response;
-             FileReader myObj;
              myObj = new FileReader("./cache/akunbankmandiri.iyem");
              root = mapper.readTree(myObj);
              response = root.path("akunbankmandiri");
@@ -1674,6 +1680,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
              Akun_Biaya_Mandiri="";
              kodemcm="";
              norekening="";
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     }
 }

@@ -689,7 +689,11 @@ public final class KeuanganBayarPiutangPeminjamanUang extends javax.swing.JDialo
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
-                } 
+                } finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
+                }
                 
                 kontraakun="";
                 namakontraakun="";
@@ -708,6 +712,10 @@ public final class KeuanganBayarPiutangPeminjamanUang extends javax.swing.JDialo
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
+                } finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
                 }
                 
                 if(Sequel.menyimpantf("bayar_piutang_lainlain","?,?,?,?,?,?,?","Pembayaran",7,new String[]{
@@ -790,6 +798,10 @@ public final class KeuanganBayarPiutangPeminjamanUang extends javax.swing.JDialo
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
+                } finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
                 }
                 Sequel.mengedit("piutang_lainlain","nota_piutang='"+tbKamar.getValueAt(tbKamar.getSelectedRow(),5).toString()+"'","status='Belum Lunas', sisapiutang=sisapiutang+"+tbKamar.getValueAt(tbKamar.getSelectedRow(),3).toString());                      
                 Sequel.queryu("delete from tampjurnal");                    
@@ -1326,6 +1338,8 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
              iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -1346,6 +1360,10 @@ private void BtnPeminjamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-F
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     } 
     

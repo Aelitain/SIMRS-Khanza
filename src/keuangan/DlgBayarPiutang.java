@@ -839,6 +839,10 @@ public final class DlgBayarPiutang extends javax.swing.JDialog {
                 myObj.close();
             } catch (Exception e) {
                 sukses=false;
+            }finally {
+                if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                response = null;
+                root = null;
             }
             Sequel.AutoComitFalse();
             sukses=true;
@@ -1646,6 +1650,8 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
              iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -1666,6 +1672,10 @@ private void BtnSeekActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        }finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     } 
     

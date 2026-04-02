@@ -1335,7 +1335,11 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
-                } 
+                } finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
+                }
                 
                 if(Sequel.menyimpantf2("penjualan","?,?,?,?,?,?,?,?,?,?,?,?,?","No.Nota",13,new String[]{
                         NoNota.getText(),Valid.SetTgl(Tgl.getSelectedItem()+""),kdptg.getText(),kdmem.getText(),nmmem.getText(),
@@ -4377,6 +4381,8 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
              iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -4398,6 +4404,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     } 
 
@@ -4416,6 +4426,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             myObj.close();
         } catch (Exception e) {
             Persenppn.setText("0");
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     }
     

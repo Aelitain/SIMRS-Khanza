@@ -690,7 +690,11 @@ public final class KeuanganBayarPiutangJasaPerusahaan extends javax.swing.JDialo
                     myObj.close();
                 } catch (Exception e) {
                     sukses=false;
-                } 
+                } finally {
+                    if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+                    response = null;
+                    root = null;
+                }
                 
                 if(Sequel.menyimpantf("bayar_piutang_jasa_perusahaan","?,?,?,?,?,?,?","Pembayaran",7,new String[]{
                         Valid.SetTgl(Tanggal.getSelectedItem()+""),KdPerusahaan.getText(),Cicilan.getText(),
@@ -1284,6 +1288,8 @@ private void BtnPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN
              iyembuilder=null;
         } catch (Exception e) {
             System.out.println("Notifikasi : "+e);
+        } finally {
+            if (fileWriter != null) try { fileWriter.close(); } catch (Exception e) {}
         }
     }
     
@@ -1304,6 +1310,10 @@ private void BtnPerusahaanActionPerformed(java.awt.event.ActionEvent evt) {//GEN
             }else{
                 System.out.println("Notifikasi : "+ex);
             }
+        } finally {
+            if (myObj != null) try { myObj.close(); } catch (Exception e) {}
+            response = null;
+            root = null;
         }
     } 
     
