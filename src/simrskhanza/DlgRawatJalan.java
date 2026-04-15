@@ -11129,7 +11129,11 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                 if(akses.getresep_dokter()==true){
                     tinggi=tinggi+24;
                 }
-            }   
+            }else{
+                BtnResepIterasiBPJS.setVisible(false);
+            }  
+        }else{
+            BtnResepIterasiBPJS.setVisible(false);
         }
         BtnObatBhp.setVisible(akses.getberi_obat());  
         BtnInputObat.setVisible(akses.getberi_obat()); 
@@ -11298,7 +11302,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             tinggi=tinggi+24;
         }
         BtnPemantauanPEWSAnak.setVisible(akses.getpemantauan_pews_anak()); 
-        if(akses.getpenilaian_psikologi()==true){
+        if(akses.getpemantauan_pews_anak()==true){
             tinggi=tinggi+24;
         }
         BtnPenilaianPreOperasi.setVisible(akses.getpenilaian_pre_operasi()); 
@@ -11635,7 +11639,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             tinggi=tinggi+24;
         }
         BtnPermintaanKonsultasiPerawat.setVisible(akses.getkonsultasi_perawat());   
-        if(akses.getkonsultasi_medik()==true){
+        if(akses.getkonsultasi_perawat()==true){
             tinggi=tinggi+24;
         }
         BtnSkriningMerokokUsiaRemaja.setVisible(akses.getskrining_perilaku_merokok_sekolah_remaja());   
