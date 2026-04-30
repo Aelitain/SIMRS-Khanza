@@ -137,6 +137,8 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
         label23 = new widget.Label();
         nmgolongan = new widget.TextBox();
         BtnGolongan = new widget.Button();
+        label24 = new widget.Label();
+        txtLimit = new widget.TextBox();
 
         kddokter.setEditable(false);
         kddokter.setName("kddokter"); // NOI18N
@@ -501,17 +503,17 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
         FormInput.add(BtnKategori);
         BtnKategori.setBounds(461, 40, 28, 23);
 
-        label23.setText("Golongan :");
+        label23.setText("Limit :");
         label23.setName("label23"); // NOI18N
         label23.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label23);
-        label23.setBounds(498, 40, 60, 23);
+        label23.setBounds(760, 10, 50, 23);
 
         nmgolongan.setEditable(false);
         nmgolongan.setName("nmgolongan"); // NOI18N
         nmgolongan.setPreferredSize(new java.awt.Dimension(205, 23));
         FormInput.add(nmgolongan);
-        nmgolongan.setBounds(561, 40, 150, 23);
+        nmgolongan.setBounds(560, 40, 150, 23);
 
         BtnGolongan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnGolongan.setMnemonic('2');
@@ -525,6 +527,24 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
         });
         FormInput.add(BtnGolongan);
         BtnGolongan.setBounds(714, 40, 28, 23);
+
+        label24.setText("Golongan :");
+        label24.setName("label24"); // NOI18N
+        label24.setPreferredSize(new java.awt.Dimension(65, 23));
+        FormInput.add(label24);
+        label24.setBounds(498, 40, 60, 23);
+
+        txtLimit.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        txtLimit.setText("10");
+        txtLimit.setName("txtLimit"); // NOI18N
+        txtLimit.setPreferredSize(new java.awt.Dimension(205, 23));
+        txtLimit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLimitActionPerformed(evt);
+            }
+        });
+        FormInput.add(txtLimit);
+        txtLimit.setBounds(820, 10, 60, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -927,6 +947,10 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_kdgolonganKeyPressed
 
+    private void txtLimitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLimitActionPerformed
+        // TOD add your handling code here:
+    }//GEN-LAST:event_txtLimitActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -980,6 +1004,7 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
     private widget.Label label21;
     private widget.Label label22;
     private widget.Label label23;
+    private widget.Label label24;
     private widget.TextBox nmdokter;
     private widget.TextBox nmgolongan;
     private widget.TextBox nmjns;
@@ -987,6 +1012,7 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
     private widget.TextBox nmpenjab;
     private widget.TextBox nmpoli;
     private widget.panelisi panelGlass5;
+    private widget.TextBox txtLimit;
     // End of variables declaration//GEN-END:variables
 
     public void tampil(){        
@@ -1035,7 +1061,7 @@ public final class Dlg10ObatTerbanyakPoli extends javax.swing.JDialog {
                                 "and reg_periksa.tgl_registrasi between ? and ? and concat(reg_periksa.kd_dokter,dokter.nm_dokter) like ? "+
                                 "and concat(databarang.kdjns,jenis.nama) like ? and concat(databarang.kode_kategori,kategori_barang.nama) like ? "+
                                 "and concat(databarang.kode_golongan,golongan_barang.nama) like ? "+
-                                "group by detail_pemberian_obat.kode_brng order by jml desc limit 10");   
+                                "group by detail_pemberian_obat.kode_brng order by jml desc limit "+ txtLimit.getText());   
                             try {
                                 psobat.setString(1,rspenjab.getString("kd_pj"));
                                 psobat.setString(2,rspoli.getString("kd_poli"));
