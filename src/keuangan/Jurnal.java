@@ -106,7 +106,7 @@ public class Jurnal {
                                             while(rs.next()){
                                                 if(rs.getInt(1)!=rs.getInt(2)){
                                                     sukses=false;
-                                                    System.out.println("Notif : Debet dan Kredit tidak sama");
+                                                    System.out.println("Notif : Debet dan Kredit tidak sama 1");
                                                 }
                                             }
                                         } catch (Exception e) {
@@ -126,7 +126,7 @@ public class Jurnal {
                             } 
                         }
                     }else{
-                        System.out.println("Notif : Debet dan Kredit tidak sama");
+                        System.out.println("Notif : Debet dan Kredit tidak sama 2");
                         sukses=false;
                     }
                 }
