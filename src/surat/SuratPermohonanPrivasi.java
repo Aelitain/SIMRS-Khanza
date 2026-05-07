@@ -1,7 +1,7 @@
 /*
- * Kontribusi dari Pak Agus Budiyono, Karanganyar
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
-
 
 package surat;
 
@@ -16,6 +16,7 @@ import java.awt.Dimension;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -42,7 +43,7 @@ import kepegawaian.DlgCariPetugas;
  * 
  * @author windiartohugroho
  */
-public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.JDialog {
+public final class SuratPermohonanPrivasi extends javax.swing.JDialog {
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -55,15 +56,15 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
     private volatile boolean ceksukses = false;
     private String finger="",lokasifile="";
     
-    public SuratPermintaanPerlindunganDariKekerasan(java.awt.Frame parent, boolean modal) {
+    public SuratPermohonanPrivasi(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocation(8,1);
         setSize(628,674);
         
         tabMode=new DefaultTableModel(null,new Object[]{
-            "No.Permintaan","No.Rawat","No.R.M.","Nama Pasien","Umur","J.K.","Tgl.Lahir","Tanggal","Nama Penanggung Jawab",
-            "Tempat Lahir P.J.","Tgl.Lahir P.J.","Hubungan","J.K. P.J.","Nomor Telp/HP","Nomor KTP","Alamat P.J.","NIP","Nama Petugas"
+            "No.Permintaan","No.Rawat","No.R.M.","Nama Pasien","Umur","J.K.","Tgl.Lahir","Tanggal","Kategori Privasi","Alasan",
+            "Nama Pemohon","Umur","Nomor Identitas","J.K.","Alamat Pemohon","Nomor Telp/HP","Hubungan","NIP","Nama Petugas"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
@@ -73,7 +74,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         tbObat.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbObat.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 18; i++) {
+        for (i = 0; i < 19; i++) {
             TableColumn column = tbObat.getColumnModel().getColumn(i);
             if(i==0){
                 column.setPreferredWidth(105);
@@ -92,24 +93,26 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             }else if(i==7){
                 column.setPreferredWidth(65);
             }else if(i==8){
-                column.setPreferredWidth(150);
+                column.setPreferredWidth(105);
             }else if(i==9){
-                column.setPreferredWidth(100);
-            }else if(i==10){
-                column.setPreferredWidth(70);
-            }else if(i==11){
-                column.setPreferredWidth(60);
-            }else if(i==12){
-                column.setPreferredWidth(45);
-            }else if(i==13){
-                column.setPreferredWidth(100);
-            }else if(i==14){
-                column.setPreferredWidth(100);
-            }else if(i==15){
                 column.setPreferredWidth(150);
+            }else if(i==10){
+                column.setPreferredWidth(150);
+            }else if(i==11){
+                column.setPreferredWidth(45);
+            }else if(i==12){
+                column.setPreferredWidth(100);
+            }else if(i==13){
+                column.setPreferredWidth(25);
+            }else if(i==14){
+                column.setPreferredWidth(180);
+            }else if(i==15){
+                column.setPreferredWidth(100);
             }else if(i==16){
-                column.setPreferredWidth(80);
+                column.setPreferredWidth(88);
             }else if(i==17){
+                column.setPreferredWidth(90);
+            }else if(i==18){
                 column.setPreferredWidth(150);
             }
         }
@@ -120,10 +123,11 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         NoSurat.setDocument(new batasInput((byte)20).getKata(NoSurat));
         TCari.setDocument(new batasInput((int)100).getKata(TCari));
         NamaPJ.setDocument(new batasInput((byte)50).getKata(NamaPJ));
-        NoKTP.setDocument(new batasInput((byte)20).getKata(NoKTP));
-        AlamatPj.setDocument(new batasInput((int)100).getKata(AlamatPj));  
-        TempatLahir.setDocument(new batasInput((byte)20).getKata(TempatLahir));  
-        NoTelp.setDocument(new batasInput((byte)30).getKata(NoTelp));    
+        NoKTPPemohon.setDocument(new batasInput((byte)20).getKata(NoKTPPemohon)); 
+        UmurPJ.setDocument(new batasInput((byte)7).getKata(UmurPJ));  
+        NoTelp.setDocument(new batasInput((byte)30).getKata(NoTelp));
+        AlamatPemohon.setDocument(new batasInput((int)70).getKata(AlamatPemohon));
+        AlasanPermohonan.setDocument(new batasInput((int)100).getKata(AlasanPermohonan));
         
         ChkInput.setSelected(false);
         isForm();
@@ -196,29 +200,33 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         jLabel8 = new widget.Label();
         NamaPJ = new widget.TextBox();
         jLabel9 = new widget.Label();
-        JKPJ = new widget.ComboBox();
+        JKPemohon = new widget.ComboBox();
         jLabel10 = new widget.Label();
-        jLabel11 = new widget.Label();
         Hubungan = new widget.ComboBox();
-        AlamatPj = new widget.TextBox();
         jLabel17 = new widget.Label();
         LahirPasien = new widget.TextBox();
         jLabel18 = new widget.Label();
         KdPetugas = new widget.TextBox();
         NmPetugas = new widget.TextBox();
         BtnPetugas = new widget.Button();
-        jLabel16 = new widget.Label();
-        TglLahir = new widget.Tanggal();
         jLabel44 = new widget.Label();
-        TempatLahir = new widget.TextBox();
+        UmurPJ = new widget.TextBox();
         Tanggal = new widget.Tanggal();
         jLabel14 = new widget.Label();
         jLabel3 = new widget.Label();
         NoSurat = new widget.TextBox();
         jLabel15 = new widget.Label();
-        NoKTP = new widget.TextBox();
+        NoKTPPemohon = new widget.TextBox();
         NoTelp = new widget.TextBox();
         jLabel20 = new widget.Label();
+        jLabel22 = new widget.Label();
+        jLabel23 = new widget.Label();
+        AlamatPemohon = new widget.TextBox();
+        jLabel24 = new widget.Label();
+        KategoriPermohonan = new widget.ComboBox();
+        jLabel16 = new widget.Label();
+        AlasanPermohonan = new widget.TextBox();
+        jLabel25 = new widget.Label();
         ChkInput = new widget.CekBox();
         PanelAccor = new widget.PanelBiasa();
         ChkAccor = new widget.CekBox();
@@ -245,9 +253,10 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Permintaan Perlindungan Diri Dari Kekerasan ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Data Permohonan Privasi Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setFont(new java.awt.Font("Tahoma", 2, 12)); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
+        internalFrame1.setPreferredSize(new java.awt.Dimension(893, 650));
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
         Scroll.setName("Scroll"); // NOI18N
@@ -418,7 +427,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         panelGlass9.add(jLabel19);
 
         DTPCari1.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026" }));
+        DTPCari1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2026" }));
         DTPCari1.setDisplayFormat("dd-MM-yyyy");
         DTPCari1.setName("DTPCari1"); // NOI18N
         DTPCari1.setOpaque(false);
@@ -432,7 +441,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         panelGlass9.add(jLabel21);
 
         DTPCari2.setForeground(new java.awt.Color(50, 70, 50));
-        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026" }));
+        DTPCari2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2026" }));
         DTPCari2.setDisplayFormat("dd-MM-yyyy");
         DTPCari2.setName("DTPCari2"); // NOI18N
         DTPCari2.setOpaque(false);
@@ -445,7 +454,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         panelGlass9.add(jLabel6);
 
         TCari.setName("TCari"); // NOI18N
-        TCari.setPreferredSize(new java.awt.Dimension(205, 23));
+        TCari.setPreferredSize(new java.awt.Dimension(215, 23));
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -487,11 +496,11 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
 
         PanelInput.setName("PanelInput"); // NOI18N
         PanelInput.setOpaque(false);
-        PanelInput.setPreferredSize(new java.awt.Dimension(192, 205));
+        PanelInput.setPreferredSize(new java.awt.Dimension(192, 225));
         PanelInput.setLayout(new java.awt.BorderLayout(1, 1));
 
         FormInput.setName("FormInput"); // NOI18N
-        FormInput.setPreferredSize(new java.awt.Dimension(100, 165));
+        FormInput.setPreferredSize(new java.awt.Dimension(150, 255));
         FormInput.setLayout(null);
 
         jLabel4.setText("No.Rawat :");
@@ -523,13 +532,18 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         TNoRM.setEditable(false);
         TNoRM.setHighlighter(null);
         TNoRM.setName("TNoRM"); // NOI18N
+        TNoRM.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                TNoRMKeyPressed(evt);
+            }
+        });
         FormInput.add(TNoRM);
         TNoRM.setBounds(212, 10, 111, 23);
 
-        jLabel8.setText("Hubungan :");
+        jLabel8.setText("Alamat :");
         jLabel8.setName("jLabel8"); // NOI18N
         FormInput.add(jLabel8);
-        jLabel8.setBounds(0, 120, 100, 23);
+        jLabel8.setBounds(439, 120, 50, 23);
 
         NamaPJ.setName("NamaPJ"); // NOI18N
         NamaPJ.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -538,34 +552,29 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             }
         });
         FormInput.add(NamaPJ);
-        NamaPJ.setBounds(104, 90, 260, 23);
+        NamaPJ.setBounds(74, 90, 170, 23);
 
-        jLabel9.setText("Jenis Kelamin :");
+        jLabel9.setText("J.K. :");
         jLabel9.setName("jLabel9"); // NOI18N
         FormInput.add(jLabel9);
-        jLabel9.setBounds(235, 120, 80, 23);
+        jLabel9.setBounds(0, 120, 70, 23);
 
-        JKPJ.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan" }));
-        JKPJ.setName("JKPJ"); // NOI18N
-        JKPJ.addKeyListener(new java.awt.event.KeyAdapter() {
+        JKPemohon.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Laki-laki", "Perempuan" }));
+        JKPemohon.setName("JKPemohon"); // NOI18N
+        JKPemohon.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                JKPJKeyPressed(evt);
+                JKPemohonKeyPressed(evt);
             }
         });
-        FormInput.add(JKPJ);
-        JKPJ.setBounds(319, 120, 110, 23);
+        FormInput.add(JKPemohon);
+        JKPemohon.setBounds(74, 120, 107, 23);
 
         jLabel10.setText("Nama :");
         jLabel10.setName("jLabel10"); // NOI18N
         FormInput.add(jLabel10);
-        jLabel10.setBounds(0, 90, 100, 23);
+        jLabel10.setBounds(0, 90, 70, 23);
 
-        jLabel11.setText("Alamat :");
-        jLabel11.setName("jLabel11"); // NOI18N
-        FormInput.add(jLabel11);
-        jLabel11.setBounds(260, 150, 55, 23);
-
-        Hubungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Saudara", "Keponakan" }));
+        Hubungan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Suami", "Istri", "Anak", "Ayah", "Saudara", "Keponakan", "Cucu", "Kakek", "Nenek", "Kakak", "Adik", "Ibu", "Diri Sendiri" }));
         Hubungan.setName("Hubungan"); // NOI18N
         Hubungan.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -573,16 +582,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             }
         });
         FormInput.add(Hubungan);
-        Hubungan.setBounds(104, 120, 110, 23);
-
-        AlamatPj.setName("AlamatPj"); // NOI18N
-        AlamatPj.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                AlamatPjKeyPressed(evt);
-            }
-        });
-        FormInput.add(AlamatPj);
-        AlamatPj.setBounds(319, 150, 414, 23);
+        Hubungan.setBounds(424, 90, 107, 23);
 
         jLabel17.setText("Tgl.Lahir :");
         jLabel17.setName("jLabel17"); // NOI18N
@@ -608,7 +608,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         NmPetugas.setEditable(false);
         NmPetugas.setName("NmPetugas"); // NOI18N
         FormInput.add(NmPetugas);
-        NmPetugas.setBounds(331, 40, 157, 23);
+        NmPetugas.setBounds(331, 40, 172, 23);
 
         BtnPetugas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/190.png"))); // NOI18N
         BtnPetugas.setMnemonic('2');
@@ -625,43 +625,24 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             }
         });
         FormInput.add(BtnPetugas);
-        BtnPetugas.setBounds(490, 40, 28, 23);
+        BtnPetugas.setBounds(505, 40, 28, 23);
 
-        jLabel16.setText("Tanggal :");
-        jLabel16.setName("jLabel16"); // NOI18N
-        jLabel16.setVerifyInputWhenFocusTarget(false);
-        FormInput.add(jLabel16);
-        jLabel16.setBounds(0, 40, 70, 23);
-
-        TglLahir.setForeground(new java.awt.Color(50, 70, 50));
-        TglLahir.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026" }));
-        TglLahir.setDisplayFormat("dd-MM-yyyy");
-        TglLahir.setName("TglLahir"); // NOI18N
-        TglLahir.setOpaque(false);
-        TglLahir.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                TglLahirKeyPressed(evt);
-            }
-        });
-        FormInput.add(TglLahir);
-        TglLahir.setBounds(643, 90, 90, 23);
-
-        jLabel44.setText("Tempat/Tanggal Lahir :");
+        jLabel44.setText("Umur :");
         jLabel44.setName("jLabel44"); // NOI18N
         FormInput.add(jLabel44);
-        jLabel44.setBounds(376, 90, 120, 23);
+        jLabel44.setBounds(256, 90, 40, 23);
 
-        TempatLahir.setName("TempatLahir"); // NOI18N
-        TempatLahir.addKeyListener(new java.awt.event.KeyAdapter() {
+        UmurPJ.setName("UmurPJ"); // NOI18N
+        UmurPJ.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                TempatLahirKeyPressed(evt);
+                UmurPJKeyPressed(evt);
             }
         });
-        FormInput.add(TempatLahir);
-        TempatLahir.setBounds(500, 90, 140, 23);
+        FormInput.add(UmurPJ);
+        UmurPJ.setBounds(300, 90, 45, 23);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "03-05-2026" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "06-05-2026" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -673,15 +654,15 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         FormInput.add(Tanggal);
         Tanggal.setBounds(74, 40, 90, 23);
 
-        jLabel14.setText("Penanggung Jawab Pasien :");
+        jLabel14.setText("Kategori :");
         jLabel14.setName("jLabel14"); // NOI18N
         FormInput.add(jLabel14);
-        jLabel14.setBounds(0, 70, 154, 23);
+        jLabel14.setBounds(0, 170, 70, 23);
 
-        jLabel3.setText("No. Permintaan :");
+        jLabel3.setText("Nomor :");
         jLabel3.setName("jLabel3"); // NOI18N
         FormInput.add(jLabel3);
-        jLabel3.setBounds(520, 40, 90, 23);
+        jLabel3.setBounds(539, 40, 50, 23);
 
         NoSurat.setHighlighter(null);
         NoSurat.setName("NoSurat"); // NOI18N
@@ -691,21 +672,21 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             }
         });
         FormInput.add(NoSurat);
-        NoSurat.setBounds(614, 40, 119, 23);
+        NoSurat.setBounds(593, 40, 140, 23);
 
-        jLabel15.setText("Nomor KTP :");
+        jLabel15.setText("No KTP :");
         jLabel15.setName("jLabel15"); // NOI18N
         FormInput.add(jLabel15);
-        jLabel15.setBounds(0, 150, 100, 23);
+        jLabel15.setBounds(539, 90, 50, 23);
 
-        NoKTP.setName("NoKTP"); // NOI18N
-        NoKTP.addKeyListener(new java.awt.event.KeyAdapter() {
+        NoKTPPemohon.setName("NoKTPPemohon"); // NOI18N
+        NoKTPPemohon.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                NoKTPKeyPressed(evt);
+                NoKTPPemohonKeyPressed(evt);
             }
         });
-        FormInput.add(NoKTP);
-        NoKTP.setBounds(104, 150, 150, 23);
+        FormInput.add(NoKTPPemohon);
+        NoKTPPemohon.setBounds(593, 90, 140, 23);
 
         NoTelp.setName("NoTelp"); // NOI18N
         NoTelp.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -714,12 +695,68 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             }
         });
         FormInput.add(NoTelp);
-        NoTelp.setBounds(573, 120, 160, 23);
+        NoTelp.setBounds(290, 120, 138, 23);
 
-        jLabel20.setText("Nomor Telp/Nomor HP :");
+        jLabel20.setText("Nomor Telp/HP :");
         jLabel20.setName("jLabel20"); // NOI18N
         FormInput.add(jLabel20);
-        jLabel20.setBounds(429, 120, 140, 23);
+        jLabel20.setBounds(196, 120, 90, 23);
+
+        jLabel22.setText("Tanggal :");
+        jLabel22.setName("jLabel22"); // NOI18N
+        jLabel22.setVerifyInputWhenFocusTarget(false);
+        FormInput.add(jLabel22);
+        jLabel22.setBounds(0, 40, 70, 23);
+
+        jLabel23.setText("Hubungan :");
+        jLabel23.setName("jLabel23"); // NOI18N
+        FormInput.add(jLabel23);
+        jLabel23.setBounds(350, 90, 70, 23);
+
+        AlamatPemohon.setName("AlamatPemohon"); // NOI18N
+        AlamatPemohon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlamatPemohonKeyPressed(evt);
+            }
+        });
+        FormInput.add(AlamatPemohon);
+        AlamatPemohon.setBounds(493, 120, 240, 23);
+
+        jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel24.setText("Data Pemohon :");
+        jLabel24.setName("jLabel24"); // NOI18N
+        FormInput.add(jLabel24);
+        jLabel24.setBounds(15, 70, 90, 23);
+
+        KategoriPermohonan.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Identitas Diri", "Informasi Medis", "Batasan Pengunjung ", "Ruangan", "Media", "Administrasi", "Khusus", "Lainnya" }));
+        KategoriPermohonan.setName("KategoriPermohonan"); // NOI18N
+        KategoriPermohonan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                KategoriPermohonanKeyPressed(evt);
+            }
+        });
+        FormInput.add(KategoriPermohonan);
+        KategoriPermohonan.setBounds(74, 170, 150, 23);
+
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        jLabel16.setText("Permohonan Privasi :");
+        jLabel16.setName("jLabel16"); // NOI18N
+        FormInput.add(jLabel16);
+        jLabel16.setBounds(15, 150, 110, 23);
+
+        AlasanPermohonan.setName("AlasanPermohonan"); // NOI18N
+        AlasanPermohonan.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                AlasanPermohonanKeyPressed(evt);
+            }
+        });
+        FormInput.add(AlasanPermohonan);
+        AlasanPermohonan.setBounds(289, 170, 444, 23);
+
+        jLabel25.setText("Alasan :");
+        jLabel25.setName("jLabel25"); // NOI18N
+        FormInput.add(jLabel25);
+        jLabel25.setBounds(225, 170, 60, 23);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -770,7 +807,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         PanelAccor.add(ChkAccor, java.awt.BorderLayout.WEST);
 
         FormPhoto.setBackground(new java.awt.Color(255, 255, 255));
-        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Bukti Permintaan : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        FormPhoto.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1), " Bukti Permohonan Privasi Pasien : ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         FormPhoto.setName("FormPhoto"); // NOI18N
         FormPhoto.setPreferredSize(new java.awt.Dimension(115, 73));
         FormPhoto.setLayout(new java.awt.BorderLayout());
@@ -846,30 +883,32 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
         }else if(NamaPJ.getText().trim().equals("")){
-            Valid.textKosong(NamaPJ,"Nama Penanggung Jawab");
-        }else if(AlamatPj.getText().trim().equals("")){
-            Valid.textKosong(AlamatPj,"Alamat Penanggung Jawab");
-        }else if(TempatLahir.getText().trim().equals("")){
-            Valid.textKosong(TempatLahir,"Tempat Lahir");
+            Valid.textKosong(NamaPJ,"Nama Pemohon");
+        }else if(UmurPJ.getText().trim().equals("")){
+            Valid.textKosong(UmurPJ,"Umur");
+        }else if(AlamatPemohon.getText().trim().equals("")){
+            Valid.textKosong(AlamatPemohon,"Alamat Pemohon");
         }else if(NoTelp.getText().trim().equals("")){
             Valid.textKosong(NoTelp,"Nomor Telp");
-        }else if(NoKTP.getText().trim().equals("")){
-            Valid.textKosong(NoKTP,"Nomor KTP");
+        }else if(NoKTPPemohon.getText().trim().equals("")){
+            Valid.textKosong(NoKTPPemohon,"Nomor KTP Pemohon");
+        }else if(AlasanPermohonan.getText().trim().equals("")){
+            Valid.textKosong(AlasanPermohonan,"Alasan Permohonan");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(NmPetugas,"Petugas");
         }else if(NoSurat.getText().trim().equals("")){
             Valid.textKosong(NoSurat,"No.Permintaan");
         }else{
-            if(Sequel.menyimpantf("surat_perlindungan_dari_kekerasan","?,?,?,?,?,?,?,?,?,?,?,?","Data",12,new String[]{
-                    NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),
-                    TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),JKPJ.getSelectedItem().toString().substring(0,1),
-                    AlamatPj.getText(),Hubungan.getSelectedItem().toString(),NoTelp.getText(),KdPetugas.getText()
+            if(Sequel.menyimpantf("surat_permohonan_privasi","?,?,?,?,?,?,?,?,?,?,?,?,?","Nomor Permohonan",13,new String[]{
+                    NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KategoriPermohonan.getSelectedItem().toString(),AlasanPermohonan.getText(),NamaPJ.getText(),
+                    UmurPJ.getText(),NoKTPPemohon.getText(),JKPemohon.getSelectedItem().toString().substring(0,1),Hubungan.getSelectedItem().toString(),NoTelp.getText(),AlamatPemohon.getText(),
+                    KdPetugas.getText()
                 })==true){
                 tabMode.addRow(new Object[]{
                     NoSurat.getText(),TNoRw.getText(),TNoRM.getText(),TPasien.getText(),Umur.getText(),JK.getText(),LahirPasien.getText(),
-                    Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),
-                    Hubungan.getSelectedItem().toString(),JKPJ.getSelectedItem().toString().substring(0,1),NoTelp.getText(),NoKTP.getText(),
-                    AlamatPj.getText(),KdPetugas.getText(),NmPetugas.getText()
+                    Valid.SetTgl(Tanggal.getSelectedItem()+""),KategoriPermohonan.getSelectedItem().toString(),AlasanPermohonan.getText(),NamaPJ.getText(),UmurPJ.getText(),
+                    NoKTPPemohon.getText(),JKPemohon.getSelectedItem().toString().substring(0,1),AlamatPemohon.getText(),NoTelp.getText(),Hubungan.getSelectedItem().toString(),
+                    KdPetugas.getText(),NmPetugas.getText()
                 });
                 LCount.setText(""+tabMode.getRowCount());
                 emptTeks();
@@ -881,7 +920,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            Valid.pindah(evt,AlamatPj,BtnBatal);
+            Valid.pindah(evt,AlasanPermohonan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -902,7 +941,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             if(akses.getkode().equals("Admin Utama")){
                 hapus();
             }else{
-                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString())){
+                if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                     hapus();
                 }else{
                     JOptionPane.showMessageDialog(null,"Hanya bisa dihapus oleh petugas yang bersangkutan..!!");
@@ -926,15 +965,17 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         if(TNoRw.getText().trim().equals("")||TPasien.getText().trim().equals("")){
             Valid.textKosong(TNoRw,"Pasien");
         }else if(NamaPJ.getText().trim().equals("")){
-            Valid.textKosong(NamaPJ,"Nama Penanggung Jawab");
-        }else if(AlamatPj.getText().trim().equals("")){
-            Valid.textKosong(AlamatPj,"Alamat Penanggung Jawab");
-        }else if(TempatLahir.getText().trim().equals("")){
-            Valid.textKosong(TempatLahir,"Tempat Lahir");
+            Valid.textKosong(NamaPJ,"Nama Pemohon");
+        }else if(UmurPJ.getText().trim().equals("")){
+            Valid.textKosong(UmurPJ,"Umur");
+        }else if(AlamatPemohon.getText().trim().equals("")){
+            Valid.textKosong(AlamatPemohon,"Alamat Pemohon");
         }else if(NoTelp.getText().trim().equals("")){
             Valid.textKosong(NoTelp,"Nomor Telp");
-        }else if(NoKTP.getText().trim().equals("")){
-            Valid.textKosong(NoKTP,"Nomor KTP");
+        }else if(NoKTPPemohon.getText().trim().equals("")){
+            Valid.textKosong(NoKTPPemohon,"Nomor KTP Pemohon");
+        }else if(AlasanPermohonan.getText().trim().equals("")){
+            Valid.textKosong(AlasanPermohonan,"Alasan Permohonan");
         }else if(NmPetugas.getText().trim().equals("")){
             Valid.textKosong(NmPetugas,"Petugas");
         }else if(NoSurat.getText().trim().equals("")){
@@ -944,7 +985,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
                 if(akses.getkode().equals("Admin Utama")){
                     ganti();
                 }else{
-                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString())){
+                    if(KdPetugas.getText().equals(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString())){
                         ganti();
                     }else{
                         JOptionPane.showMessageDialog(null,"Hanya bisa diganti oleh petugas yang bersangkutan..!!");
@@ -990,31 +1031,35 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             
             if(TCari.getText().trim().equals("")){
-                Valid.MyReportqry("rptDataPermintaanPerlindunganDariKekerasan.jasper","report","::[ Data Permintaan Perlindungan Dari Kekerasan ]::",
-                    "select surat_perlindungan_dari_kekerasan.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_perlindungan_dari_kekerasan.tanggal,surat_perlindungan_dari_kekerasan.nama_pj,"+
-                    "surat_perlindungan_dari_kekerasan.no_ktppj,surat_perlindungan_dari_kekerasan.tempat_lahirpj,surat_perlindungan_dari_kekerasan.lahirpj,"+
-                    "surat_perlindungan_dari_kekerasan.jkpj,surat_perlindungan_dari_kekerasan.alamatpj,surat_perlindungan_dari_kekerasan.hubungan,"+
-                    "surat_perlindungan_dari_kekerasan.no_telp,surat_perlindungan_dari_kekerasan.nip,petugas.nama from surat_perlindungan_dari_kekerasan "+
-                    "inner join reg_periksa on surat_perlindungan_dari_kekerasan.no_rawat=reg_periksa.no_rawat "+
+                Valid.MyReportqry("rptDataPermohonanPrivasi.jasper","report","::[ Data Permohonan Privasi Pasien ]::",
+                    "select surat_permohonan_privasi.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,"+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_permohonan_privasi.tanggal,"+
+                    "surat_permohonan_privasi.kategori_privasi,surat_permohonan_privasi.alasan,surat_permohonan_privasi.nama_pj,"+
+                    "surat_permohonan_privasi.umur_pj,surat_permohonan_privasi.no_ktppj,surat_permohonan_privasi.jkpj,"+
+                    "surat_permohonan_privasi.alamatpj,surat_permohonan_privasi.no_telp,surat_permohonan_privasi.bertindak_atas,"+
+                    "surat_permohonan_privasi.nip,petugas.nama from surat_permohonan_privasi "+
+                    "inner join reg_periksa on surat_permohonan_privasi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_perlindungan_dari_kekerasan.nip=petugas.nip where "+
-                    "surat_perlindungan_dari_kekerasan.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' order by surat_perlindungan_dari_kekerasan.tanggal",param);
+                    "inner join petugas on surat_permohonan_privasi.nip=petugas.nip "+
+                    "where surat_permohonan_privasi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' "+
+                    "order by surat_permohonan_privasi.tanggal",param);
             }else{
-                Valid.MyReportqry("rptDataPermintaanPerlindunganDariKekerasan.jasper","report","::[ Data Permintaan Perlindungan Dari Kekerasan ]::",
-                    "select surat_perlindungan_dari_kekerasan.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_perlindungan_dari_kekerasan.tanggal,surat_perlindungan_dari_kekerasan.nama_pj,"+
-                    "surat_perlindungan_dari_kekerasan.no_ktppj,surat_perlindungan_dari_kekerasan.tempat_lahirpj,surat_perlindungan_dari_kekerasan.lahirpj,"+
-                    "surat_perlindungan_dari_kekerasan.jkpj,surat_perlindungan_dari_kekerasan.alamatpj,surat_perlindungan_dari_kekerasan.hubungan,"+
-                    "surat_perlindungan_dari_kekerasan.no_telp,surat_perlindungan_dari_kekerasan.nip,petugas.nama from surat_perlindungan_dari_kekerasan "+
-                    "inner join reg_periksa on surat_perlindungan_dari_kekerasan.no_rawat=reg_periksa.no_rawat "+
+                Valid.MyReportqry("rptDataPermohonanPrivasi.jasper","report","::[ Data Permohonan Privasi Pasien ]::",
+                    "select surat_permohonan_privasi.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,"+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_permohonan_privasi.tanggal,"+
+                    "surat_permohonan_privasi.kategori_privasi,surat_permohonan_privasi.alasan,surat_permohonan_privasi.nama_pj,"+
+                    "surat_permohonan_privasi.umur_pj,surat_permohonan_privasi.no_ktppj,surat_permohonan_privasi.jkpj,"+
+                    "surat_permohonan_privasi.alamatpj,surat_permohonan_privasi.no_telp,surat_permohonan_privasi.bertindak_atas,"+
+                    "surat_permohonan_privasi.nip,petugas.nama from surat_permohonan_privasi "+
+                    "inner join reg_periksa on surat_permohonan_privasi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_perlindungan_dari_kekerasan.nip=petugas.nip where "+
-                    "surat_perlindungan_dari_kekerasan.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
-                    "(reg_periksa.no_rawat like '%"+TCari.getText().trim()+"%' or pasien.no_rkm_medis like '%"+TCari.getText().trim()+"%' or pasien.nm_pasien like '%"+TCari.getText().trim()+"%' or "+
-                    "surat_perlindungan_dari_kekerasan.alamatpj like '%"+TCari.getText().trim()+"%' or surat_perlindungan_dari_kekerasan.nama_pj like '%"+TCari.getText().trim()+"%' or "+
-                    "surat_perlindungan_dari_kekerasan.nip like '%"+TCari.getText().trim()+"%' or petugas.nama like '%"+TCari.getText().trim()+"%') "+
-                    "order by surat_perlindungan_dari_kekerasan.tanggal",param);
+                    "inner join petugas on surat_permohonan_privasi.nip=petugas.nip "+
+                    "where surat_permohonan_privasi.tanggal between '"+Valid.SetTgl(DTPCari1.getSelectedItem()+"")+"' and '"+Valid.SetTgl(DTPCari2.getSelectedItem()+"")+"' and "+
+                    "(reg_periksa.no_rawat like '%"+TCari.getText()+"%' or pasien.no_rkm_medis like '%"+TCari.getText()+"%' or pasien.nm_pasien like '%"+TCari.getText()+"%' or "+
+                    "surat_permohonan_privasi.no_telp like '%"+TCari.getText()+"%' or surat_permohonan_privasi.nama_pj like '%"+TCari.getText()+"%' or "+
+                    "surat_permohonan_privasi.alamatpj like '%"+TCari.getText()+"%' or surat_permohonan_privasi.kategori_privasi like '%"+TCari.getText()+"%' or "+
+                    "surat_permohonan_privasi.alasan like '%"+TCari.getText()+"%' or surat_permohonan_privasi.nip like '%"+TCari.getText()+"%' or petugas.nama like '%"+TCari.getText()+"%') "+
+                    "order by surat_permohonan_privasi.tanggal",param);
             }  
         }
         this.setCursor(Cursor.getDefaultCursor());
@@ -1130,21 +1175,21 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         petugas.setVisible(true);
     }//GEN-LAST:event_BtnPetugasActionPerformed
 
-    private void AlamatPjKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatPjKeyPressed
-        Valid.pindah(evt,NoKTP,BtnSimpan);
-    }//GEN-LAST:event_AlamatPjKeyPressed
-
     private void HubunganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_HubunganKeyPressed
-        Valid.pindah(evt,TglLahir,JKPJ);
+        Valid.pindah(evt,UmurPJ,NoKTPPemohon);
     }//GEN-LAST:event_HubunganKeyPressed
 
-    private void JKPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKPJKeyPressed
-        Valid.pindah(evt,Hubungan,NoTelp);
-    }//GEN-LAST:event_JKPJKeyPressed
+    private void JKPemohonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JKPemohonKeyPressed
+        Valid.pindah(evt,NoKTPPemohon,NoTelp);
+    }//GEN-LAST:event_JKPemohonKeyPressed
 
     private void NamaPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NamaPJKeyPressed
-        Valid.pindah(evt,NoSurat,TempatLahir);
+        Valid.pindah(evt,NoSurat,UmurPJ);
     }//GEN-LAST:event_NamaPJKeyPressed
+
+    private void TNoRMKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TNoRMKeyPressed
+    // Valid.pindah(evt, TNm, BtnSimpan);
+    }//GEN-LAST:event_TNoRMKeyPressed
 
     private void TPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TPasienKeyPressed
         Valid.pindah(evt,TCari,BtnSimpan);
@@ -1158,28 +1203,20 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         }
     }//GEN-LAST:event_TNoRwKeyPressed
 
-    private void TglLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TglLahirKeyPressed
-        Valid.pindah2(evt,TempatLahir,Hubungan);
-    }//GEN-LAST:event_TglLahirKeyPressed
-
     private void TanggalKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TanggalKeyPressed
-        //Valid.pindah(evt,TCari,Jam);
+        Valid.pindah2(evt,TCari,NoSurat);
     }//GEN-LAST:event_TanggalKeyPressed
 
     private void NoSuratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoSuratKeyPressed
         Valid.pindah(evt,BtnPetugas,NamaPJ);
     }//GEN-LAST:event_NoSuratKeyPressed
 
-    private void NoKTPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKTPKeyPressed
-        Valid.pindah(evt,NoTelp,AlamatPj);
-    }//GEN-LAST:event_NoKTPKeyPressed
-
-    private void TempatLahirKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TempatLahirKeyPressed
-        Valid.pindah(evt,NamaPJ,TglLahir);
-    }//GEN-LAST:event_TempatLahirKeyPressed
+    private void NoKTPPemohonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoKTPPemohonKeyPressed
+        Valid.pindah(evt,UmurPJ,JKPemohon);
+    }//GEN-LAST:event_NoKTPPemohonKeyPressed
 
     private void NoTelpKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_NoTelpKeyPressed
-        Valid.pindah(evt,JKPJ,NoKTP);
+        Valid.pindah(evt,JKPemohon,AlamatPemohon);
     }//GEN-LAST:event_NoTelpKeyPressed
 
     private void ChkAccorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkAccorActionPerformed
@@ -1198,9 +1235,9 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             TCari.requestFocus();
         }else{
             if(tbObat.getSelectedRow()>-1){
-                Sequel.queryu("delete from antriperlindungandarikekerasan");
-                Sequel.queryu("insert into antriperlindungandarikekerasan(no_permintaan,no_rawat) values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
-                Sequel.queryu("delete from surat_perlindungan_dari_kekerasan_pembuat_permintaan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
+                Sequel.queryu("delete from antripermintaanprivacy");
+                Sequel.queryu("insert into antripermintaanprivacy values('"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"','"+tbObat.getValueAt(tbObat.getSelectedRow(),1).toString()+"')");
+                Sequel.queryu("delete from surat_permohonan_privasi_pernyataan where no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'");
             }else{
                 JOptionPane.showMessageDialog(rootPane,"Silahkan anda pilih No.Permintaan terlebih dahulu..!!");
             }
@@ -1215,10 +1252,14 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         }
     }//GEN-LAST:event_BtnRefreshPhoto1ActionPerformed
 
+    private void UmurPJKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_UmurPJKeyPressed
+        Valid.pindah(evt,NamaPJ,Hubungan);
+    }//GEN-LAST:event_UmurPJKeyPressed
+
     private void BtnPrint1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnPrint1ActionPerformed
         if(tbObat.getSelectedRow()>-1){
             if(lokasifile.equals("")){
-                JOptionPane.showMessageDialog(null,"Maaf, silahkan ambil tanda tangan bukti permintaan perlindungan terlebih dahulu..!!!!");
+                JOptionPane.showMessageDialog(null,"Maaf, Silahkan ambil photo bukti pernyataan privacy terlebih dahulu..!!!!");
             }else{
                 Map<String, Object> param = new HashMap<>();
                 param.put("namars",akses.getnamars());
@@ -1228,14 +1269,11 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
                 param.put("kontakrs",akses.getkontakrs());
                 param.put("emailrs",akses.getemailrs());
                 param.put("logo",Sequel.cariGambar("select setting.logo from setting"));
-                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/perlindungankekerasan/"+lokasifile);
-                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
-                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),17).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),16).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
-                Valid.MyReportqry("rptSuratPermintaanPerlindunganDariKekerasan.jasper","report","::[ Surat Permintaan Perlindungan Dari Kekerasan ]::",
-                    "select surat_perlindungan_dari_kekerasan.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,pasien.pekerjaan,pasien.no_tlp as no_tlp_pasien,pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_perlindungan_dari_kekerasan.tanggal,surat_perlindungan_dari_kekerasan.nama_pj,"+
-		    "surat_perlindungan_dari_kekerasan.no_ktppj,surat_perlindungan_dari_kekerasan.tempat_lahirpj,surat_perlindungan_dari_kekerasan.lahirpj,surat_perlindungan_dari_kekerasan.jkpj,surat_perlindungan_dari_kekerasan.alamatpj,surat_perlindungan_dari_kekerasan.hubungan,surat_perlindungan_dari_kekerasan.no_telp,surat_perlindungan_dari_kekerasan.nip,petugas.nama from surat_perlindungan_dari_kekerasan inner join reg_periksa on surat_perlindungan_dari_kekerasan.no_rawat=reg_periksa.no_rawat "+
-		    "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis inner join petugas on surat_perlindungan_dari_kekerasan.nip=petugas.nip inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab inner join propinsi on pasien.kd_prop=propinsi.kd_prop "+
-                    "where surat_perlindungan_dari_kekerasan.no_surat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"'",param);
+                param.put("photo","http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permintaanprivacy/"+lokasifile);
+                finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+                param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),18).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),17).toString():finger)+"\n"+Valid.SetTgl3(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString()));
+                Valid.MyReportqry("rptSuratPermintaanPrivacy.jasper","report","::[ Formulir Permintaan Privasi Pasien ]::",
+                    buildPrivacyLetterQuery(tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()),param);
             }
         }else{
             JOptionPane.showMessageDialog(null,"Maaf, silahkan pilih data terlebih dahulu..!!!!");
@@ -1267,12 +1305,24 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void AlamatPemohonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlamatPemohonKeyPressed
+        Valid.pindah(evt,NoTelp,KategoriPermohonan);
+    }//GEN-LAST:event_AlamatPemohonKeyPressed
+
+    private void KategoriPermohonanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KategoriPermohonanKeyPressed
+        Valid.pindah(evt,AlamatPemohon,AlasanPermohonan);
+    }//GEN-LAST:event_KategoriPermohonanKeyPressed
+
+    private void AlasanPermohonanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AlasanPermohonanKeyPressed
+        Valid.pindah(evt,KategoriPermohonan,BtnSimpan);
+    }//GEN-LAST:event_AlasanPermohonanKeyPressed
+
     /**
     * @param args the command line arguments
     */
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(() -> {
-            SuratPermintaanPerlindunganDariKekerasan dialog = new SuratPermintaanPerlindunganDariKekerasan(new javax.swing.JFrame(), true);
+            SuratPermohonanPrivasi dialog = new SuratPermohonanPrivasi(new javax.swing.JFrame(), true);
             dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosing(java.awt.event.WindowEvent e) {
@@ -1284,7 +1334,8 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private widget.TextBox AlamatPj;
+    private widget.TextBox AlamatPemohon;
+    private widget.TextBox AlasanPermohonan;
     private widget.Button BtnAll;
     private widget.Button BtnBatal;
     private widget.Button BtnCari;
@@ -1305,14 +1356,15 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
     private widget.PanelBiasa FormPhoto;
     private widget.ComboBox Hubungan;
     private widget.TextBox JK;
-    private widget.ComboBox JKPJ;
+    private widget.ComboBox JKPemohon;
+    private widget.ComboBox KategoriPermohonan;
     private widget.TextBox KdPetugas;
     private widget.Label LCount;
     private widget.TextBox LahirPasien;
     private widget.editorpane LoadHTML2;
     private widget.TextBox NamaPJ;
     private widget.TextBox NmPetugas;
-    private widget.TextBox NoKTP;
+    private widget.TextBox NoKTPPemohon;
     private widget.TextBox NoSurat;
     private widget.TextBox NoTelp;
     private widget.PanelBiasa PanelAccor;
@@ -1324,13 +1376,11 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
     private widget.TextBox TNoRw;
     private widget.TextBox TPasien;
     private widget.Tanggal Tanggal;
-    private widget.TextBox TempatLahir;
-    private widget.Tanggal TglLahir;
     private widget.TextBox Umur;
+    private widget.TextBox UmurPJ;
     private widget.Button btnAmbil;
     private widget.InternalFrame internalFrame1;
     private widget.Label jLabel10;
-    private widget.Label jLabel11;
     private widget.Label jLabel14;
     private widget.Label jLabel15;
     private widget.Label jLabel16;
@@ -1339,6 +1389,10 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
     private widget.Label jLabel19;
     private widget.Label jLabel20;
     private widget.Label jLabel21;
+    private widget.Label jLabel22;
+    private widget.Label jLabel23;
+    private widget.Label jLabel24;
+    private widget.Label jLabel25;
     private widget.Label jLabel3;
     private widget.Label jLabel4;
     private widget.Label jLabel44;
@@ -1357,30 +1411,33 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         try{
             if(TCari.getText().trim().equals("")){
                 ps=koneksi.prepareStatement(
-                    "select surat_perlindungan_dari_kekerasan.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_perlindungan_dari_kekerasan.tanggal,surat_perlindungan_dari_kekerasan.nama_pj,"+
-                    "surat_perlindungan_dari_kekerasan.no_ktppj,surat_perlindungan_dari_kekerasan.tempat_lahirpj,surat_perlindungan_dari_kekerasan.lahirpj,"+
-                    "surat_perlindungan_dari_kekerasan.jkpj,surat_perlindungan_dari_kekerasan.alamatpj,surat_perlindungan_dari_kekerasan.hubungan,"+
-                    "surat_perlindungan_dari_kekerasan.no_telp,surat_perlindungan_dari_kekerasan.nip,petugas.nama from surat_perlindungan_dari_kekerasan "+
-                    "inner join reg_periksa on surat_perlindungan_dari_kekerasan.no_rawat=reg_periksa.no_rawat "+
+                    "select surat_permohonan_privasi.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,"+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_permohonan_privasi.tanggal,"+
+                    "surat_permohonan_privasi.kategori_privasi,surat_permohonan_privasi.alasan,surat_permohonan_privasi.nama_pj,"+
+                    "surat_permohonan_privasi.umur_pj,surat_permohonan_privasi.no_ktppj,surat_permohonan_privasi.jkpj,"+
+                    "surat_permohonan_privasi.alamatpj,surat_permohonan_privasi.no_telp,surat_permohonan_privasi.bertindak_atas,"+
+                    "surat_permohonan_privasi.nip,petugas.nama from surat_permohonan_privasi "+
+                    "inner join reg_periksa on surat_permohonan_privasi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_perlindungan_dari_kekerasan.nip=petugas.nip where "+
-                    "surat_perlindungan_dari_kekerasan.tanggal between ? and ? order by surat_perlindungan_dari_kekerasan.tanggal");
+                    "inner join petugas on surat_permohonan_privasi.nip=petugas.nip "+
+                    "where surat_permohonan_privasi.tanggal between ? and ? order by surat_permohonan_privasi.tanggal");
             }else{
                 ps=koneksi.prepareStatement(
-                    "select surat_perlindungan_dari_kekerasan.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,reg_periksa.umurdaftar,"+
-                    "reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_perlindungan_dari_kekerasan.tanggal,surat_perlindungan_dari_kekerasan.nama_pj,"+
-                    "surat_perlindungan_dari_kekerasan.no_ktppj,surat_perlindungan_dari_kekerasan.tempat_lahirpj,surat_perlindungan_dari_kekerasan.lahirpj,"+
-                    "surat_perlindungan_dari_kekerasan.jkpj,surat_perlindungan_dari_kekerasan.alamatpj,surat_perlindungan_dari_kekerasan.hubungan,"+
-                    "surat_perlindungan_dari_kekerasan.no_telp,surat_perlindungan_dari_kekerasan.nip,petugas.nama from surat_perlindungan_dari_kekerasan "+
-                    "inner join reg_periksa on surat_perlindungan_dari_kekerasan.no_rawat=reg_periksa.no_rawat "+
+                    "select surat_permohonan_privasi.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,"+
+                    "reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_permohonan_privasi.tanggal,"+
+                    "surat_permohonan_privasi.kategori_privasi,surat_permohonan_privasi.alasan,surat_permohonan_privasi.nama_pj,"+
+                    "surat_permohonan_privasi.umur_pj,surat_permohonan_privasi.no_ktppj,surat_permohonan_privasi.jkpj,"+
+                    "surat_permohonan_privasi.alamatpj,surat_permohonan_privasi.no_telp,surat_permohonan_privasi.bertindak_atas,"+
+                    "surat_permohonan_privasi.nip,petugas.nama from surat_permohonan_privasi "+
+                    "inner join reg_periksa on surat_permohonan_privasi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "inner join petugas on surat_perlindungan_dari_kekerasan.nip=petugas.nip where "+
-                    "surat_perlindungan_dari_kekerasan.tanggal between ? and ? and "+
+                    "inner join petugas on surat_permohonan_privasi.nip=petugas.nip "+
+                    "where surat_permohonan_privasi.tanggal between ? and ? and "+
                     "(reg_periksa.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
-                    "surat_perlindungan_dari_kekerasan.alamatpj like ? or surat_perlindungan_dari_kekerasan.nama_pj like ? or "+
-                    "surat_perlindungan_dari_kekerasan.nip like ? or petugas.nama like ?) "+
-                    "order by surat_perlindungan_dari_kekerasan.tanggal");
+                    "surat_permohonan_privasi.no_telp like ? or surat_permohonan_privasi.nama_pj like ? or "+
+                    "surat_permohonan_privasi.alamatpj like ? or surat_permohonan_privasi.kategori_privasi like ? or "+
+                    "surat_permohonan_privasi.alasan like ? or surat_permohonan_privasi.nip like ? or petugas.nama like ?) "+
+                    "order by surat_permohonan_privasi.tanggal");
             }
                 
             try {
@@ -1397,6 +1454,9 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
                     ps.setString(7,"%"+TCari.getText()+"%");
                     ps.setString(8,"%"+TCari.getText()+"%");
                     ps.setString(9,"%"+TCari.getText()+"%");
+                    ps.setString(10,"%"+TCari.getText()+"%");
+                    ps.setString(11,"%"+TCari.getText()+"%");
+                    ps.setString(12,"%"+TCari.getText()+"%");
                 }
                   
                 rs=ps.executeQuery();
@@ -1404,9 +1464,9 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
                     tabMode.addRow(new Object[]{
                         rs.getString("no_surat"),rs.getString("no_rawat"),rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
                         rs.getString("umurdaftar")+" "+rs.getString("sttsumur"),rs.getString("jk"),rs.getDate("tgl_lahir"),
-                        rs.getString("tanggal"),rs.getString("nama_pj"),rs.getString("tempat_lahirpj"),rs.getString("lahirpj"),
-                        rs.getString("hubungan"),rs.getString("jkpj"),rs.getString("no_telp"),rs.getString("no_ktppj"),
-                        rs.getString("alamatpj"),rs.getString("nip"),rs.getString("nama") 
+                        rs.getString("tanggal"),rs.getString("kategori_privasi"),rs.getString("alasan"),rs.getString("nama_pj"),
+                        rs.getString("umur_pj"),rs.getString("no_ktppj"),rs.getString("jkpj"),rs.getString("alamatpj"),rs.getString("no_telp"),rs.getString("bertindak_atas"),
+                        rs.getString("nip"),rs.getString("nama") 
                     });
                 }
             } catch (Exception e) {
@@ -1427,15 +1487,16 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
 
     public void emptTeks() {
         NamaPJ.setText("");
-        TempatLahir.setText("");
-        TglLahir.setDate(new Date());
+        UmurPJ.setText("");
+        AlamatPemohon.setText("");
         Hubungan.setSelectedIndex(0);
-        JKPJ.setSelectedIndex(0);
+        JKPemohon.setSelectedIndex(0);
         NoTelp.setText("");
-        NoKTP.setText("");
-        AlamatPj.setText("");
-        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_perlindungan_dari_kekerasan.no_surat,3),signed)),0) from surat_perlindungan_dari_kekerasan where surat_perlindungan_dari_kekerasan.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
-                "PDK"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
+        NoKTPPemohon.setText("");
+        KategoriPermohonan.setSelectedItem("-");
+        AlasanPermohonan.setText("");
+        Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(surat_permohonan_privasi.no_surat,3),signed)),0) from surat_permohonan_privasi where surat_permohonan_privasi.tanggal='"+Valid.SetTgl(Tanggal.getSelectedItem()+"")+"' ",
+                "SPV"+Tanggal.getSelectedItem().toString().substring(6,10)+Tanggal.getSelectedItem().toString().substring(3,5)+Tanggal.getSelectedItem().toString().substring(0,2),3,NoSurat);
         NamaPJ.requestFocus();
     }
 
@@ -1449,24 +1510,24 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             Umur.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
             LahirPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
-            NamaPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString()); 
-            TempatLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString()); 
-            Hubungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString()); 
-            JKPJ.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString().replaceAll("L","Laki-laki").replaceAll("P","Perempuan")); 
-            NoTelp.setText(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString()); 
-            NoKTP.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());  
-            AlamatPj.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString()); 
+            KategoriPermohonan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            AlasanPermohonan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            NamaPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString()); 
+            UmurPJ.setText(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());  
+            NoKTPPemohon.setText(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString()); 
+            JKPemohon.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString().replaceAll("L","Laki-laki").replaceAll("P","Perempuan")); 
+            AlamatPemohon.setText(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString()); 
+            NoTelp.setText(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString()); 
+            Hubungan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());  
             Valid.SetTgl(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
-            Valid.SetTgl(TglLahir,tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
         }
     }
 
     private void isRawat() {
         try {
             ps=koneksi.prepareStatement(
-                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,"+
-                    "reg_periksa.umurdaftar,reg_periksa.sttsumur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
-                    "where reg_periksa.no_rawat=?");
+                    "select reg_periksa.no_rkm_medis,pasien.nm_pasien,pasien.jk,pasien.tgl_lahir,reg_periksa.tgl_registrasi,reg_periksa.umurdaftar,"+
+                    "reg_periksa.sttsumur from reg_periksa inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis where reg_periksa.no_rawat=?");
             try {
                 ps.setString(1,TNoRw.getText());
                 rs=ps.executeQuery();
@@ -1502,10 +1563,11 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         isForm();
         runBackground(() ->tampil());
     }
+    
     private void isForm(){
         if(ChkInput.isSelected()==true){
             ChkInput.setVisible(false);
-            PanelInput.setPreferredSize(new Dimension(WIDTH,205));
+            PanelInput.setPreferredSize(new Dimension(WIDTH,225));
             FormInput.setVisible(true);      
             ChkInput.setVisible(true);
         }else if(ChkInput.isSelected()==false){           
@@ -1518,10 +1580,10 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
        
     
     public void isCek(){
-        BtnSimpan.setEnabled(akses.getsurat_permintaan_perlindungan_dari_kekerasan());
-        BtnHapus.setEnabled(akses.getsurat_permintaan_perlindungan_dari_kekerasan());
-        BtnEdit.setEnabled(akses.getsurat_permintaan_perlindungan_dari_kekerasan());
-        BtnPrint.setEnabled(akses.getsurat_permintaan_perlindungan_dari_kekerasan()); 
+        BtnSimpan.setEnabled(akses.getsurat_permohonan_privasi());
+        BtnHapus.setEnabled(akses.getsurat_permohonan_privasi());
+        BtnEdit.setEnabled(akses.getsurat_permohonan_privasi());
+        BtnPrint.setEnabled(akses.getsurat_permohonan_privasi()); 
         if(akses.getjml2()>=1){
             KdPetugas.setEditable(false);
             BtnPetugas.setEnabled(false);
@@ -1535,10 +1597,9 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
     }
   
     private void ganti() {
-        if(Sequel.mengedittf("surat_perlindungan_dari_kekerasan","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,nama_pj=?,no_ktppj=?,tempat_lahirpj=?,lahirpj=?,jkpj=?,alamatpj=?,hubungan=?,no_telp=?,nip=?",13,new String[]{
-            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),NamaPJ.getText(),NoKTP.getText(),
-            TempatLahir.getText(),Valid.SetTgl(TglLahir.getSelectedItem()+""),JKPJ.getSelectedItem().toString().substring(0,1),
-            AlamatPj.getText(),Hubungan.getSelectedItem().toString(),NoTelp.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
+        if(Sequel.mengedittf("surat_permohonan_privasi","no_surat=?","no_surat=?,no_rawat=?,tanggal=?,kategori_privasi=?,alasan=?,nama_pj=?,umur_pj=?,no_ktppj=?,jkpj=?,bertindak_atas=?,no_telp=?,alamatpj=?,nip=?",14,new String[]{
+            NoSurat.getText(),TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+""),KategoriPermohonan.getSelectedItem().toString(),AlasanPermohonan.getText(),NamaPJ.getText(),UmurPJ.getText(),NoKTPPemohon.getText(),
+            JKPemohon.getSelectedItem().toString().substring(0,1),Hubungan.getSelectedItem().toString(),NoTelp.getText(),AlamatPemohon.getText(),KdPetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tbObat.setValueAt(NoSurat.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),1);
@@ -1548,22 +1609,47 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),5);
             tbObat.setValueAt(LahirPasien.getText(),tbObat.getSelectedRow(),6);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+""),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(NamaPJ.getText(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(TempatLahir.getText(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(Valid.SetTgl(TglLahir.getSelectedItem()+""),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(Hubungan.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(JKPJ.getSelectedItem().toString().substring(0,1),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(NoTelp.getText(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(NoKTP.getText(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(AlamatPj.getText(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(KategoriPermohonan.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(AlasanPermohonan.getText(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(NamaPJ.getText(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(UmurPJ.getText(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(NoKTPPemohon.getText(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(JKPemohon.getSelectedItem().toString().substring(0,1),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(AlamatPemohon.getText(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(NoTelp.getText(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(Hubungan.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(KdPetugas.getText(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(NmPetugas.getText(),tbObat.getSelectedRow(),18);
             emptTeks();
         }
     }
+    
+    private String buildPrivacyLetterQuery(String noSurat) {
+        String safeNoSurat = noSurat.replace("'","''");
+        StringBuilder sql = new StringBuilder();
+        sql.append("select surat_permohonan_privasi.no_surat,reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,");
+        sql.append("reg_periksa.umurdaftar,reg_periksa.sttsumur,pasien.jk,pasien.tgl_lahir,surat_permohonan_privasi.tanggal,");
+        sql.append("surat_permohonan_privasi.kategori_privasi,surat_permohonan_privasi.kategori_privasi as pengobatan_kepada,");
+        sql.append("pasien.tmp_lahir,concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,");
+        sql.append("surat_permohonan_privasi.alasan,surat_permohonan_privasi.alasan as nilai_kepercayaan,");
+        sql.append("surat_permohonan_privasi.alamatpj,surat_permohonan_privasi.alamatpj as alamat_pj,");
+        sql.append("surat_permohonan_privasi.nama_pj,surat_permohonan_privasi.umur_pj,surat_permohonan_privasi.no_ktppj,");
+        sql.append("surat_permohonan_privasi.jkpj,surat_permohonan_privasi.bertindak_atas,surat_permohonan_privasi.no_telp,");
+        sql.append("surat_permohonan_privasi.nip,petugas.nama,penjab.png_jawab ");
+        sql.append("from surat_permohonan_privasi inner join reg_periksa on surat_permohonan_privasi.no_rawat=reg_periksa.no_rawat ");
+        sql.append("inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis ");
+        sql.append("inner join petugas on surat_permohonan_privasi.nip=petugas.nip ");
+        sql.append("inner join kelurahan on pasien.kd_kel=kelurahan.kd_kel ");
+        sql.append("inner join kecamatan on pasien.kd_kec=kecamatan.kd_kec ");
+        sql.append("inner join kabupaten on pasien.kd_kab=kabupaten.kd_kab ");
+        sql.append("inner join propinsi on pasien.kd_prop=propinsi.kd_prop ");
+        sql.append("inner join penjab on reg_periksa.kd_pj=penjab.kd_pj ");
+        sql.append("where surat_permohonan_privasi.no_surat='").append(safeNoSurat).append("'");
+        return sql.toString();
+    }
 
     private void hapus() {
-        if(Sequel.queryu2tf("delete from surat_perlindungan_dari_kekerasan where no_surat=?",1,new String[]{
+        if(Sequel.queryu2tf("delete from surat_permohonan_privasi where no_surat=?",1,new String[]{
             tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()
         })==true){
             tabMode.removeRow(tbObat.getSelectedRow());
@@ -1592,7 +1678,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
         if(FormPhoto.isVisible()==true){
             lokasifile="";
             try {
-                ps=koneksi.prepareStatement("select surat_perlindungan_dari_kekerasan_pembuat_permintaan.photo from surat_perlindungan_dari_kekerasan_pembuat_permintaan where surat_perlindungan_dari_kekerasan_pembuat_permintaan.no_surat=?");
+                ps=koneksi.prepareStatement("select surat_permohonan_privasi_pernyataan.photo from surat_permohonan_privasi_pernyataan where surat_permohonan_privasi_pernyataan.no_surat=?");
                 try {
                     ps.setString(1,tbObat.getValueAt(tbObat.getSelectedRow(),0).toString());
                     rs=ps.executeQuery();
@@ -1602,7 +1688,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
                             LoadHTML2.setText("<html><body><center><br><br><font face='tahoma' size='2' color='#434343'>Kosong</font></center></body></html>");
                         }else{
                             lokasifile=rs.getString("photo");
-                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/perlindungankekerasan/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
+                            LoadHTML2.setText("<html><body><center><img src='http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/permintaanprivacy/"+rs.getString("photo")+"' alt='photo' width='500' height='500'/></center></body></html>");
                         }  
                     }else{
                         lokasifile="";
@@ -1624,7 +1710,7 @@ public final class SuratPermintaanPerlindunganDariKekerasan extends javax.swing.
             }
         }
     }
-    
+
     private void runBackground(Runnable task) {
         if (ceksukses) return;
         if (executor.isShutdown() || executor.isTerminated()) return;
