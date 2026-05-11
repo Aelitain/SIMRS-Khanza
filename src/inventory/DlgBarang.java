@@ -876,6 +876,11 @@ public class DlgBarang extends javax.swing.JDialog {
                 beliMouseExited(evt);
             }
         });
+        beli.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                beliActionPerformed(evt);
+            }
+        });
         beli.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 beliKeyPressed(evt);
@@ -1083,7 +1088,7 @@ public class DlgBarang extends javax.swing.JDialog {
         karyawan.setBounds(630, 222, 110, 23);
 
         DTPExpired.setForeground(new java.awt.Color(50, 70, 50));
-        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2023" }));
+        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2026" }));
         DTPExpired.setDisplayFormat("dd-MM-yyyy");
         DTPExpired.setName("DTPExpired"); // NOI18N
         DTPExpired.setOpaque(false);
@@ -1279,6 +1284,9 @@ public class DlgBarang extends javax.swing.JDialog {
         dasar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 dasarKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                dasarKeyTyped(evt);
             }
         });
         FormInput.add(dasar);
@@ -2331,6 +2339,26 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private void BtnGolonganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnGolonganKeyPressed
         Valid.pindah(evt,BtnKategori,dasar);
     }//GEN-LAST:event_BtnGolonganKeyPressed
+
+    private void dasarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_dasarKeyTyped
+        //Modifikasi 11 Mei 2026
+            double harga = Double.parseDouble(beli.getText());
+            ralan.setText(String.valueOf(harga * 1.25));
+            kelas1.setText("0");
+            kelas2.setText("0");
+            kelas3.setText("0");
+            utama.setText("0");
+            kelasvip.setText("0");
+            kelasvvip.setText("0");
+            beliluar.setText("0");
+            jualbebas.setText("0");
+            karyawan.setText("0");
+        // TODO add your handling code here:
+    }//GEN-LAST:event_dasarKeyTyped
+
+    private void beliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_beliActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_beliActionPerformed
 
     /**
      * @param args the command line arguments
