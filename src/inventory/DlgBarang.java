@@ -242,7 +242,6 @@ public class DlgBarang extends javax.swing.JDialog {
         tbObat = new widget.Table();
         PanelInput = new javax.swing.JPanel();
         FormInput = new widget.PanelBiasa();
-        label12 = new widget.Label();
         Kd = new widget.TextBox();
         Nm = new widget.TextBox();
         label18 = new widget.Label();
@@ -304,6 +303,8 @@ public class DlgBarang extends javax.swing.JDialog {
         Isi = new widget.TextBox();
         dasar = new widget.TextBox();
         label40 = new widget.Label();
+        btnHitungHarga = new widget.Button();
+        BtnKeluar2 = new widget.Button();
         ChkInput = new widget.CekBox();
 
         Popup.setName("Popup"); // NOI18N
@@ -634,12 +635,6 @@ public class DlgBarang extends javax.swing.JDialog {
         FormInput.setPreferredSize(new java.awt.Dimension(660, 257));
         FormInput.setLayout(null);
 
-        label12.setText("Kode Barang :");
-        label12.setName("label12"); // NOI18N
-        label12.setPreferredSize(new java.awt.Dimension(65, 23));
-        FormInput.add(label12);
-        label12.setBounds(0, 12, 88, 23);
-
         Kd.setName("Kd"); // NOI18N
         Kd.setPreferredSize(new java.awt.Dimension(207, 23));
         Kd.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -670,7 +665,7 @@ public class DlgBarang extends javax.swing.JDialog {
         label26.setName("label26"); // NOI18N
         label26.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label26);
-        label26.setBounds(240, 282, 128, 23);
+        label26.setBounds(220, 280, 110, 23);
 
         kelas1.setName("kelas1"); // NOI18N
         kelas1.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -690,7 +685,7 @@ public class DlgBarang extends javax.swing.JDialog {
             }
         });
         FormInput.add(kelas1);
-        kelas1.setBounds(370, 282, 110, 23);
+        kelas1.setBounds(330, 280, 110, 23);
 
         label28.setText("Hrg Rnp Kelas 2 : Rp.");
         label28.setName("label28"); // NOI18N
@@ -862,7 +857,7 @@ public class DlgBarang extends javax.swing.JDialog {
         label29.setName("label29"); // NOI18N
         label29.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label29);
-        label29.setBounds(240, 252, 128, 23);
+        label29.setBounds(220, 250, 110, 23);
 
         beli.setName("beli"); // NOI18N
         beli.setPreferredSize(new java.awt.Dimension(207, 23));
@@ -887,7 +882,7 @@ public class DlgBarang extends javax.swing.JDialog {
             }
         });
         FormInput.add(beli);
-        beli.setBounds(370, 252, 110, 23);
+        beli.setBounds(330, 250, 110, 23);
 
         label32.setText("Kapasitas :");
         label32.setName("label32"); // NOI18N
@@ -1088,7 +1083,7 @@ public class DlgBarang extends javax.swing.JDialog {
         karyawan.setBounds(630, 222, 110, 23);
 
         DTPExpired.setForeground(new java.awt.Color(50, 70, 50));
-        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-05-2026" }));
+        DTPExpired.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21-05-2026" }));
         DTPExpired.setDisplayFormat("dd-MM-yyyy");
         DTPExpired.setName("DTPExpired"); // NOI18N
         DTPExpired.setOpaque(false);
@@ -1297,6 +1292,44 @@ public class DlgBarang extends javax.swing.JDialog {
         label40.setPreferredSize(new java.awt.Dimension(65, 23));
         FormInput.add(label40);
         label40.setBounds(0, 252, 107, 23);
+
+        btnHitungHarga.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/gaji.png"))); // NOI18N
+        btnHitungHarga.setMnemonic('K');
+        btnHitungHarga.setText("Hitung Harga");
+        btnHitungHarga.setToolTipText("");
+        btnHitungHarga.setName("btnHitungHarga"); // NOI18N
+        btnHitungHarga.setPreferredSize(new java.awt.Dimension(100, 30));
+        btnHitungHarga.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHitungHargaActionPerformed(evt);
+            }
+        });
+        btnHitungHarga.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                btnHitungHargaKeyPressed(evt);
+            }
+        });
+        FormInput.add(btnHitungHarga);
+        btnHitungHarga.setBounds(750, 10, 120, 30);
+
+        BtnKeluar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/exit.png"))); // NOI18N
+        BtnKeluar2.setMnemonic('K');
+        BtnKeluar2.setText("Keluar");
+        BtnKeluar2.setToolTipText("Alt+K");
+        BtnKeluar2.setName("BtnKeluar2"); // NOI18N
+        BtnKeluar2.setPreferredSize(new java.awt.Dimension(100, 30));
+        BtnKeluar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtnKeluar2ActionPerformed(evt);
+            }
+        });
+        BtnKeluar2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                BtnKeluar2KeyPressed(evt);
+            }
+        });
+        FormInput.add(BtnKeluar2);
+        BtnKeluar2.setBounds(0, 0, 100, 30);
 
         PanelInput.add(FormInput, java.awt.BorderLayout.CENTER);
 
@@ -2360,6 +2393,32 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         // TODO add your handling code here:
     }//GEN-LAST:event_beliActionPerformed
 
+    private void btnHitungHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungHargaActionPerformed
+            ralan.setText(String.valueOf( 1.25));
+            kelas1.setText("1");
+            kelas2.setText("2");
+            kelas3.setText("3");
+            utama.setText("4");
+            kelasvip.setText("5");
+            kelasvvip.setText("6");
+            beliluar.setText("7");
+            jualbebas.setText("8");
+            karyawan.setText("9");
+    // TODO add your handling code here:
+    }//GEN-LAST:event_btnHitungHargaActionPerformed
+
+    private void btnHitungHargaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_btnHitungHargaKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnHitungHargaKeyPressed
+
+    private void BtnKeluar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnKeluar2ActionPerformed
+
+    private void BtnKeluar2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BtnKeluar2KeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BtnKeluar2KeyPressed
+
     /**
      * @param args the command line arguments
      */
@@ -2387,6 +2446,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.Button BtnJenis;
     private widget.Button BtnKategori;
     private widget.Button BtnKeluar;
+    private widget.Button BtnKeluar2;
     private widget.Button BtnPrint;
     private widget.Button BtnSatuan;
     private widget.Button BtnSatuanBesar;
@@ -2409,6 +2469,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.TextBox TCari;
     private widget.TextBox beli;
     private widget.TextBox beliluar;
+    private widget.Button btnHitungHarga;
     private widget.TextBox dasar;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel2;
@@ -2425,7 +2486,6 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     private widget.TextBox kelasvip;
     private widget.TextBox kelasvvip;
     private widget.Label label10;
-    private widget.Label label12;
     private widget.Label label14;
     private widget.Label label18;
     private widget.Label label19;
@@ -2469,6 +2529,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     // End of variables declaration//GEN-END:variables
 
     private void tampil() {
+        System.out.println("123");
         Valid.tabelKosong(tabMode);
         if(aktifkanbatch.equals("no")){
             try {
@@ -2673,6 +2734,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
 
     private void tampil2() {
+        System.out.println("234");
         Valid.tabelKosong(tabMode);
         try {
             if(aktifkanbatch.equals("yes")){
@@ -2828,6 +2890,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }
 
     private void tampil3() {
+        System.out.println("345");
         Valid.tabelKosong(tabMode);
         try {
             if(aktifkanbatch.equals("yes")){
