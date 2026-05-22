@@ -2394,16 +2394,18 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_beliActionPerformed
 
     private void btnHitungHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungHargaActionPerformed
-            ralan.setText(String.valueOf( 1.25));
-            kelas1.setText("1");
-            kelas2.setText("2");
-            kelas3.setText("3");
-            utama.setText("4");
-            kelasvip.setText("5");
-            kelasvvip.setText("6");
-            beliluar.setText("7");
-            jualbebas.setText("8");
-            karyawan.setText("9");
+            double HargaDasar = Double.parseDouble(dasar.getText());
+            double HargaBeli = Double.parseDouble(beli.getText());
+            ralan.setText(String.valueOf(HargaBeli * 1.25));
+            utama.setText(String.valueOf(HargaBeli * 1.25));
+            kelas3.setText(String.valueOf(HargaBeli * 1.25));
+            beliluar.setText(String.valueOf(HargaBeli * 1.25));
+            jualbebas.setText(String.valueOf(HargaBeli * 1.25));
+            kelas2.setText(String.valueOf(Double.valueOf(kelas3.getText()) * 1.05));
+            kelas1.setText(String.valueOf(Double.valueOf(kelas2.getText()) * 1.02));
+            kelasvip.setText(String.valueOf(Double.valueOf(kelas1.getText()) * 1.02));
+            kelasvvip.setText(String.valueOf(Double.valueOf(kelas1.getText()) * 1.02));
+            karyawan.setText(String.valueOf((int)(HargaDasar * 1.1)));
     // TODO add your handling code here:
     }//GEN-LAST:event_btnHitungHargaActionPerformed
 
