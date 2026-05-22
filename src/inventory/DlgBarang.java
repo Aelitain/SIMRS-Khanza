@@ -2394,18 +2394,19 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
     }//GEN-LAST:event_beliActionPerformed
 
     private void btnHitungHargaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHitungHargaActionPerformed
-            double HargaDasar = Double.parseDouble(dasar.getText());
-            double HargaBeli = Double.parseDouble(beli.getText());
-            ralan.setText(String.valueOf(HargaBeli * 1.25));
-            utama.setText(String.valueOf(HargaBeli * 1.25));
-            kelas3.setText(String.valueOf(HargaBeli * 1.25));
-            beliluar.setText(String.valueOf(HargaBeli * 1.25));
-            jualbebas.setText(String.valueOf(HargaBeli * 1.25));
-            kelas2.setText(String.valueOf(Double.valueOf(kelas3.getText()) * 1.05));
-            kelas1.setText(String.valueOf(Double.valueOf(kelas2.getText()) * 1.02));
-            kelasvip.setText(String.valueOf(Double.valueOf(kelas1.getText()) * 1.02));
-            kelasvvip.setText(String.valueOf(Double.valueOf(kelas1.getText()) * 1.02));
-            karyawan.setText(String.valueOf(Math.round(HargaDasar * 1.1)));
+        //Modifikasi 22 05 2026
+        double HargaDasar = Double.parseDouble(dasar.getText());
+        double HargaBeli = Double.parseDouble(beli.getText());
+        ralan.setText(String.valueOf(Math.round(HargaBeli * 1.25)));
+        utama.setText(String.valueOf(Math.round(HargaBeli * 1.25)));
+        kelas3.setText(String.valueOf(Math.round(HargaBeli * 1.25)));
+        beliluar.setText(String.valueOf(Math.round(HargaBeli * 1.25)));
+        jualbebas.setText(String.valueOf(Math.round(HargaBeli * 1.25)));
+        kelas2.setText(String.valueOf(Math.round(Double.valueOf(kelas3.getText()) * 1.05)));
+        kelas1.setText(String.valueOf(Math.round(Double.valueOf(kelas2.getText()) * 1.02)));
+        kelasvip.setText(String.valueOf(Math.round(Double.valueOf(kelas1.getText()) * 1.02)));
+        kelasvvip.setText(String.valueOf(Math.round(Double.valueOf(kelas1.getText()) * 1.02)));
+        karyawan.setText(String.valueOf(Math.round(HargaDasar * 1.1)));
     // TODO add your handling code here:
     }//GEN-LAST:event_btnHitungHargaActionPerformed
 
