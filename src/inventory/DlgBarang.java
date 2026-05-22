@@ -2405,7 +2405,7 @@ private void KapasitasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
             kelas1.setText(String.valueOf(Double.valueOf(kelas2.getText()) * 1.02));
             kelasvip.setText(String.valueOf(Double.valueOf(kelas1.getText()) * 1.02));
             kelasvvip.setText(String.valueOf(Double.valueOf(kelas1.getText()) * 1.02));
-            karyawan.setText(String.valueOf((int)(HargaDasar * 1.1)));
+            karyawan.setText(String.valueOf(Math.round(HargaDasar * 1.1)));
     // TODO add your handling code here:
     }//GEN-LAST:event_btnHitungHargaActionPerformed
 
