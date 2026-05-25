@@ -2072,7 +2072,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "15/05/2026" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "25/05/2026" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
         tanggal.setOpaque(false);
@@ -7470,7 +7470,9 @@ public class frmUtama extends javax.swing.JFrame {
         jSeparator8.setPreferredSize(new java.awt.Dimension(1, 21));
         internalFrame4.add(jSeparator8);
 
-        jLabel1.setText("Versi 2023.05.19 1059");
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jLabel1.setText("Versi 2023.05.25");
+        jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel1.setName("jLabel1"); // NOI18N
         internalFrame4.add(jLabel1);
 
@@ -8434,8 +8436,8 @@ public class frmUtama extends javax.swing.JFrame {
                     BtnLog.setText("Log Out");
                     MnLogin.setText("Log Out");
                     lblStts.setText("Admin : ");
-//                    lblUser.setText(akses.getkode());
-                    lblUser.setText(akses.getnamauser());
+                    lblUser.setText(akses.getkode());
+//                    lblUser.setText(akses.getnamauser());
                     MnGantiPassword.setEnabled(true);
                     MnPengajuanCutiPegawai.setEnabled(true);
                     BtnToolReg.setEnabled(akses.getregistrasi());
