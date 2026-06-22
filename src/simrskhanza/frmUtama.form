@@ -489,7 +489,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="01/06/2026"/>
+            <StringItem index="0" value="19/06/2026"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd/MM/yyyy"/>
@@ -9910,10 +9910,13 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="0"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Versi 2023.05.25"/>
+            <Property name="text" type="java.lang.String" value="Versi 2026.06.19"/>
             <Property name="horizontalTextPosition" type="int" value="4"/>
             <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
           </Properties>
+          <AccessibilityProperties>
+            <Property name="AccessibleContext.accessibleName" type="java.lang.String" value="Versi aplikasi"/>
+          </AccessibilityProperties>
         </Component>
       </SubComponents>
     </Container>
