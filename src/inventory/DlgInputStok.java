@@ -207,6 +207,7 @@ public class DlgInputStok extends javax.swing.JDialog {
         panelisi5 = new widget.panelisi();
         label9 = new widget.Label();
         TCari = new widget.TextBox();
+        cbUrutNomor = new javax.swing.JCheckBox();
         BtnCari1 = new widget.Button();
         BtnAll = new widget.Button();
         BtnTambah = new widget.Button();
@@ -689,6 +690,15 @@ public class DlgInputStok extends javax.swing.JDialog {
             }
         });
         panelisi5.add(TCari);
+
+        cbUrutNomor.setText("Urut Nomor");
+        cbUrutNomor.setName("cbUrutNomor"); // NOI18N
+        cbUrutNomor.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbUrutNomorActionPerformed(evt);
+            }
+        });
+        panelisi5.add(cbUrutNomor);
 
         BtnCari1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/accept.png"))); // NOI18N
         BtnCari1.setMnemonic('1');
@@ -1997,6 +2007,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void cbUrutNomorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbUrutNomorActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbUrutNomorActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2038,6 +2052,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     private widget.TextBox TCari;
     private widget.Tanggal Tgl;
     private widget.TextBox catatan;
+    private javax.swing.JCheckBox cbUrutNomor;
     private widget.InternalFrame internalFrame1;
     private javax.swing.JPanel jPanel1;
     private widget.TextBox kdgudang;
@@ -2112,6 +2127,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     private void tampil2() {
+                if (cbUrutNomor.isSelected()) {
+            order="order by databarang.kode_sat asc";
+        } else {
+            order="order by databarang.nama_brng asc";
+        }
+        //System.out.println("di sini");
         try{  
             jml=0;
             for(i=0;i<tbDokter.getRowCount();i++){
@@ -2382,6 +2403,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
 
     private void BelumOpname() {
+
         try{  
             Valid.tabelKosong(tabMode);
             pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+
@@ -2419,6 +2441,12 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     private void SudahOpname(){
+                if (cbUrutNomor.isSelected()) {
+            System.out.println("true");
+        } else {
+            System.out.println("false");
+        }
+        System.out.println("di sini");
         try{  
             Valid.tabelKosong(tabMode);
             pstampil=koneksi.prepareStatement("select databarang.kode_brng, databarang.nama_brng,jenis.nama, databarang.kode_sat, "+

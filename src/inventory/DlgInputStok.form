@@ -783,6 +783,15 @@
                     <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="TCariKeyPressed"/>
                   </Events>
                 </Component>
+                <Component class="javax.swing.JCheckBox" name="cbUrutNomor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" value="Urut Nomor"/>
+                    <Property name="name" type="java.lang.String" value="cbUrutNomor" noResource="true"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cbUrutNomorActionPerformed"/>
+                  </Events>
+                </Component>
                 <Component class="widget.Button" name="BtnCari1">
                   <Properties>
                     <Property name="icon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
