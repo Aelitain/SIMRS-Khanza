@@ -98,6 +98,7 @@ import rekammedis.RMDataCatatanObservasiIGD;
 import rekammedis.RMDataCatatanObservasiInduksiPersalinan;
 import rekammedis.RMDataCatatanObservasiRuangOperasi;
 import rekammedis.RMDataIntervensiNyeriFarmakologi;
+import rekammedis.RMDataIntervensiNyeriNonFarmakologi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
 import rekammedis.RMDataSkriningGiziKehamilan;
@@ -244,7 +245,7 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
     private String[] kode,nama,kategori;
     private double[] totaltnd,bagianrs,bhp,jmdokter,jmperawat,kso,menejemen;
     private boolean sukses=false;
-    public  boolean bypassranap=false;
+    public  boolean bypassranap=false,sudahperiksa=false;
     private double ttljmdokter=0,ttljmperawat=0,ttlkso=0,ttljasasarana=0,ttlbhp=0,ttlmenejemen=0,ttlpendapatan=0;
     private Jurnal jur=new Jurnal();
     private final ExecutorService executor = Executors.newSingleThreadExecutor();
@@ -6002,10 +6003,12 @@ public final class DlgRawatJalan extends javax.swing.JDialog {
 
     private void BtnKeluarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtnKeluarActionPerformed
         try {
+            sudahperiksa=false;
             i=JOptionPane.showConfirmDialog(null, "Mau skalian update status pasien sudah diperiksa ????","Konfirmasi",JOptionPane.YES_NO_OPTION);
             if(i==JOptionPane.YES_OPTION){
                 if(Sequel.mengedittf("reg_periksa","no_rawat=?","stts=?",2,new String[]{"Sudah",TNoRw.getText()})==true){
                     Sequel.menyimpan("mutasi_berkas","'"+TNoRw.getText()+"','Sudah Kembali',now(),'0000-00-00 00:00:00',now(),'0000-00-00 00:00:00','0000-00-00 00:00:00'","status='Sudah Kembali',kembali=now()","no_rawat='"+TNoRw.getText()+"'");
+                    sudahperiksa=true;
                 }
             }
         } catch (Exception e) {
@@ -10499,6 +10502,23 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         }
     }
     
+    private void BtnIntervensiNyeriNonFarmakologiActionPerformed(java.awt.event.ActionEvent evt) {
+        if(TPasien.getText().trim().equals("")||TNoRw.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(null,"Maaf, Silahkan anda pilih dulu dengan menklik data pada table...!!!");
+            TCari.requestFocus();
+        }else{
+            this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+            RMDataIntervensiNyeriNonFarmakologi form=new RMDataIntervensiNyeriNonFarmakologi(null,false);
+            form.isCek();
+            form.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
+            form.setLocationRelativeTo(internalFrame1);
+            form.setVisible(true);
+            form.emptTeks();
+            form.setNoRm(TNoRw.getText(),DTPCari2.getDate());
+            this.setCursor(Cursor.getDefaultCursor());
+        }
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -10860,7 +10880,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
                           BtnCatatanPengkajianPaskaOperasi,BtnSkriningFrailtySyndrome,BtnCatatanObservasiBayi,BtnChecklistKesiapanAnestesi,BtnHasilPemeriksaanSlitLamp,BtnHasilPemeriksaanOCT,BtnSkriningInstrumenACRS,
                           BtnChecklistKriteriaMasukNICU,BtnChecklistKriteriaMasukPICU,BtnSkriningInstrumenMentalEmosional,BtnSkriningInstrumenAMT,BtnSkriningPneumoniaSeverityIndex,BtnAwalMedisJantung,BtnAwalMedisUrologi,
                           BtnHasilPemeriksaanTreadmill,BtnHasilPemeriksaanECHOPediatrik,BtnSkriningCURB65,BtnSkriningGiziKehamilan,BtnResepIterasiBPJS,BtnPermintaanKonsultasiPerawat,BtnCatatanObservasiRuangOperasi,
-                          BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi;   
+                          BtnHasilPemeriksaanUSGAbdomen,BtnIntervensiNyeriFarmakologi,BtnIntervensiNyeriNonFarmakologi;   
     private javax.swing.JPopupMenu PopupSOAP,PopupPemeriksaan;
     private javax.swing.JMenuItem MnSOAPDokter,MnSOAPPetugas,MnCopySOAP,MnPasteSOAP;
     
@@ -11579,6 +11599,10 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         if(akses.getintervensi_nyeri_farmakologi()==true){
             tinggi=tinggi+24;
         }
+        BtnIntervensiNyeriNonFarmakologi.setVisible(akses.getintervensi_nyeri_nonfarmakologi()); 
+        if(akses.getintervensi_nyeri_nonfarmakologi()==true){
+            tinggi=tinggi+24;
+        }
         BtnAwalTerapiWicara.setVisible(akses.getpenilaian_terapi_wicara()); 
         if(akses.getpenilaian_terapi_wicara()==true){
             tinggi=tinggi+24;
@@ -11860,6 +11884,17 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
             KdPeg.setText(akses.getkode());
             TPegawai.setText(Sequel.CariPegawai(KdPeg.getText()));
             Jabatan.setText(Sequel.CariJabatanPegawai(KdPeg.getText()));
+            kdptg.setText(akses.getkode());
+            TPerawat.setText(Sequel.CariPetugas(akses.getkode()));
+            if(TPerawat.getText().trim().equals("")){
+                kdptg.setText("");
+                TPerawat.setText("");
+                kdptg2.setText("");
+                TPerawat2.setText("");
+            }else{
+                kdptg2.setText(kdptg.getText());
+                TPerawat2.setText(TPerawat.getText());
+            }
         }
         
         if(TANGGALMUNDUR.equals("no")){
@@ -14062,6 +14097,19 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         BtnIntervensiNyeriFarmakologi.setRoundRect(false);
         BtnIntervensiNyeriFarmakologi.addActionListener(this::BtnIntervensiNyeriFarmakologiActionPerformed);
         
+        BtnIntervensiNyeriNonFarmakologi = new widget.Button();
+        BtnIntervensiNyeriNonFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
+        BtnIntervensiNyeriNonFarmakologi.setText("Intervensi Nyeri Non Farma");
+        BtnIntervensiNyeriNonFarmakologi.setFocusPainted(false);
+        BtnIntervensiNyeriNonFarmakologi.setFont(new java.awt.Font("Tahoma", 0, 11)); 
+        BtnIntervensiNyeriNonFarmakologi.setGlassColor(new java.awt.Color(255, 255, 255));
+        BtnIntervensiNyeriNonFarmakologi.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        BtnIntervensiNyeriNonFarmakologi.setMargin(new java.awt.Insets(1, 1, 1, 1));
+        BtnIntervensiNyeriNonFarmakologi.setName("BtnIntervensiNyeriNonFarmakologi");
+        BtnIntervensiNyeriNonFarmakologi.setPreferredSize(new java.awt.Dimension(190, 23));
+        BtnIntervensiNyeriNonFarmakologi.setRoundRect(false);
+        BtnIntervensiNyeriNonFarmakologi.addActionListener(this::BtnIntervensiNyeriNonFarmakologiActionPerformed);
+        
         BtnResepIterasiBPJS = new widget.Button();
         BtnResepIterasiBPJS.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/item.png")));
         BtnResepIterasiBPJS.setText("Iterasi Resep BPJS");
@@ -14209,6 +14257,7 @@ private void BtnEditKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_B
         FormMenu.add(BtnChecklistPemberianFibrinolitik);
         FormMenu.add(BtnPenilaianUlangNyeri);
         FormMenu.add(BtnIntervensiNyeriFarmakologi);
+        FormMenu.add(BtnIntervensiNyeriNonFarmakologi);
         FormMenu.add(BtnPemantauanPEWSAnak);
         FormMenu.add(BtnPemantauanPEWSDewasa);
         FormMenu.add(BtnPemantauanMEOWS);

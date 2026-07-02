@@ -956,6 +956,7 @@ import rekammedis.RMDataCatatanObservasiRuangOperasi;
 import rekammedis.RMDataCatatanObservasiVentilator;
 import rekammedis.RMDataFollowUpDBD;
 import rekammedis.RMDataIntervensiNyeriFarmakologi;
+import rekammedis.RMDataIntervensiNyeriNonFarmakologi;
 import rekammedis.RMDataMonitoringAsuhanGizi;
 import rekammedis.RMDataMonitoringReaksiTranfusi;
 import rekammedis.RMDataResumePasienRanap;
@@ -23556,6 +23557,19 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnIntervensiNyeriNonFarmakologiActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        RMDataIntervensiNyeriNonFarmakologi aplikasi=new RMDataIntervensiNyeriNonFarmakologi(this,false);
+        aplikasi.isCek();
+        aplikasi.emptTeks();
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24276,7 +24290,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPCRAICRAIdentifikasiRisikoKebakaran,btnPCRAICRAIdentifikasiRisikoUtilitas,btnBPJSResepObatApotek,btnObatApolApotekBPJS,btnPermintaanResepIterasiApotekBPJS,btnPCRAICRAPengkajianRisikoPraKonstruksi,
             btnPCRAICRAPersyaratanHarusDipenuhi,btnKirimQRTelaahFarmasiSatuSehat,btnKirimAllergiSatuSehat,btnKonsultasiPerawat,btnMappingProsedurSmartKlaimBPJS,btnMappingPenyakitSmartKlaimBPJS,btnKirimFHIRSmartKlaimBPJS,
             btnSuratPermintaanBinrohtal,btnSuratPermintaanPerlindunganDariKekerasan,btnSuratPermohonanPrivasi,btnSuratPermintaanSecondOpinion,btnSuratKeteranganBerobat,btnSuratPenolakanResusitasi,btnCatatanObservasiRuangOperasi,
-            btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi;
+            btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi,btnIntervensiNyeriNonFarmakologi;
     
     public void isWall(){
         try{            
@@ -28819,6 +28833,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getintervensi_nyeri_farmakologi()==true){
                 Panelmenu.add(btnIntervensiNyeriFarmakologi);
+                jmlmenu++;
+            }
+            
+            if(akses.getintervensi_nyeri_nonfarmakologi()==true){
+                Panelmenu.add(btnIntervensiNyeriNonFarmakologi);
                 jmlmenu++;
             }
             
@@ -34792,6 +34811,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getintervensi_nyeri_farmakologi()==true){
             Panelmenu.add(btnIntervensiNyeriFarmakologi);
+            jmlmenu++;
+        }
+        
+        if(akses.getintervensi_nyeri_nonfarmakologi()==true){
+            Panelmenu.add(btnIntervensiNyeriNonFarmakologi);
             jmlmenu++;
         }
 
@@ -42515,6 +42539,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getintervensi_nyeri_farmakologi()==true){
             if(btnIntervensiNyeriFarmakologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnIntervensiNyeriFarmakologi);
+                jmlmenu++;
+            }
+        }
+        
+        if(akses.getintervensi_nyeri_nonfarmakologi()==true){
+            if(btnIntervensiNyeriNonFarmakologi.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnIntervensiNyeriNonFarmakologi);
                 jmlmenu++;
             }
         }
@@ -50617,5 +50648,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnIntervensiNyeriFarmakologi.setName("btnIntervensiNyeriFarmakologi"); 
         btnIntervensiNyeriFarmakologi.setPreferredSize(new java.awt.Dimension(200, 90));
         btnIntervensiNyeriFarmakologi.addActionListener(this::btnIntervensiNyeriFarmakologiActionPerformed);
+        
+        btnIntervensiNyeriNonFarmakologi = new widget.ButtonBig();
+        btnIntervensiNyeriNonFarmakologi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/music_9881578.png")));
+        btnIntervensiNyeriNonFarmakologi.setText("Intervensi Nyeri Non Farmakologi");
+        btnIntervensiNyeriNonFarmakologi.setIconTextGap(0);
+        btnIntervensiNyeriNonFarmakologi.setName("btnIntervensiNyeriNonFarmakologi"); 
+        btnIntervensiNyeriNonFarmakologi.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnIntervensiNyeriNonFarmakologi.addActionListener(this::btnIntervensiNyeriNonFarmakologiActionPerformed);
     }
 }
