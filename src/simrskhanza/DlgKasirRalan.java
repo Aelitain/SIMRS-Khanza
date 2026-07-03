@@ -16394,6 +16394,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                             }
 
                             rskasir=pskasir.executeQuery();
+                            System.out.println(pskasir);
                             i=0;
                             while(rskasir.next()){
                                 i++;
@@ -16480,6 +16481,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                                 pskasir.setString(17,"%"+TCari.getText().trim()+"%");
                             }
                             rskasir=pskasir.executeQuery();
+                            System.out.println(pskasir);
                             i=0;
                             while(rskasir.next()){
                                 i++;
