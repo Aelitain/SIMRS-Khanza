@@ -565,7 +565,7 @@ public final class akses {
                         akses.grafik_kunjungan_ranaptahun=true;
                         akses.pcare_cek_rujukan=true;
                         akses.grafik_lab_ralantahun=true;
-                        akses.grafik_rad_ralantahun=true;;
+                        akses.grafik_rad_ralantahun=true;
                         akses.cek_entry_ralan=true;
                         akses.inacbg_klaim_baru_manual2=true;
                         akses.permintaan_medis=true;

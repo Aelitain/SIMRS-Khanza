@@ -19821,7 +19821,7 @@ public class DlgKamarInap extends javax.swing.JDialog {
                            (namadokter.equals("")?"where "+key+" "+order:"inner join dpjp_ranap on dpjp_ranap.no_rawat=reg_periksa.no_rawat where dpjp_ranap.kd_dokter='"+namadokter+"' and "+key+" "+order));
                         try {
                             rs=ps.executeQuery();
-                            System.out.println(ps.toString());
+                            //System.out.println(ps.toString());
                             i=0;
                             while(rs.next()){  
                                 i++;

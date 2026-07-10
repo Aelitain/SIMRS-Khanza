@@ -9067,12 +9067,12 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     }//GEN-LAST:event_MnUrutDokterAscActionPerformed
 
     private void MnUrutPoliklinikDescActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnUrutPoliklinikDescActionPerformed
-        order="poliklinik.nm_poli desc";
+        order="poliklinik.nm_poli desc, reg_periksa.no_reg desc";
         tampilkasir();
     }//GEN-LAST:event_MnUrutPoliklinikDescActionPerformed
 
     private void MnUrutPoliklinikAscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnUrutPoliklinikAscActionPerformed
-        order="poliklinik.nm_poli asc";
+        order="poliklinik.nm_poli asc, reg_periksa.no_reg asc";
         tampilkasir();
     }//GEN-LAST:event_MnUrutPoliklinikAscActionPerformed
 
@@ -16417,7 +16417,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
                             }
 
                             rskasir=pskasir.executeQuery();
-                            System.out.println(pskasir);
+                            //System.out.println(pskasir);
                             i=0;
                             while(rskasir.next()){
                                 i++;
