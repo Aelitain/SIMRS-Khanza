@@ -6406,6 +6406,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                           );
                                           urutdpjp=1;
                                           do{
+                                              //contoh qrcode dari web
                                               get = new GetMethod("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+koneksiDB.PORTWEB()+"/"+koneksiDB.HYBRIDWEB()+"/penggajian/generateqrcode.php?kodedokter="+rs3.getString("kd_dokter").replace(" ","_"));
                                               http.executeMethod(get);
                                               htmlContent.append("<td border='0' align='center'>Dokter DPJP ").append(urutdpjp).append("<br><img width='90' height='90' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/penggajian/temp/").append(rs3.getString("kd_dokter")).append(".png'/><br>").append(rs3.getString("nm_dokter")).append("</td>");
@@ -6698,7 +6699,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("<td align='left'>").append(rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
-                                                //append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan di RSU Al-Ittihad, Kab. Blitar. Ditandatangai secara elektronik oleh ").append(rs2.getString("nama")).append(" ").append(rs2.getString("nip")).append(" ").append(rs2.getString("tgl_perawatan")).append("&amp;size=100x100' alt='' '/>").append("<br>").
+                                                append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan di RSU Al-Ittihad, Kab. Blitar. Ditandatangai secara elektronik oleh ").append(rs2.getString("nama")).append(" ").append(rs2.getString("nip")).append(" ").append(rs2.getString("tgl_perawatan")).append("&amp;size=100x100' alt='' '/>").append("<br>").
                                             append("</tr>");
                             }while(rs2.next());
                         }       
@@ -6749,7 +6750,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("<td align='left'>").append(rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
-                                                //append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan di RSU Al-Ittihad, Kab. Blitar. Ditandatangai secara elektronik oleh ").append(rs2.getString("nama")).append(" ").append(rs2.getString("nip")).append(" ").append(rs2.getString("tgl_perawatan")).append("&amp;size=100x100' alt='' '/>").append("<br>").
+                                                append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan di RSU Al-Ittihad, Kab. Blitar. Ditandatangai secara elektronik oleh ").append(rs2.getString("nama")).append(" ").append(rs2.getString("nip")).append(" ").append(rs2.getString("tgl_perawatan")).append("&amp;size=100x100' alt='' '/>").append("<br>").
                                             append("</tr>");
                             }while(rs2.next());
                         }       
