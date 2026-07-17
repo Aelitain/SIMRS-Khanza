@@ -104,7 +104,41 @@
                             </li>
                         </ul>
                     </li>
-                    <div id="datakonsul"></div>
+                    <li <?=$halaman=="Farmasi"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">local_pharmacy</i>
+                            <span>Inventori Farmasi</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="SisaStokFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=SisaStokFarmasi&hal=Farmasi">Sisa Stok & Nilai Aset</a>
+                            </li>
+                            <li <?=$subhalaman=="DaruratStok"?"class='active'":""?>>
+                                <a href="index.php?act=DaruratStok&hal=Farmasi">Defecta/Darurat Stok</a>
+                            </li>
+                            <li <?=$subhalaman=="KadaluarsaBatch"?"class='active'":""?>>
+                                <a href="index.php?act=KadaluarsaBatch&hal=Farmasi">Kadaluarsa 3 Bulan Kedepan</a>
+                            </li>
+                            <li <?=$subhalaman=="StokTidakBergerak"?"class='active'":""?>>
+                                <a href="index.php?act=StokTidakBergerak&hal=Farmasi">Barang Tidak Bergerak</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPengadaanFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPengadaanFarmasi&hal=Farmasi">Ringkasan Pengadaan</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPenerimaanFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPenerimaanFarmasi&hal=Farmasi">Ringkasan Penerimaan</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHibahFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHibahFarmasi&hal=Farmasi">Ringkasan Hibah</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPenjualanFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPenjualanFarmasi&hal=Farmasi">Ringkasan Jual Bebas/OCT</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanBeriObatFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanBeriObatFarmasi&hal=Farmasi">Ringkasan Beri Obat, Alkes & BHP</a>
+                            </li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
             <!-- #Menu -->
