@@ -3948,7 +3948,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                                     "(resep_obat.no_resep like ? or resep_obat.no_rawat like ? or pasien.no_rkm_medis like ? or pasien.nm_pasien like ? or "+
                                     "penjab.png_jawab like ?)")+" order by resep_obat.tgl_peresepan desc,resep_obat.jam_peresepan desc");
                         }
-
+                        //mod. cek skrip kalau pas dicek tanggal lampau, resep hilang
+                           System.out.println(ps.toString());
                         try{
                             ps.setString(1,Valid.SetTgl(DTPCari1.getSelectedItem()+""));
                             ps.setString(2,Valid.SetTgl(DTPCari2.getSelectedItem()+""));
@@ -4165,6 +4166,8 @@ private void KdKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TKdKey
                             }
 
                             rs=ps.executeQuery();
+                            //mod. cek skrip kalau pas dicek tanggal lampau, resep hilang
+                           System.out.println("tampil 2 : " + ps.toString());
                             i=0;
                             if(cmbStatus.getSelectedItem().toString().equals("Semua")){
                                 while(rs.next()){
