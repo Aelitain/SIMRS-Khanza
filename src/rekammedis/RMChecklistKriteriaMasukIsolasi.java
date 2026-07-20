@@ -75,7 +75,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             "Diare Infeksius","Kontak Lainnya","Risiko Kontak Erat","Riwayat Daerah Wabah","Riwayat MDRO",
             "Lab & Rontgen Positif","Gejala Klinis","Imunokompromis Berat","Instruksi DPJP","Ada Persetujuan Isolasi",
             "Kelengkapan Jaminan","Ketersediaan APD","Fas Cuci Tangan Siap","Tekanan Negatif Berfungsi",
-            "Pintu Otomatis Berfungsi","Keputusan","Jenis Isolasi","Diagnosa Isolasi","Keterangan/Catatn",
+            "Pintu Otomatis Berfungsi","Keputusan","Jenis Isolasi","Diagnosa Isolasi","Keterangan/Catatan",
             "NIP/Kode Dokter","DPJP/Dokter Jaga/IGD"
         }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
@@ -220,7 +220,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private void initComponents() {
 
         jPopupMenu1 = new javax.swing.JPopupMenu();
-        MnKriteriaMasukICU = new javax.swing.JMenuItem();
+        MnKriteriaMasukIsolasi = new javax.swing.JMenuItem();
         LoadHTML = new widget.editorpane();
         JK = new widget.TextBox();
         TanggalRegistrasi = new widget.TextBox();
@@ -370,19 +370,19 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
 
         jPopupMenu1.setName("jPopupMenu1"); // NOI18N
 
-        MnKriteriaMasukICU.setBackground(new java.awt.Color(255, 255, 254));
-        MnKriteriaMasukICU.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        MnKriteriaMasukICU.setForeground(new java.awt.Color(50, 50, 50));
-        MnKriteriaMasukICU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
-        MnKriteriaMasukICU.setText("Formulir Checklist Kriteria Masuk ICU");
-        MnKriteriaMasukICU.setName("MnKriteriaMasukICU"); // NOI18N
-        MnKriteriaMasukICU.setPreferredSize(new java.awt.Dimension(260, 26));
-        MnKriteriaMasukICU.addActionListener(new java.awt.event.ActionListener() {
+        MnKriteriaMasukIsolasi.setBackground(new java.awt.Color(255, 255, 254));
+        MnKriteriaMasukIsolasi.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        MnKriteriaMasukIsolasi.setForeground(new java.awt.Color(50, 50, 50));
+        MnKriteriaMasukIsolasi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/category.png"))); // NOI18N
+        MnKriteriaMasukIsolasi.setText("Formulir Checklist Kriteria Masuk Isolasi");
+        MnKriteriaMasukIsolasi.setName("MnKriteriaMasukIsolasi"); // NOI18N
+        MnKriteriaMasukIsolasi.setPreferredSize(new java.awt.Dimension(260, 26));
+        MnKriteriaMasukIsolasi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MnKriteriaMasukICUActionPerformed(evt);
+                MnKriteriaMasukIsolasiActionPerformed(evt);
             }
         });
-        jPopupMenu1.add(MnKriteriaMasukICU);
+        jPopupMenu1.add(MnKriteriaMasukIsolasi);
 
         LoadHTML.setBorder(null);
         LoadHTML.setName("LoadHTML"); // NOI18N
@@ -875,12 +875,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         jLabel65.setText("TB Paru Aktif/Suspek");
         jLabel65.setName("jLabel65"); // NOI18N
         FormInput.add(jLabel65);
-        jLabel65.setBounds(40, 90, 110, 23);
+        jLabel65.setBounds(40, 90, 120, 23);
 
         jLabel66.setText("Airbone Lainnya :");
         jLabel66.setName("jLabel66"); // NOI18N
         FormInput.add(jLabel66);
-        jLabel66.setBounds(221, 120, 130, 23);
+        jLabel66.setBounds(241, 120, 110, 23);
 
         AirboneLainnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         AirboneLainnya.setSelectedIndex(1);
@@ -992,7 +992,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         jLabel75.setText("Droplet Lainnya :");
         jLabel75.setName("jLabel75"); // NOI18N
         FormInput.add(jLabel75);
-        jLabel75.setBounds(197, 200, 140, 23);
+        jLabel75.setBounds(237, 200, 100, 23);
 
         DropletLainnya.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         DropletLainnya.setSelectedIndex(1);
@@ -1008,7 +1008,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         jLabel76.setText("Difteri :");
         jLabel76.setName("jLabel76"); // NOI18N
         FormInput.add(jLabel76);
-        jLabel76.setBounds(610, 170, 85, 23);
+        jLabel76.setBounds(635, 170, 60, 23);
 
         DropletDifteri.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Ya", "Tidak" }));
         DropletDifteri.setSelectedIndex(1);
@@ -1597,7 +1597,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         if(evt.getKeyCode()==KeyEvent.VK_SPACE){
             BtnSimpanActionPerformed(null);
         }else{
-            //Valid.pindah(evt,Infeksi,BtnBatal);
+            Valid.pindah(evt,Keterangan,BtnBatal);
         }
 }//GEN-LAST:event_BtnSimpanKeyPressed
 
@@ -1702,45 +1702,40 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tgl.Lahir</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>J.K.</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tanggal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Operasi Dengan Gangguan Nafas Atau Hipotensi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Jantung Dengan Tanda Bendungan Paru</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Asam Basa / Elektrolit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gagal Ginjal Dengan Tanda Bendungan Paru</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Syok Karena Perdarahan Anafilaksis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasca Operasi Besar</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang Berulang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Kesadaran</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Dehidrasi Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gangguan Jalan Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Arimia Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Asma Akut Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diabetes Yang Memerlukan Terapi Insulin Kontinyu</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Penyakit Keganasan Dengan Metastasis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Geriatrik Dengan Fungsi Hidup Sebelumnya Minimal</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Dengan GCS 3</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pasien Jantung, Penyakit Paru Terminal Disertai Komplikasi Penyakit Akut Berat</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Nadi < 40 atau >150 (x/menit)</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>SBP < 80 mmHg Atau 20 mmHg Di Bawah SBP Pasien</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MAP < 60 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DBP > 120 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>R > 35 x/menit</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Na < 110 meq/L Atau > 170 meq/L</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ca > 15 mg/dl</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>GDS > 800 mg/dl</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>K < 2 meq/L Atau 7meq/L</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PaO2 < 50 mmHg</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>PH < 7,1 Atau 7,7</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Perbedaan Cerebrovaskuler, SAH, Atau Contusion Dengan Gangguan Kesadaran Atau Neorologi</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ruptor Organ Dalam, Kandung Kemih, Hati, Varices Esophagus Atau Uterus Dengan Gangguan Hemodinamik</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pupil Anisokor</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Obstruksi Jalan Nafas</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Anuria</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kejang Berulang</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tamponade Jantung</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Coma</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Sianosis</b></td>"+
-                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Luka Bakar > 10 % BSA</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>TB Paru</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Campak</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Varisela</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Herpes Zoster</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Airborne Lainnya</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Covid19</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Influenza</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Difteri</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pertusis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Maningitis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Droplet Lainnya</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>MDRO (MRSA/VRE/CRE/ESBL)</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Clostridioides Difficile</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Skabies</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Luka Dengan Drainase</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diare Infeksius</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kontak Lainnya</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Risiko Kontak Erat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat Daerah Wabah</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Riwayat MDRO</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Lab & Rontgen Positif</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Gejala Klinis</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Imunokompromis Berat</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Instruksi DPJP</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ada Persetujuan Isolasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Kelengkapan Jaminan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Ketersediaan APD</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Fas Cuci Tangan Siap</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Tekanan Negatif Berfungsi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Pintu Otomatis Berfungsi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keputusan</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Jenis Isolasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Diagnosa Isolasi</b></td>"+
+                        "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>Keterangan/Catatan</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>NIP/Kode Dokter</b></td>"+
                         "<td valign='middle' bgcolor='#FFFAFA' align='center'><b>DPJP/Dokter Jaga/IGD</b></td>"+
                     "</tr>"
@@ -1791,17 +1786,12 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
                             "<td valign='top'>"+tbObat.getValueAt(i,39).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,40).toString()+"</td>"+
                             "<td valign='top'>"+tbObat.getValueAt(i,41).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,42).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,43).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,44).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,45).toString()+"</td>"+
-                            "<td valign='top'>"+tbObat.getValueAt(i,46).toString()+"</td>"+
                         "</tr>");
                 }
                 
                 LoadHTML.setText(
                     "<html>"+
-                      "<table width='5100px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
+                      "<table width='3900px' border='0' align='center' cellpadding='1px' cellspacing='0' class='tbl_form'>"+
                        htmlContent.toString()+
                       "</table>"+
                     "</html>"
@@ -1822,17 +1812,17 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
                 );
                 bg.close();
 
-                File f = new File("DataChecklistKriteriaMasukICU.html");            
+                File f = new File("DataKriteriaMasukIsolasi.html");            
                 BufferedWriter bw = new BufferedWriter(new FileWriter(f));            
                 bw.write(LoadHTML.getText().replaceAll("<head>","<head>"+
                             "<link href=\"file2.css\" rel=\"stylesheet\" type=\"text/css\" />"+
-                            "<table width='5100px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
+                            "<table width='3900px' border='0' align='center' cellpadding='3px' cellspacing='0' class='tbl_form'>"+
                                 "<tr class='isi2'>"+
                                     "<td valign='top' align='center'>"+
                                         "<font size='4' face='Tahoma'>"+akses.getnamars()+"</font><br>"+
                                         akses.getalamatrs()+", "+akses.getkabupatenrs()+", "+akses.getpropinsirs()+"<br>"+
                                         akses.getkontakrs()+", E-mail : "+akses.getemailrs()+"<br><br>"+
-                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA MASUK ICU<br><br></font>"+        
+                                        "<font size='2' face='Tahoma'>DATA CHECK LIST KRITERIA MASUK ISOLASI<br><br></font>"+        
                                     "</td>"+
                                "</tr>"+
                             "</table>")
@@ -1915,7 +1905,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
         }
 }//GEN-LAST:event_tbObatKeyPressed
 
-    private void MnKriteriaMasukICUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaMasukICUActionPerformed
+    private void MnKriteriaMasukIsolasiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MnKriteriaMasukIsolasiActionPerformed
         if(tbObat.getSelectedRow()>-1){
             Map<String, Object> param = new HashMap<>();
             param.put("namars",akses.getnamars());
@@ -1927,31 +1917,26 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             param.put("logo",Sequel.cariGambar("select setting.logo from setting")); 
             finger=Sequel.cariIsi("select sha1(sidikjari.sidikjari) from sidikjari inner join pegawai on pegawai.id=sidikjari.id where pegawai.nik=?",tbObat.getValueAt(tbObat.getSelectedRow(),40).toString());
             param.put("finger","Dikeluarkan di "+akses.getnamars()+", Kabupaten/Kota "+akses.getkabupatenrs()+"\nDitandatangani secara elektronik oleh "+tbObat.getValueAt(tbObat.getSelectedRow(),41).toString()+"\nID "+(finger.equals("")?tbObat.getValueAt(tbObat.getSelectedRow(),40).toString():finger)+"\n"+Tanggal.getSelectedItem()); 
-            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukICU.jasper","report","::[ Formulir Check List Kriteria Masuk ICU ]::",
+            Valid.MyReportqry("rptFormulirChecklistKriteriaMasukIsolasi.jasper","report","::[ Formulir Check List Kriteria Masuk Isolasi ]::",
                     "select reg_periksa.no_rawat,pasien.no_rkm_medis,pasien.nm_pasien,pasien.tgl_lahir,pasien.jk,checklist_kriteria_masuk_isolasi.tanggal,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas1_1,checklist_kriteria_masuk_isolasi.prioritas1_2,checklist_kriteria_masuk_isolasi.prioritas1_3,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas1_4,checklist_kriteria_masuk_isolasi.prioritas1_5,checklist_kriteria_masuk_isolasi.prioritas1_6,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas2_1,checklist_kriteria_masuk_isolasi.prioritas2_2,checklist_kriteria_masuk_isolasi.prioritas2_3,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas2_4,checklist_kriteria_masuk_isolasi.prioritas2_5,checklist_kriteria_masuk_isolasi.prioritas2_6,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas2_7,checklist_kriteria_masuk_isolasi.prioritas2_8,checklist_kriteria_masuk_isolasi.prioritas3_1,"+
-                    "checklist_kriteria_masuk_isolasi.prioritas3_2,checklist_kriteria_masuk_isolasi.prioritas3_3,checklist_kriteria_masuk_isolasi.prioritas3_4,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_1,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_2,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_3,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_4,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_tanda_vital_5,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_1,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_2,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_3,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_4,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_5,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_laborat_6,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_radiologi_1,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_radiologi_2,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_1,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_2,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_3,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_4,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_5,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_6,checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_7,"+
-                    "checklist_kriteria_masuk_isolasi.kriteria_fisiologis_klinis_8,checklist_kriteria_masuk_isolasi.nik,pegawai.nama "+
+                    "checklist_kriteria_masuk_isolasi.airborne_tb,checklist_kriteria_masuk_isolasi.airborne_campak,checklist_kriteria_masuk_isolasi.airborne_varisela,"+
+                    "checklist_kriteria_masuk_isolasi.airborne_zoster_diseminata,checklist_kriteria_masuk_isolasi.airborne_lainnya,checklist_kriteria_masuk_isolasi.droplet_covid19,"+
+                    "checklist_kriteria_masuk_isolasi.droplet_influenza,checklist_kriteria_masuk_isolasi.droplet_difteri,checklist_kriteria_masuk_isolasi.droplet_pertusis,"+
+                    "checklist_kriteria_masuk_isolasi.droplet_meningitis,checklist_kriteria_masuk_isolasi.droplet_lainnya,checklist_kriteria_masuk_isolasi.kontak_mdro,"+
+                    "checklist_kriteria_masuk_isolasi.kontak_clostridium,checklist_kriteria_masuk_isolasi.kontak_scabies,checklist_kriteria_masuk_isolasi.kontak_luka_drainase,"+
+                    "checklist_kriteria_masuk_isolasi.kontak_diare_infeksi,checklist_kriteria_masuk_isolasi.kontak_lainnya,checklist_kriteria_masuk_isolasi.kontak_erat,"+
+                    "checklist_kriteria_masuk_isolasi.riwayat_perjalanan_wabah,checklist_kriteria_masuk_isolasi.riwayat_mdro,checklist_kriteria_masuk_isolasi.hasil_lab_radiologi_positif,"+
+                    "checklist_kriteria_masuk_isolasi.gejala_klinis_menular,checklist_kriteria_masuk_isolasi.pasien_imunokompromis,checklist_kriteria_masuk_isolasi.instruksi_dpjp,"+
+                    "checklist_kriteria_masuk_isolasi.persetujuan_isolasi,checklist_kriteria_masuk_isolasi.kelengkapan_jaminan,checklist_kriteria_masuk_isolasi.ketersediaan_apd,"+
+                    "checklist_kriteria_masuk_isolasi.fasilitas_cuci_tangan,checklist_kriteria_masuk_isolasi.tekanan_negatif_berfungsi,checklist_kriteria_masuk_isolasi.pintu_otomatis_berfungsi,"+
+                    "checklist_kriteria_masuk_isolasi.indikasi_isolasi,checklist_kriteria_masuk_isolasi.jenis_isolasi,checklist_kriteria_masuk_isolasi.diagnosa_isolasi,"+
+                    "checklist_kriteria_masuk_isolasi.keterangan,checklist_kriteria_masuk_isolasi.nik,pegawai.nama "+
                     "from checklist_kriteria_masuk_isolasi inner join reg_periksa on checklist_kriteria_masuk_isolasi.no_rawat=reg_periksa.no_rawat "+
                     "inner join pasien on reg_periksa.no_rkm_medis=pasien.no_rkm_medis "+
                     "inner join pegawai on pegawai.nik=checklist_kriteria_masuk_isolasi.nik "+
                     "where checklist_kriteria_masuk_isolasi.no_rawat='"+tbObat.getValueAt(tbObat.getSelectedRow(),0).toString()+"' and checklist_kriteria_masuk_isolasi.tanggal='"+tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()+"' ",param);
         }
-    }//GEN-LAST:event_MnKriteriaMasukICUActionPerformed
+    }//GEN-LAST:event_MnKriteriaMasukIsolasiActionPerformed
 
     private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ChkInputActionPerformed
         isForm();
@@ -2017,63 +2002,63 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }//GEN-LAST:event_AirboneLainnyaKeyPressed
 
     private void DropletCovidKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletCovidKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AirboneLainnya,DropletPertusis);
     }//GEN-LAST:event_DropletCovidKeyPressed
 
     private void DropletPertusisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletPertusisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletCovid,DropletMeningitis);
     }//GEN-LAST:event_DropletPertusisKeyPressed
 
     private void DropletInfluenzaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletInfluenzaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletDifteri,DropletLainnya);
     }//GEN-LAST:event_DropletInfluenzaKeyPressed
 
     private void DropletMeningitisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletMeningitisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletPertusis,DropletDifteri);
     }//GEN-LAST:event_DropletMeningitisKeyPressed
 
     private void DropletLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletLainnyaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletInfluenza,KontakMDRO);
     }//GEN-LAST:event_DropletLainnyaKeyPressed
 
     private void DropletDifteriKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DropletDifteriKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletMeningitis,DropletInfluenza);
     }//GEN-LAST:event_DropletDifteriKeyPressed
 
     private void KontakMDROKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakMDROKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DropletLainnya,KontakLukaDrainase);
     }//GEN-LAST:event_KontakMDROKeyPressed
 
     private void KontakSkabiesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakSkabiesKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakLukaDrainase,KontakClostridioides);
     }//GEN-LAST:event_KontakSkabiesKeyPressed
 
     private void KontakClostridioidesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakClostridioidesKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakSkabies,KontakDiareInfeksius);
     }//GEN-LAST:event_KontakClostridioidesKeyPressed
 
     private void KontakLainnyaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakLainnyaKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakDiareInfeksius,RisikoKontakErat);
     }//GEN-LAST:event_KontakLainnyaKeyPressed
 
     private void RisikoKontakEratKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoKontakEratKeyPressed
-        // TODO add your handling code here:
+       Valid.pindah(evt,KontakLainnya,RisikoRiwayatMDRO);
     }//GEN-LAST:event_RisikoKontakEratKeyPressed
 
     private void RisikoRiwayatDaerahWabahKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoRiwayatDaerahWabahKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoRiwayatMDRO,RisikoHasilLabRadPositif);
     }//GEN-LAST:event_RisikoRiwayatDaerahWabahKeyPressed
 
     private void RisikoRiwayatMDROKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoRiwayatMDROKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoKontakErat,RisikoRiwayatDaerahWabah);
     }//GEN-LAST:event_RisikoRiwayatMDROKeyPressed
 
     private void KeputusanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeputusanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,DiagnosaIsolasi,JenisIsolasi);
     }//GEN-LAST:event_KeputusanKeyPressed
 
     private void JenisIsolasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_JenisIsolasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,Keputusan,Keterangan);
     }//GEN-LAST:event_JenisIsolasiKeyPressed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -2102,59 +2087,59 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }//GEN-LAST:event_formWindowOpened
 
     private void KontakDiareInfeksiusKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakDiareInfeksiusKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakClostridioides,KontakLainnya);
     }//GEN-LAST:event_KontakDiareInfeksiusKeyPressed
 
     private void KontakLukaDrainaseKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KontakLukaDrainaseKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KontakMDRO,KontakSkabies);
     }//GEN-LAST:event_KontakLukaDrainaseKeyPressed
 
     private void KeteranganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KeteranganKeyPressed
-        //Valid.pindah(evt,Keputusan,BtnSimpan);
+        Valid.pindah(evt,JenisIsolasi,BtnSimpan);
     }//GEN-LAST:event_KeteranganKeyPressed
 
     private void DiagnosaIsolasiKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_DiagnosaIsolasiKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,PintuKamarOtomatis,Keputusan);
     }//GEN-LAST:event_DiagnosaIsolasiKeyPressed
 
     private void RisikoHasilLabRadPositifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoHasilLabRadPositifKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoRiwayatDaerahWabah,RisikoGejalaKlinis);
     }//GEN-LAST:event_RisikoHasilLabRadPositifKeyPressed
 
     private void RisikoGejalaKlinisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoGejalaKlinisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoHasilLabRadPositif,RisikoPasienImunokompromis);
     }//GEN-LAST:event_RisikoGejalaKlinisKeyPressed
 
     private void RisikoPasienImunokompromisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_RisikoPasienImunokompromisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoGejalaKlinis,InstruksiDPJP);
     }//GEN-LAST:event_RisikoPasienImunokompromisKeyPressed
 
     private void InstruksiDPJPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_InstruksiDPJPKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,RisikoPasienImunokompromis,AdaPersetujuanTindakan);
     }//GEN-LAST:event_InstruksiDPJPKeyPressed
 
     private void AdaPersetujuanTindakanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_AdaPersetujuanTindakanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,InstruksiDPJP,KelengkapanJaminan);
     }//GEN-LAST:event_AdaPersetujuanTindakanKeyPressed
 
     private void KelengkapanJaminanKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KelengkapanJaminanKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,AdaPersetujuanTindakan,KetersediaanAPD);
     }//GEN-LAST:event_KelengkapanJaminanKeyPressed
 
     private void KetersediaanAPDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_KetersediaanAPDKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KelengkapanJaminan,FasilitasCuciTangan);
     }//GEN-LAST:event_KetersediaanAPDKeyPressed
 
     private void FasilitasCuciTanganKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_FasilitasCuciTanganKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,KetersediaanAPD,TekananUdaraNegatif);
     }//GEN-LAST:event_FasilitasCuciTanganKeyPressed
 
     private void TekananUdaraNegatifKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_TekananUdaraNegatifKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,FasilitasCuciTangan,PintuKamarOtomatis);
     }//GEN-LAST:event_TekananUdaraNegatifKeyPressed
 
     private void PintuKamarOtomatisKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_PintuKamarOtomatisKeyPressed
-        // TODO add your handling code here:
+        Valid.pindah(evt,TekananUdaraNegatif,DiagnosaIsolasi);
     }//GEN-LAST:event_PintuKamarOtomatisKeyPressed
 
     /**
@@ -2216,7 +2201,7 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     private widget.ComboBox KontakSkabies;
     private widget.Label LCount;
     private widget.editorpane LoadHTML;
-    private javax.swing.JMenuItem MnKriteriaMasukICU;
+    private javax.swing.JMenuItem MnKriteriaMasukIsolasi;
     private widget.TextBox NamaPetugas;
     private javax.swing.JPanel PanelInput;
     private widget.ComboBox PintuKamarOtomatis;
@@ -2413,37 +2398,38 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }
     
     public void emptTeks() {
-        AirboneCampak.setSelectedIndex(0);
-        AirboneVarisela.setSelectedIndex(0); 
-        AirboneHerpes.setSelectedIndex(0);
-        AirboneLainnya.setSelectedIndex(0); 
-        DropletCovid.setSelectedIndex(0);
-        DropletInfluenza.setSelectedIndex(0);
-        DropletDifteri.setSelectedIndex(0);
-        DropletPertusis.setSelectedIndex(0);
-        DropletMeningitis.setSelectedIndex(0);
-        DropletLainnya.setSelectedIndex(0);
-        KontakMDRO.setSelectedIndex(0);
-        KontakClostridioides.setSelectedIndex(0); 
-        KontakSkabies.setSelectedIndex(0);
-        KontakLukaDrainase.setSelectedIndex(0);
-        KontakDiareInfeksius.setSelectedIndex(0);
-        KontakLainnya.setSelectedIndex(0); 
-        RisikoKontakErat.setSelectedIndex(0);
-        RisikoRiwayatDaerahWabah.setSelectedIndex(0);
-        RisikoRiwayatMDRO.setSelectedIndex(0);
-        RisikoHasilLabRadPositif.setSelectedIndex(0); 
-        RisikoGejalaKlinis.setSelectedIndex(0);
-        RisikoPasienImunokompromis.setSelectedIndex(0);
-        InstruksiDPJP.setSelectedIndex(0);
-        AdaPersetujuanTindakan.setSelectedIndex(0); 
-        KelengkapanJaminan.setSelectedIndex(0);
-        KetersediaanAPD.setSelectedIndex(0);
-        FasilitasCuciTangan.setSelectedIndex(0);
-        TekananUdaraNegatif.setSelectedIndex(0); 
-        PintuKamarOtomatis.setSelectedIndex(0);
-        Keputusan.setSelectedIndex(0);
-        JenisIsolasi.setSelectedIndex(0);
+        AirboneTBParu.setSelectedIndex(1);
+        AirboneCampak.setSelectedIndex(1);
+        AirboneVarisela.setSelectedIndex(1); 
+        AirboneHerpes.setSelectedIndex(1);
+        AirboneLainnya.setSelectedIndex(1); 
+        DropletCovid.setSelectedIndex(1);
+        DropletInfluenza.setSelectedIndex(1);
+        DropletDifteri.setSelectedIndex(1);
+        DropletPertusis.setSelectedIndex(1);
+        DropletMeningitis.setSelectedIndex(1);
+        DropletLainnya.setSelectedIndex(1);
+        KontakMDRO.setSelectedIndex(1);
+        KontakClostridioides.setSelectedIndex(1); 
+        KontakSkabies.setSelectedIndex(1);
+        KontakLukaDrainase.setSelectedIndex(1);
+        KontakDiareInfeksius.setSelectedIndex(1);
+        KontakLainnya.setSelectedIndex(1); 
+        RisikoKontakErat.setSelectedIndex(1);
+        RisikoRiwayatDaerahWabah.setSelectedIndex(1);
+        RisikoRiwayatMDRO.setSelectedIndex(1);
+        RisikoHasilLabRadPositif.setSelectedIndex(1); 
+        RisikoGejalaKlinis.setSelectedIndex(1);
+        RisikoPasienImunokompromis.setSelectedIndex(1);
+        InstruksiDPJP.setSelectedIndex(1);
+        AdaPersetujuanTindakan.setSelectedIndex(1); 
+        KelengkapanJaminan.setSelectedIndex(1);
+        KetersediaanAPD.setSelectedIndex(1);
+        FasilitasCuciTangan.setSelectedIndex(1);
+        TekananUdaraNegatif.setSelectedIndex(1); 
+        PintuKamarOtomatis.setSelectedIndex(1);
+        Keputusan.setSelectedIndex(1);
+        JenisIsolasi.setSelectedIndex(1);
         DiagnosaIsolasi.setText("");
         Keterangan.setText("");
         Tanggal.setDate(new Date());
@@ -2457,6 +2443,40 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             TPasien.setText(tbObat.getValueAt(tbObat.getSelectedRow(),2).toString());
             TglLahir.setText(tbObat.getValueAt(tbObat.getSelectedRow(),3).toString());
             JK.setText(tbObat.getValueAt(tbObat.getSelectedRow(),4).toString());
+            AirboneTBParu.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),6).toString());
+            AirboneCampak.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),7).toString());
+            AirboneVarisela.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),8).toString());
+            AirboneHerpes.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),9).toString());
+            AirboneLainnya.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),10).toString());
+            DropletCovid.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),11).toString());
+            DropletInfluenza.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),12).toString());
+            DropletDifteri.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),13).toString());
+            DropletPertusis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),14).toString());
+            DropletMeningitis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),15).toString());
+            DropletLainnya.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),16).toString());
+            KontakMDRO.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),17).toString());
+            KontakClostridioides.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),18).toString());
+            KontakSkabies.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),19).toString());
+            KontakLukaDrainase.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),20).toString());
+            KontakDiareInfeksius.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),21).toString());
+            KontakLainnya.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),22).toString());
+            RisikoKontakErat.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),23).toString());
+            RisikoRiwayatDaerahWabah.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),24).toString());
+            RisikoRiwayatMDRO.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),25).toString());
+            RisikoHasilLabRadPositif.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),26).toString());
+            RisikoGejalaKlinis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),27).toString());
+            RisikoPasienImunokompromis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),28).toString());
+            InstruksiDPJP.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),29).toString());
+            AdaPersetujuanTindakan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),30).toString());
+            KelengkapanJaminan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),31).toString());
+            KetersediaanAPD.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),32).toString());
+            FasilitasCuciTangan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),33).toString());
+            TekananUdaraNegatif.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),34).toString());
+            PintuKamarOtomatis.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),35).toString());
+            Keputusan.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),36).toString());
+            JenisIsolasi.setSelectedItem(tbObat.getValueAt(tbObat.getSelectedRow(),37).toString());
+            DiagnosaIsolasi.setText(tbObat.getValueAt(tbObat.getSelectedRow(),38).toString());
+            Keterangan.setText(tbObat.getValueAt(tbObat.getSelectedRow(),39).toString());
             Valid.SetTgl2(Tanggal,tbObat.getValueAt(tbObat.getSelectedRow(),5).toString());
         }
     }
@@ -2535,23 +2555,20 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
     }
 
     private void ganti() {
-        /*if(Sequel.mengedittf("checklist_kriteria_masuk_isolasi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,prioritas1_1=?,prioritas1_2=?,prioritas1_3=?,prioritas1_4=?,prioritas1_5=?,prioritas1_6=?,"+
-                "prioritas2_1=?,prioritas2_2=?,prioritas2_3=?,prioritas2_4=?,prioritas2_5=?,prioritas2_6=?,prioritas2_7=?,prioritas2_8=?,prioritas3_1=?,prioritas3_2=?,prioritas3_3=?,prioritas3_4=?,"+
-                "kriteria_fisiologis_tanda_vital_1=?,kriteria_fisiologis_tanda_vital_2=?,kriteria_fisiologis_tanda_vital_3=?,kriteria_fisiologis_tanda_vital_4=?,kriteria_fisiologis_tanda_vital_5=?,"+
-                "kriteria_fisiologis_laborat_1=?,kriteria_fisiologis_laborat_2=?,kriteria_fisiologis_laborat_3=?,kriteria_fisiologis_laborat_4=?,kriteria_fisiologis_laborat_5=?,kriteria_fisiologis_laborat_6=?,"+
-                "kriteria_fisiologis_radiologi_1=?,kriteria_fisiologis_radiologi_2=?,kriteria_fisiologis_klinis_1=?,kriteria_fisiologis_klinis_2=?,kriteria_fisiologis_klinis_3=?,kriteria_fisiologis_klinis_4=?,"+
-                "kriteria_fisiologis_klinis_5=?,kriteria_fisiologis_klinis_6=?,kriteria_fisiologis_klinis_7=?,kriteria_fisiologis_klinis_8=?,nik=?",44,new String[]{
-                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),Prioritas1_1.getSelectedItem().toString(),
-                Prioritas1_2.getSelectedItem().toString(),Prioritas1_3.getSelectedItem().toString(),Prioritas1_4.getSelectedItem().toString(),Prioritas1_5.getSelectedItem().toString(),
-                Prioritas1_6.getSelectedItem().toString(),Prioritas2_1.getSelectedItem().toString(),Prioritas2_2.getSelectedItem().toString(),Prioritas2_3.getSelectedItem().toString(),
-                Prioritas2_4.getSelectedItem().toString(),Prioritas2_5.getSelectedItem().toString(),Prioritas2_6.getSelectedItem().toString(),Prioritas2_7.getSelectedItem().toString(),
-                Prioritas2_8.getSelectedItem().toString(),Prioritas3_1.getSelectedItem().toString(),Prioritas3_2.getSelectedItem().toString(),Prioritas3_3.getSelectedItem().toString(),
-                Prioritas3_4.getSelectedItem().toString(),TandaVital1.getSelectedItem().toString(),TandaVital2.getSelectedItem().toString(),TandaVital3.getSelectedItem().toString(),
-                TandaVital4.getSelectedItem().toString(),TandaVital5.getSelectedItem().toString(),Laborat1.getSelectedItem().toString(),Laborat2.getSelectedItem().toString(),
-                Laborat3.getSelectedItem().toString(),Laborat4.getSelectedItem().toString(),Laborat5.getSelectedItem().toString(),Laborat6.getSelectedItem().toString(),
-                Radiologi1.getSelectedItem().toString(),Radiologi2.getSelectedItem().toString(),Kinis1.getSelectedItem().toString(),Kinis2.getSelectedItem().toString(),
-                Kinis3.getSelectedItem().toString(),Kinis4.getSelectedItem().toString(),Kinis5.getSelectedItem().toString(),Kinis6.getSelectedItem().toString(),Kinis7.getSelectedItem().toString(),
-                Kinis8.getSelectedItem().toString(),KodePetugas.getText(),tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
+        if(Sequel.mengedittf("checklist_kriteria_masuk_isolasi","no_rawat=? and tanggal=?","no_rawat=?,tanggal=?,airborne_tb=?,airborne_campak=?,airborne_varisela=?,airborne_zoster_diseminata=?,airborne_lainnya=?,droplet_covid19=?,"+
+                "droplet_influenza=?,droplet_difteri=?,droplet_pertusis=?,droplet_meningitis=?,droplet_lainnya=?,kontak_mdro=?,kontak_clostridium=?,kontak_scabies=?,kontak_luka_drainase=?,kontak_diare_infeksi=?,kontak_lainnya=?,kontak_erat=?,"+
+                "riwayat_perjalanan_wabah=?,riwayat_mdro=?,hasil_lab_radiologi_positif=?,gejala_klinis_menular=?,pasien_imunokompromis=?,instruksi_dpjp=?,persetujuan_isolasi=?,kelengkapan_jaminan=?,ketersediaan_apd=?,fasilitas_cuci_tangan=?,"+
+                "tekanan_negatif_berfungsi=?,pintu_otomatis_berfungsi=?,indikasi_isolasi=?,jenis_isolasi=?,diagnosa_isolasi=?,keterangan=?,nik=?",39,new String[]{
+                TNoRw.getText(),Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),AirboneTBParu.getSelectedItem().toString(), 
+                AirboneCampak.getSelectedItem().toString(),AirboneVarisela.getSelectedItem().toString(), AirboneHerpes.getSelectedItem().toString(),AirboneLainnya.getSelectedItem().toString(), 
+                DropletCovid.getSelectedItem().toString(),DropletInfluenza.getSelectedItem().toString(),DropletDifteri.getSelectedItem().toString(),DropletPertusis.getSelectedItem().toString(),
+                DropletMeningitis.getSelectedItem().toString(),DropletLainnya.getSelectedItem().toString(),KontakMDRO.getSelectedItem().toString(),KontakClostridioides.getSelectedItem().toString(), 
+                KontakSkabies.getSelectedItem().toString(),KontakLukaDrainase.getSelectedItem().toString(),KontakDiareInfeksius.getSelectedItem().toString(),KontakLainnya.getSelectedItem().toString(), 
+                RisikoKontakErat.getSelectedItem().toString(),RisikoRiwayatDaerahWabah.getSelectedItem().toString(),RisikoRiwayatMDRO.getSelectedItem().toString(),RisikoHasilLabRadPositif.getSelectedItem().toString(), 
+                RisikoGejalaKlinis.getSelectedItem().toString(),RisikoPasienImunokompromis.getSelectedItem().toString(),InstruksiDPJP.getSelectedItem().toString(),AdaPersetujuanTindakan.getSelectedItem().toString(), 
+                KelengkapanJaminan.getSelectedItem().toString(),KetersediaanAPD.getSelectedItem().toString(),FasilitasCuciTangan.getSelectedItem().toString(),TekananUdaraNegatif.getSelectedItem().toString(), 
+                PintuKamarOtomatis.getSelectedItem().toString(),Keputusan.getSelectedItem().toString(),JenisIsolasi.getSelectedItem().toString(),DiagnosaIsolasi.getText(),Keterangan.getText(),KodePetugas.getText(),
+                tbObat.getValueAt(tbObat.getSelectedRow(),0).toString(),tbObat.getValueAt(tbObat.getSelectedRow(),5).toString()
         })==true){
             tbObat.setValueAt(TNoRw.getText(),tbObat.getSelectedRow(),0);
             tbObat.setValueAt(TNoRM.getText(),tbObat.getSelectedRow(),1);
@@ -2559,49 +2576,44 @@ public final class RMChecklistKriteriaMasukIsolasi extends javax.swing.JDialog {
             tbObat.setValueAt(TglLahir.getText(),tbObat.getSelectedRow(),3);
             tbObat.setValueAt(JK.getText(),tbObat.getSelectedRow(),4);
             tbObat.setValueAt(Valid.SetTgl(Tanggal.getSelectedItem()+"")+" "+Tanggal.getSelectedItem().toString().substring(11,19),tbObat.getSelectedRow(),5);
-            tbObat.setValueAt(Prioritas1_1.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
-            tbObat.setValueAt(Prioritas1_2.getSelectedItem().toString(),tbObat.getSelectedRow(),7);
-            tbObat.setValueAt(Prioritas1_3.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
-            tbObat.setValueAt(Prioritas1_4.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
-            tbObat.setValueAt(Prioritas1_5.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
-            tbObat.setValueAt(Prioritas1_6.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
-            tbObat.setValueAt(Prioritas2_1.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
-            tbObat.setValueAt(Prioritas2_2.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
-            tbObat.setValueAt(Prioritas2_3.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
-            tbObat.setValueAt(Prioritas2_4.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
-            tbObat.setValueAt(Prioritas2_5.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
-            tbObat.setValueAt(Prioritas2_6.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
-            tbObat.setValueAt(Prioritas2_7.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
-            tbObat.setValueAt(Prioritas2_8.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
-            tbObat.setValueAt(Prioritas3_1.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
-            tbObat.setValueAt(Prioritas3_2.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
-            tbObat.setValueAt(Prioritas3_3.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
-            tbObat.setValueAt(Prioritas3_4.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
-            tbObat.setValueAt(TandaVital1.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
-            tbObat.setValueAt(TandaVital2.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
-            tbObat.setValueAt(TandaVital3.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
-            tbObat.setValueAt(TandaVital4.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
-            tbObat.setValueAt(TandaVital5.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
-            tbObat.setValueAt(Laborat1.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
-            tbObat.setValueAt(Laborat2.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
-            tbObat.setValueAt(Laborat3.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
-            tbObat.setValueAt(Laborat4.getSelectedItem().toString(),tbObat.getSelectedRow(),32);
-            tbObat.setValueAt(Laborat5.getSelectedItem().toString(),tbObat.getSelectedRow(),33);
-            tbObat.setValueAt(Laborat6.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
-            tbObat.setValueAt(Radiologi1.getSelectedItem().toString(),tbObat.getSelectedRow(),35);
-            tbObat.setValueAt(Radiologi2.getSelectedItem().toString(),tbObat.getSelectedRow(),36);
-            tbObat.setValueAt(Kinis1.getSelectedItem().toString(),tbObat.getSelectedRow(),37);
-            tbObat.setValueAt(Kinis2.getSelectedItem().toString(),tbObat.getSelectedRow(),38);
-            tbObat.setValueAt(Kinis3.getSelectedItem().toString(),tbObat.getSelectedRow(),39);
-            tbObat.setValueAt(Kinis4.getSelectedItem().toString(),tbObat.getSelectedRow(),40);
-            tbObat.setValueAt(Kinis5.getSelectedItem().toString(),tbObat.getSelectedRow(),41);
-            tbObat.setValueAt(Kinis6.getSelectedItem().toString(),tbObat.getSelectedRow(),42);
-            tbObat.setValueAt(Kinis7.getSelectedItem().toString(),tbObat.getSelectedRow(),43);
-            tbObat.setValueAt(Kinis8.getSelectedItem().toString(),tbObat.getSelectedRow(),44);
-            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),45);
-            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),46);
+            tbObat.setValueAt(AirboneTBParu.getSelectedItem().toString(),tbObat.getSelectedRow(),6);
+            tbObat.setValueAt(AirboneCampak.getSelectedItem().toString(),tbObat.getSelectedRow(),7);
+            tbObat.setValueAt(AirboneVarisela.getSelectedItem().toString(),tbObat.getSelectedRow(),8);
+            tbObat.setValueAt(AirboneHerpes.getSelectedItem().toString(),tbObat.getSelectedRow(),9);
+            tbObat.setValueAt(AirboneLainnya.getSelectedItem().toString(),tbObat.getSelectedRow(),10);
+            tbObat.setValueAt(DropletCovid.getSelectedItem().toString(),tbObat.getSelectedRow(),11);
+            tbObat.setValueAt(DropletInfluenza.getSelectedItem().toString(),tbObat.getSelectedRow(),12);
+            tbObat.setValueAt(DropletDifteri.getSelectedItem().toString(),tbObat.getSelectedRow(),13);
+            tbObat.setValueAt(DropletPertusis.getSelectedItem().toString(),tbObat.getSelectedRow(),14);
+            tbObat.setValueAt(DropletMeningitis.getSelectedItem().toString(),tbObat.getSelectedRow(),15);
+            tbObat.setValueAt(DropletLainnya.getSelectedItem().toString(),tbObat.getSelectedRow(),16);
+            tbObat.setValueAt(KontakMDRO.getSelectedItem().toString(),tbObat.getSelectedRow(),17);
+            tbObat.setValueAt(KontakClostridioides.getSelectedItem().toString(),tbObat.getSelectedRow(),18);
+            tbObat.setValueAt(KontakSkabies.getSelectedItem().toString(),tbObat.getSelectedRow(),19);
+            tbObat.setValueAt(KontakLukaDrainase.getSelectedItem().toString(),tbObat.getSelectedRow(),20);
+            tbObat.setValueAt(KontakDiareInfeksius.getSelectedItem().toString(),tbObat.getSelectedRow(),21);
+            tbObat.setValueAt(KontakLainnya.getSelectedItem().toString(),tbObat.getSelectedRow(),22);
+            tbObat.setValueAt(RisikoKontakErat.getSelectedItem().toString(),tbObat.getSelectedRow(),23);
+            tbObat.setValueAt(RisikoRiwayatDaerahWabah.getSelectedItem().toString(),tbObat.getSelectedRow(),24);
+            tbObat.setValueAt(RisikoRiwayatMDRO.getSelectedItem().toString(),tbObat.getSelectedRow(),25);
+            tbObat.setValueAt(RisikoHasilLabRadPositif.getSelectedItem().toString(),tbObat.getSelectedRow(),26);
+            tbObat.setValueAt(RisikoGejalaKlinis.getSelectedItem().toString(),tbObat.getSelectedRow(),27);
+            tbObat.setValueAt(RisikoPasienImunokompromis.getSelectedItem().toString(),tbObat.getSelectedRow(),28);
+            tbObat.setValueAt(InstruksiDPJP.getSelectedItem().toString(),tbObat.getSelectedRow(),29);
+            tbObat.setValueAt(AdaPersetujuanTindakan.getSelectedItem().toString(),tbObat.getSelectedRow(),30);
+            tbObat.setValueAt(KelengkapanJaminan.getSelectedItem().toString(),tbObat.getSelectedRow(),31);
+            tbObat.setValueAt(KetersediaanAPD.getSelectedItem().toString(),tbObat.getSelectedRow(),32);
+            tbObat.setValueAt(FasilitasCuciTangan.getSelectedItem().toString(),tbObat.getSelectedRow(),33);
+            tbObat.setValueAt(TekananUdaraNegatif.getSelectedItem().toString(),tbObat.getSelectedRow(),34);
+            tbObat.setValueAt(PintuKamarOtomatis.getSelectedItem().toString(),tbObat.getSelectedRow(),35);
+            tbObat.setValueAt(Keputusan.getSelectedItem().toString(),tbObat.getSelectedRow(),36);
+            tbObat.setValueAt(JenisIsolasi.getSelectedItem().toString(),tbObat.getSelectedRow(),37);
+            tbObat.setValueAt(DiagnosaIsolasi.getText(),tbObat.getSelectedRow(),38);
+            tbObat.setValueAt(Keterangan.getText(),tbObat.getSelectedRow(),39);
+            tbObat.setValueAt(KodePetugas.getText(),tbObat.getSelectedRow(),40);
+            tbObat.setValueAt(NamaPetugas.getText(),tbObat.getSelectedRow(),41);
             emptTeks();
-        }*/
+        }
     }
 
     private void hapus() {

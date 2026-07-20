@@ -160,6 +160,35 @@
                             </li>
                         </ul>
                     </li>
+                    <li <?=$halaman=="LogistikUmum"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">archive</i>
+                            <span>Inventori Non Medis</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="SisaStokNonMedis"?"class='active'":""?>>
+                                <a href="index.php?act=SisaStokNonMedis&hal=LogistikUmum">Sisa Stok & Nilai Aset</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPengadaanNonMedis"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPengadaanNonMedis&hal=LogistikUmum">Ringkasan Pengadaan</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPenerimaanNonMedis"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPenerimaanNonMedis&hal=LogistikUmum">Ringkasan Penerimaan</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHibahNonMedis"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHibahNonMedis&hal=LogistikUmum">Ringkasan Hibah</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanStokKeluarNonMedis"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanStokKeluarNonMedis&hal=LogistikUmum">Ringkasan Stok Keluar</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanReturSuplierNonMedis"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanReturSuplierNonMedis&hal=LogistikUmum">Ringkasan Retur Ke Suplier</a>
+                            </li>
+                            <li <?=$subhalaman=="NilaiPenerimaanVendorNonMedisPerBulan"?"class='active'":""?>>
+                                <a href="index.php?act=NilaiPenerimaanVendorNonMedisPerBulan&hal=LogistikUmum">Nilai Penerimaan Vendor Per Bulan</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li <?=$halaman=="Kasir"?"class='active'":""?>>
                         <a href="javascript:void(0);" class="menu-toggle">
                             <i class="material-icons">layers</i>
@@ -168,6 +197,18 @@
                         <ul class="ml-menu">
                             <li <?=$subhalaman=="PembayaranPerAkunBayar"?"class='active'":""?>>
                                 <a href="index.php?act=PembayaranPerAkunBayar&hal=Kasir">Pembayaran Per Akun Bayar</a>
+                            </li>
+                            <li <?=$subhalaman=="PembayaranPerAkunRekeningCOA"?"class='active'":""?>>
+                                <a href="index.php?act=PembayaranPerAkunRekeningCOA&hal=Kasir">Pembayaran Per Akun Rekening</a>
+                            </li>
+                            <li <?=$subhalaman=="PiutangPerAkunPiutang"?"class='active'":""?>>
+                                <a href="index.php?act=PiutangPerAkunPiutang&hal=Kasir">Piutang Per Akun Piutang</a>
+                            </li>
+                            <li <?=$subhalaman=="PendapatanPerAkunClosing"?"class='active'":""?>>
+                                <a href="index.php?act=PendapatanPerAkunClosing&hal=Kasir">Pendapatan Per Akun Closing</a>
+                            </li>
+                            <li <?=$subhalaman=="PendapatanPerAkunRekening"?"class='active'":""?>>
+                                <a href="index.php?act=PendapatanPerAkunRekening&hal=Kasir">Pendapatan Per Akun Rekening</a>
                             </li>
                         </ul>
                     </li>
