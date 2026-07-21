@@ -1134,6 +1134,8 @@ private void CmbCrIsiItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST
                     ps.setString(i,"%"+TCari.getText().trim()+"%");
                 }
                 rs=ps.executeQuery();
+                //Modif 
+                System.out.println(ps.toString());
                 while(rs.next()){
                     tabMode.addRow(new Object[]{
                         false,rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),rs.getDouble(5),rs.getString(6)
