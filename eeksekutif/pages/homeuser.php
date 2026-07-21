@@ -189,9 +189,38 @@
                             </li>
                         </ul>
                     </li>
+                    <li <?=$halaman=="LogistikDapur"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">local_dining</i>
+                            <span>Inventori Dapur</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="SisaStokDapur"?"class='active'":""?>>
+                                <a href="index.php?act=SisaStokDapur&hal=LogistikDapur">Sisa Stok & Nilai Aset</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPengadaanDapur"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPengadaanDapur&hal=LogistikDapur">Ringkasan Pengadaan</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanPenerimaanDapur"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanPenerimaanDapur&hal=LogistikDapur">Ringkasan Penerimaan</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHibahDapur"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHibahDapur&hal=LogistikDapur">Ringkasan Hibah</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanStokKeluarDapur"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanStokKeluarDapur&hal=LogistikDapur">Ringkasan Stok Keluar</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanReturSuplierDapur"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanReturSuplierDapur&hal=LogistikDapur">Ringkasan Retur Ke Suplier</a>
+                            </li>
+                            <li <?=$subhalaman=="NilaiPenerimaanVendorDapurPerBulan"?"class='active'":""?>>
+                                <a href="index.php?act=NilaiPenerimaanVendorDapurPerBulan&hal=LogistikDapur">Nilai Penerimaan Vendor Per Bulan</a>
+                            </li>
+                        </ul>
+                    </li>
                     <li <?=$halaman=="Kasir"?"class='active'":""?>>
                         <a href="javascript:void(0);" class="menu-toggle">
-                            <i class="material-icons">layers</i>
+                            <i class="material-icons">account_balance_wallet</i>
                             <span>Pendapatan Kasir</span>
                         </a>
                         <ul class="ml-menu">
@@ -209,6 +238,35 @@
                             </li>
                             <li <?=$subhalaman=="PendapatanPerAkunRekening"?"class='active'":""?>>
                                 <a href="index.php?act=PendapatanPerAkunRekening&hal=Kasir">Pendapatan Per Akun Rekening</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li <?=$halaman=="Keuangan"?"class='active'":""?>>
+                        <a href="javascript:void(0);" class="menu-toggle">
+                            <i class="material-icons">monetization_on</i>
+                            <span>Keuangan & Akuntansi</span>
+                        </a>
+                        <ul class="ml-menu">
+                            <li <?=$subhalaman=="RingkasanHutangVendorFarmasi"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHutangVendorFarmasi&hal=Keuangan">Ringkasan Hutang Farmasi</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHutangVendorNonMedis"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHutangVendorNonMedis&hal=Keuangan">Ringkasan Hutang Non Medis</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHutangVendorDapur"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHutangVendorDapur&hal=Keuangan">Ringkasan Hutang Dapur</a>
+                            </li>
+                            <li <?=$subhalaman=="RingkasanHutangVendorInventaris"?"class='active'":""?>>
+                                <a href="index.php?act=RingkasanHutangVendorInventaris&hal=Keuangan">Ringkasan Hutang Aset/Inventaris</a>
+                            </li>
+                            <li <?=$subhalaman=="RekeningTahun"?"class='active'":""?>>
+                                <a href="index.php?act=RekeningTahun&hal=Keuangan">Rekening Tahun</a>
+                            </li>
+                            <li <?=$subhalaman=="SaldoAkunPerBulan"?"class='active'":""?>>
+                                <a href="index.php?act=SaldoAkunPerBulan&hal=Keuangan">Saldo Akun Per Bulan</a>
+                            </li>
+                            <li <?=$subhalaman=="LaporanKeuangan"?"class='active'":""?>>
+                                <a href="index.php?act=LaporanKeuangan&hal=Keuangan">Laporan Keuangan</a>
                             </li>
                         </ul>
                     </li>
