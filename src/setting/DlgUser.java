@@ -288,7 +288,8 @@ public class DlgUser extends javax.swing.JDialog {
                 "[M]Jawaban Konsultasi Perawat","[L]Kirim FHIR Smart Klaim BPJS","[L]Mapping Prosedur Smart Klaim BPJS","[L]Mapping Penyakit Smart Klaim BPJS","[P]Persetujuan Bimbingan Rohani & Mental",
                 "[P]Surat Permintaan Perlindungan Diri Dari Kekerasan","[P]Surat Permohonan Privasi","[P]Surat Permintaan Second Opinion","[P]Surat Keterangan Berobat","[P]Surat Penolakan Resusitasi",
                 "[M]Catatan Observasi Ruang Operasi","[M]Hasil USG Abdomen","[M]Intervensi Nyeri Farmakologi","[M]Intervensi Nyeri Non Farmakologi","[P]Surat Pengajuan Cuti Perawatan",
-                "[M]Check List Kriteria Masuk Isolasi","[L]Mapping Tindakan Ralan KPTL Satu Sehat","[L]Mapping Tindakan Ranap KPTL Satu Sehat","[L]Mapping Tindakan Radiologi KPTL Satu Sehat"
+                "[M]Check List Kriteria Masuk Isolasi","[L]Mapping Tindakan Ralan KPTL Satu Sehat","[L]Mapping Tindakan Ranap KPTL Satu Sehat","[L]Mapping Tindakan Radiologi KPTL Satu Sehat",
+                "[L]Mapping Tindakan Laborat KPTL Satu Sehat","[L]Mapping Tindakan Operasi KPTL Satu Sehat"
         };
         
         tabMode=new DefaultTableModel(null,row){
@@ -610,6 +611,7 @@ public class DlgUser extends javax.swing.JDialog {
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
+                java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, 
                 java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class, java.lang.Boolean.class
              };
              @Override
@@ -623,7 +625,7 @@ public class DlgUser extends javax.swing.JDialog {
         tbUser.setPreferredScrollableViewportSize(new Dimension(500,500));
         tbUser.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
 
-        for (i = 0; i < 1211;i++) {
+        for (i = 0; i < 1213;i++) {
             TableColumn column = tbUser.getColumnModel().getColumn(i);
             switch (i) {
                 case 0:
@@ -3708,7 +3710,13 @@ public class DlgUser extends javax.swing.JDialog {
                     column.setPreferredWidth(224);
                     break;
                 case 1210:
-                    column.setPreferredWidth(229);
+                    column.setPreferredWidth(239);
+                    break;
+                case 1211:
+                    column.setPreferredWidth(231);
+                    break;
+                case 1212:
+                    column.setPreferredWidth(231);
                     break;
                 default:
                     column.setPreferredWidth(133);
@@ -4141,7 +4149,7 @@ public class DlgUser extends javax.swing.JDialog {
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
                     "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false',"+
-                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
+                    "'false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false','false'","User")==true){
                 tabMode.addRow(new Object[]{
                     TKd.getText(),TNmUser.getText(),Jabatan.getText(),TPass.getText(),false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
@@ -4171,7 +4179,8 @@ public class DlgUser extends javax.swing.JDialog {
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
                     false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
-                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false
+                    false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,false,
+                    false,false,false
                 });
                 emptTeks();
                 LCount.setText(""+tabMode.getRowCount());
@@ -5429,7 +5438,9 @@ public class DlgUser extends javax.swing.JDialog {
                     "checklist_kriteria_masuk_isolasi='"+tbUser.getValueAt(i,1207).toString()+"',"+
                     "satu_sehat_mapping_kptl_tindakan_ralan='"+tbUser.getValueAt(i,1208).toString()+"',"+
                     "satu_sehat_mapping_kptl_tindakan_ranap='"+tbUser.getValueAt(i,1209).toString()+"',"+
-                    "satu_sehat_mapping_kptl_tindakan_radiologi='"+tbUser.getValueAt(i,1210).toString()+"'")==true){
+                    "satu_sehat_mapping_kptl_tindakan_radiologi='"+tbUser.getValueAt(i,1210).toString()+"',"+
+                    "satu_sehat_mapping_kptl_tindakan_laborat='"+tbUser.getValueAt(i,1211).toString()+"',"+
+                    "satu_sehat_mapping_kptl_tindakan_operasi='"+tbUser.getValueAt(i,1212).toString()+"'")==true){
                     emptTeks();
                 }
             }         
@@ -6924,7 +6935,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                         "checklist_kriteria_masuk_isolasi='"+tbUser.getValueAt(barisdicopy,1207).toString()+"',"+
                                         "satu_sehat_mapping_kptl_tindakan_ralan='"+tbUser.getValueAt(barisdicopy,1208).toString()+"',"+
                                         "satu_sehat_mapping_kptl_tindakan_ranap='"+tbUser.getValueAt(barisdicopy,1209).toString()+"',"+
-                                        "satu_sehat_mapping_kptl_tindakan_radiologi='"+tbUser.getValueAt(barisdicopy,1210).toString()+"'");
+                                        "satu_sehat_mapping_kptl_tindakan_radiologi='"+tbUser.getValueAt(barisdicopy,1210).toString()+"',"+
+                                        "satu_sehat_mapping_kptl_tindakan_laborat='"+tbUser.getValueAt(barisdicopy,1211).toString()+"',"+
+                                        "satu_sehat_mapping_kptl_tindakan_operasi='"+tbUser.getValueAt(barisdicopy,1212).toString()+"'");
                                 }
                                 userdicopy="";
                                 copyhakakses="";
@@ -7263,7 +7276,7 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                             "user.mapping_penyakit_smart_klaim_bpjs,user.permintaan_binrohtal,user.surat_permintaan_perlindungan_dari_kekerasan,user.surat_permohonan_privasi,"+
                             "user.surat_permintaan_second_opinion,user.surat_keterangan_berobat,user.surat_penolakan_resusitasi,user.catatan_observasi_ruang_ok,user.hasil_pemeriksaan_usg_abdomen,"+
                             "user.intervensi_nyeri_farmakologi,user.intervensi_nyeri_nonfarmakologi,user.surat_pengajuan_cuti_pasien,user.checklist_kriteria_masuk_isolasi,user.satu_sehat_mapping_kptl_tindakan_ralan,"+
-                            "user.satu_sehat_mapping_kptl_tindakan_ranap,user.satu_sehat_mapping_kptl_tindakan_radiologi from user order by AES_DECRYPT(user.id_user,'nur')");
+                            "user.satu_sehat_mapping_kptl_tindakan_ranap,user.satu_sehat_mapping_kptl_tindakan_radiologi,user.satu_sehat_mapping_kptl_tindakan_laborat,user.satu_sehat_mapping_kptl_tindakan_operasi from user order by AES_DECRYPT(user.id_user,'nur')");
                         try {
                             rs=ps.executeQuery();
                             i=0;
@@ -8488,7 +8501,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                            rs.getBoolean("checklist_kriteria_masuk_isolasi"),
                                            rs.getBoolean("satu_sehat_mapping_kptl_tindakan_ralan"),
                                            rs.getBoolean("satu_sehat_mapping_kptl_tindakan_ranap"),
-                                           rs.getBoolean("satu_sehat_mapping_kptl_tindakan_radiologi")
+                                           rs.getBoolean("satu_sehat_mapping_kptl_tindakan_radiologi"),
+                                           rs.getBoolean("satu_sehat_mapping_kptl_tindakan_laborat"),
+                                           rs.getBoolean("satu_sehat_mapping_kptl_tindakan_operasi")
                                         });
                                     }   
                                 } catch (Exception e) {
@@ -9701,7 +9716,9 @@ private void BtnPrintKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_
                                        rs.getBoolean("checklist_kriteria_masuk_isolasi"),
                                        rs.getBoolean("satu_sehat_mapping_kptl_tindakan_ralan"),
                                        rs.getBoolean("satu_sehat_mapping_kptl_tindakan_ranap"),
-                                       rs.getBoolean("satu_sehat_mapping_kptl_tindakan_radiologi")
+                                       rs.getBoolean("satu_sehat_mapping_kptl_tindakan_radiologi"),
+                                       rs.getBoolean("satu_sehat_mapping_kptl_tindakan_laborat"),
+                                       rs.getBoolean("satu_sehat_mapping_kptl_tindakan_operasi")
                                     });
                                 }                                             
                              }

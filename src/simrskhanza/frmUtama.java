@@ -509,6 +509,9 @@ import bridging.SatuSehatMapingLokasi;
 import bridging.SatuSehatMapingObatAlkes;
 import bridging.SatuSehatMapingOrganisasi;
 import bridging.SatuSehatMapingRadiologi;
+import bridging.SatuSehatMapingTindakanLaboratKPTL;
+import bridging.SatuSehatMapingTindakanOperasiKPTL;
+import bridging.SatuSehatMapingTindakanRadiologiKPTL;
 import bridging.SatuSehatMapingTindakanRalanKPTL;
 import bridging.SatuSehatMapingTindakanRanapKPTL;
 import bridging.SatuSehatMapingVaksin;
@@ -23622,6 +23625,42 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnMapingTarifTindakanRadiologiKPTLSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SatuSehatMapingTindakanRadiologiKPTL aplikasi=new SatuSehatMapingTindakanRadiologiKPTL(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnMapingTarifTindakanLabKPTLSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SatuSehatMapingTindakanLaboratKPTL aplikasi=new SatuSehatMapingTindakanLaboratKPTL(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
+    private void btnMapingTarifTindakanOperasiKPTLSatuSehatActionPerformed(java.awt.event.ActionEvent evt) {
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        SatuSehatMapingTindakanOperasiKPTL aplikasi=new SatuSehatMapingTindakanOperasiKPTL(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        aplikasi.isCek();
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24343,7 +24382,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnPCRAICRAPersyaratanHarusDipenuhi,btnKirimQRTelaahFarmasiSatuSehat,btnKirimAllergiSatuSehat,btnKonsultasiPerawat,btnMappingProsedurSmartKlaimBPJS,btnMappingPenyakitSmartKlaimBPJS,btnKirimFHIRSmartKlaimBPJS,
             btnSuratPermintaanBinrohtal,btnSuratPermintaanPerlindunganDariKekerasan,btnSuratPermohonanPrivasi,btnSuratPermintaanSecondOpinion,btnSuratKeteranganBerobat,btnSuratPenolakanResusitasi,btnCatatanObservasiRuangOperasi,
             btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi,btnIntervensiNyeriNonFarmakologi,btnSuratPengajuanCutiPerawatan,btnChecklistKriteriaMasukIsolasi,btnMapingTarifTindakanRalanKPTLSatuSehat,
-            btnMapingTarifTindakanRanapKPTLSatuSehat;
+            btnMapingTarifTindakanRanapKPTLSatuSehat,btnMapingTarifTindakanRadiologiKPTLSatuSehat,btnMapingTarifTindakanLabKPTLSatuSehat,btnMapingTarifTindakanOperasiKPTLSatuSehat;
     
     public void isWall(){
         try{            
@@ -27834,6 +27873,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             
             if(akses.getsatu_sehat_mapping_kptl_tindakan_ranap()==true){
                 Panelmenu.add(btnMapingTarifTindakanRanapKPTLSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_mapping_kptl_tindakan_radiologi()==true){
+                Panelmenu.add(btnMapingTarifTindakanRadiologiKPTLSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_mapping_kptl_tindakan_laborat()==true){
+                Panelmenu.add(btnMapingTarifTindakanLabKPTLSatuSehat);
+                jmlmenu++;
+            }
+            
+            if(akses.getsatu_sehat_mapping_kptl_tindakan_operasi()==true){
+                Panelmenu.add(btnMapingTarifTindakanOperasiKPTLSatuSehat);
                 jmlmenu++;
             }
             
@@ -33833,6 +33887,21 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getsatu_sehat_mapping_kptl_tindakan_ranap()==true){
             Panelmenu.add(btnMapingTarifTindakanRanapKPTLSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_mapping_kptl_tindakan_radiologi()==true){
+            Panelmenu.add(btnMapingTarifTindakanRadiologiKPTLSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_mapping_kptl_tindakan_laborat()==true){
+            Panelmenu.add(btnMapingTarifTindakanLabKPTLSatuSehat);
+            jmlmenu++;
+        }
+        
+        if(akses.getsatu_sehat_mapping_kptl_tindakan_operasi()==true){
+            Panelmenu.add(btnMapingTarifTindakanOperasiKPTLSatuSehat);
             jmlmenu++;
         }
         
@@ -41163,6 +41232,27 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         if(akses.getsatu_sehat_mapping_kptl_tindakan_ranap()==true){
             if(btnMapingTarifTindakanRanapKPTLSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
                 Panelmenu.add(btnMapingTarifTindakanRanapKPTLSatuSehat);
+                jmlmenu++;
+            } 
+        }
+        
+        if(akses.getsatu_sehat_mapping_kptl_tindakan_radiologi()==true){
+            if(btnMapingTarifTindakanRadiologiKPTLSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMapingTarifTindakanRadiologiKPTLSatuSehat);
+                jmlmenu++;
+            } 
+        }
+        
+        if(akses.getsatu_sehat_mapping_kptl_tindakan_laborat()==true){
+            if(btnMapingTarifTindakanLabKPTLSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMapingTarifTindakanLabKPTLSatuSehat);
+                jmlmenu++;
+            } 
+        }
+        
+        if(akses.getsatu_sehat_mapping_kptl_tindakan_operasi()==true){
+            if(btnMapingTarifTindakanOperasiKPTLSatuSehat.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnMapingTarifTindakanOperasiKPTLSatuSehat);
                 jmlmenu++;
             } 
         }
@@ -50809,5 +50899,29 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnMapingTarifTindakanRanapKPTLSatuSehat.setName("btnMapingTarifTindakanRanapKPTLSatuSehat"); 
         btnMapingTarifTindakanRanapKPTLSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
         btnMapingTarifTindakanRanapKPTLSatuSehat.addActionListener(this::btnMapingTarifTindakanRanapKPTLSatuSehatActionPerformed);
+        
+        btnMapingTarifTindakanRadiologiKPTLSatuSehat = new widget.ButtonBig();
+        btnMapingTarifTindakanRadiologiKPTLSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnMapingTarifTindakanRadiologiKPTLSatuSehat.setText("Mapping Tindakan Radiologi KPTL Satu Sehat");
+        btnMapingTarifTindakanRadiologiKPTLSatuSehat.setIconTextGap(0);
+        btnMapingTarifTindakanRadiologiKPTLSatuSehat.setName("btnMapingTarifTindakanRadiologiKPTLSatuSehat"); 
+        btnMapingTarifTindakanRadiologiKPTLSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMapingTarifTindakanRadiologiKPTLSatuSehat.addActionListener(this::btnMapingTarifTindakanRadiologiKPTLSatuSehatActionPerformed);
+        
+        btnMapingTarifTindakanLabKPTLSatuSehat = new widget.ButtonBig();
+        btnMapingTarifTindakanLabKPTLSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnMapingTarifTindakanLabKPTLSatuSehat.setText("Mapping Tindakan Lab KPTL Satu Sehat");
+        btnMapingTarifTindakanLabKPTLSatuSehat.setIconTextGap(0);
+        btnMapingTarifTindakanLabKPTLSatuSehat.setName("btnMapingTarifTindakanLabKPTLSatuSehat"); 
+        btnMapingTarifTindakanLabKPTLSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMapingTarifTindakanLabKPTLSatuSehat.addActionListener(this::btnMapingTarifTindakanLabKPTLSatuSehatActionPerformed);
+        
+        btnMapingTarifTindakanOperasiKPTLSatuSehat = new widget.ButtonBig();
+        btnMapingTarifTindakanOperasiKPTLSatuSehat.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/satusehat.png")));
+        btnMapingTarifTindakanOperasiKPTLSatuSehat.setText("Mapping Tindakan Operasi KPTL Satu Sehat");
+        btnMapingTarifTindakanOperasiKPTLSatuSehat.setIconTextGap(0);
+        btnMapingTarifTindakanOperasiKPTLSatuSehat.setName("btnMapingTarifTindakanOperasiKPTLSatuSehat"); 
+        btnMapingTarifTindakanOperasiKPTLSatuSehat.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnMapingTarifTindakanOperasiKPTLSatuSehat.addActionListener(this::btnMapingTarifTindakanOperasiKPTLSatuSehatActionPerformed);
     }
 }
