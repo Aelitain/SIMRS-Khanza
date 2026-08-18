@@ -2421,6 +2421,7 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                         "from detail_pemberian_obat inner join databarang on detail_pemberian_obat.kode_brng=databarang.kode_brng where detail_pemberian_obat.tgl_perawatan=? and detail_pemberian_obat.jam=? and detail_pemberian_obat.no_rawat=? "+
                         "and databarang.kode_brng not in (select detail_obat_racikan.kode_brng from detail_obat_racikan where detail_obat_racikan.tgl_perawatan=? and detail_obat_racikan.jam=? and detail_obat_racikan.no_rawat=?) "+
                         "order by databarang.kode_brng");
+                    
                     try {
                         ps2.setString(1,rs.getString("tgl_perawatan"));
                         ps2.setString(2,rs.getString("jam"));
@@ -2439,7 +2440,9 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
                             });
                             total=total+rs2.getDouble("total");
                             jumlahtotal=jumlahtotal+rs2.getDouble("total");
+                            System.out.println(ps2.toString());
                         }
+                        System.out.println(ps.toString());
                     } catch (Exception e) {
                         System.out.println("Notifikasi : "+e);
                     } finally{
