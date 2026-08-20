@@ -113,12 +113,17 @@
     <entry key="URLAUTHSATUSEHAT">https://api-satusehat-dev.dto.kemkes.go.id/oauth2/v1</entry> 
     <entry key="URLFHIRSATUSEHAT">https://api-satusehat-dev.dto.kemkes.go.id/fhir-r4/v1</entry>
     <entry key="IDSATUSEHAT">lJ2tyNM81PlAMKY7t1wIgg==</entry>
+
     <entry key="KELURAHANSATUSEHAT">3505031004</entry>
     <entry key="KECAMATANSATUSEHAT">3505031</entry>
     <entry key="KABUPATENSATUSEHAT">3505</entry>
     <entry key="PROPINSISATUSEHAT">35</entry>
     <entry key="KODEPOSSATUSEHAT">66152</entry>
 
+    <entry key="URLAPPLINKSATUSEHAT">https://applink-stg.dto.kemkes.go.id/ssm/tte</entry>
+    <entry key="IDORGBPJSSATUSEHAT">100071505</entry>
+    <entry key="IDSATUSEHAT">Z64Bi97zYtxq3TuJDUb/ng==</entry>
+    
     <entry key="KAMARAKTIFRANAP"></entry>
     <entry key="DOKTERAKTIFKASIRRALAN"></entry>
     <entry key="POLIAKTIFKASIRRALAN"></entry>

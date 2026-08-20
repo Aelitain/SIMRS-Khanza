@@ -2,18 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="4">
         <file>
-            <url>src/simrskhanza/DlgCariPeriksaRadiologi.java</url>
-            <bookmark id="2">
-                <name/>
-                <line>1863</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
             <url>src/keuangan/DlgPendapatanPerCaraBayar.java</url>
             <bookmark id="4">
                 <name/>
                 <line>558</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/simrskhanza/DlgCariPeriksaRadiologi.java</url>
+            <bookmark id="2">
+                <name/>
+                <line>1863</line>
                 <key/>
             </bookmark>
         </file>
@@ -36,7 +36,14 @@
             <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/DlgKasirRalan.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/frmUtama.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/inventory/DlgDaftarPermintaanResep.java</file>
-            <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/kepegawaian/DlgAuditPembuanganBendaTajam.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/kepegawaian/DlgAuditPembuanganBendaTajam.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/bridging/SatuSehatMapingObatAlkes.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/setting/DlgUpdateUser.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/bridging/SatuSehatReferensiLOINC.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/bridging/SatuSehatMapingLaborat.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/setting/DlgUser.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/fungsi/akses.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/bridging/SatuSehatMapingRadiologi.java</file>
         </group>
         <group/>
         <group>
