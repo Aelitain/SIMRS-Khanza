@@ -25,10 +25,6 @@
         </group>
         <group>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/inventory/DlgResepObat.java</file>
-            <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/frmUtama.java</file>
-        </group>
-        <group>
-            <file>file:/I:/Khanza/SIMRS-Khanza/src/inventory/DlgResepObat.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/bridging/SatuSehatKirimCompositionRME.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/keuangan/KeuanganRingkasanHutangVendorAsetInventaris.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/setting/DlgUpdateUser.java</file>
@@ -44,5 +40,6 @@
             <file>file:/I:/Khanza/SIMRS-Khanza/src/rekammedis/RMTriaseIGD.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/frmUtama.java</file>
         </group>
+        <group/>
     </open-files>
 </project-private>
