@@ -26,10 +26,12 @@ public class Jurnal {
     public synchronized boolean simpanJurnal(String nobukti,String jenis,String keterangan){  
         try {
             pscek=koneksi.prepareStatement("select count(*) as jml,current_date() as tanggal,current_time() as jam,sum(tampjurnal.debet) as debet,sum(tampjurnal.kredit) as kredit from tampjurnal");
+            System.out.println(pscek.toString());
             try {
                 rscek=pscek.executeQuery();
                 if(rscek.next()){
                     if(rscek.getInt("debet")==rscek.getInt("kredit")){
+                        System.out.println(rscek.toString());
                         if(rscek.getInt("jml")>0){
                             nojur=Valid.autoNomer3("select ifnull(MAX(CONVERT(RIGHT(jurnal.no_jurnal,6),signed)),0) from jurnal where jurnal.tgl_jurnal='"+rscek.getString("tanggal")+"' ","JR"+rscek.getString("tanggal").replaceAll("-",""),6);
                             try {
