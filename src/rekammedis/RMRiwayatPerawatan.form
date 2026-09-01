@@ -265,7 +265,7 @@
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="1">
-            <StringItem index="0" value="18-08-2026 08:45:21"/>
+            <StringItem index="0" value="01-09-2026 13:28:45"/>
           </StringArray>
         </Property>
         <Property name="displayFormat" type="java.lang.String" value="dd-MM-yyyy HH:mm:ss"/>
@@ -982,6 +982,9 @@
                                   <Dimension value="[245, 22]"/>
                                 </Property>
                               </Properties>
+                              <Events>
+                                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkProsedurTindakanActionPerformed"/>
+                              </Events>
                             </Component>
                             <Component class="widget.CekBox" name="chkSEPBPJS">
                               <Properties>

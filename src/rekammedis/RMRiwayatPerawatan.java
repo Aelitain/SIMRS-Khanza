@@ -658,7 +658,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "11-08-2026 09:36:59" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "18-08-2026 08:45:21" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
         Tanggal.setOpaque(false);
@@ -997,6 +997,11 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkProsedurTindakan.setName("chkProsedurTindakan"); // NOI18N
         chkProsedurTindakan.setOpaque(false);
         chkProsedurTindakan.setPreferredSize(new java.awt.Dimension(245, 22));
+        chkProsedurTindakan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkProsedurTindakanActionPerformed(evt);
+            }
+        });
         FormMenu.add(chkProsedurTindakan);
 
         chkSEPBPJS.setSelected(true);
@@ -4021,6 +4026,10 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
         }
     }//GEN-LAST:event_ChkTampilPhraseActionPerformed
 
+    private void chkProsedurTindakanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chkProsedurTindakanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chkProsedurTindakanActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -6714,7 +6723,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Inst/Impl</td>").
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>Evaluasi</td>").
                                             append("<td valign='middle' bgcolor='#FFFFF8' align='center' width='14%'>TTE</td>").
-                                    append("</tr>");
+                                            append("</tr>");
                             do{
                                 htmlContent.append("<tr class='isi'>").
                                                 append("<td align='center'>").append(rs2.getString("tgl_perawatan")).append("<br>").append(rs2.getString("jam_rawat")).append("</td>").
@@ -6725,6 +6734,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("<td align='left'>").append(rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
+                                                append("<td align='left'>").append("sdfgsdfgsdfgs").append("</td>").
                                                 //append("<td valign='top' align='center'><a href='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/medrec/").append(rs3.getString("lokasi_pdf")).append("'><img alt='Gambar Retensi' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/medrec/").append(rs3.getString("lokasi_pdf")).append("' width='").append((TabRawat.getWidth()-550)).append("' height='").append((TabRawat.getWidth()-550)).append("'/></a></td>").        
                                                 //append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan di RSU Al-Ittihad, Kab. Blitar. Ditandatangai secara elektronik oleh ").append(rs2.getString("nama")).append(" ").append(rs2.getString("nip")).append(" ").append(rs2.getString("tgl_perawatan")).append("&amp;size=100x100' alt='' '/>").append("<br>").
                                                 append("</tr>");
@@ -6777,7 +6787,7 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                                                 append("<td align='left'>").append(rs2.getString("rtl").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("instruksi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
                                                 append("<td align='left'>").append(rs2.getString("evaluasi").replaceAll("(\r\n|\r|\n|\n\r)","<br>")).append("</td>").
-                                                append("<td valign='top' align='center'><a href='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/medrec/").append(rs2.getString("lokasi_pdf")).append("'><img alt='Gambar Retensi' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/medrec/").append(rs2.getString("lokasi_pdf")).append("'/></a></td>").
+                                                //append("<td valign='top' align='center'><a href='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/medrec/").append(rs2.getString("lokasi_pdf")).append("'><img alt='Gambar Retensi' src='http://").append(koneksiDB.HOSTHYBRIDWEB()).append(":").append(koneksiDB.PORTWEB()).append("/").append(koneksiDB.HYBRIDWEB()).append("/medrec/").append(rs2.getString("lokasi_pdf")).append("'/></a></td>").
                                                 //append("<td align='center'>").append("<img src='https://api.qrserver.com/v1/create-qr-code/?data=Dikeluarkan di RSU Al-Ittihad, Kab. Blitar. Ditandatangai secara elektronik oleh ").append(rs2.getString("nama")).append(" ").append(rs2.getString("nip")).append(" ").append(rs2.getString("tgl_perawatan")).append("&amp;size=100x100' alt='' '/>").append("<br>").
                                             append("</tr>");
                             }while(rs2.next());
