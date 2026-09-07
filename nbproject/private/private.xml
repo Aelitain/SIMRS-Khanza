@@ -24,14 +24,16 @@
         </group>
         <group>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/rekammedis/RMRiwayatPerawatan.java</file>
-        </group>
-        <group>
-            <file>file:/I:/Khanza/SIMRS-Khanza/src/rekammedis/RMRiwayatPerawatan.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/keuangan/DlgPemasukanLain.java</file>
         </group>
         <group>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/rekammedis/RMRiwayatPerawatan.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/keuangan/DlgPemasukanLain.java</file>
+        </group>
+        <group>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/rekammedis/RMRiwayatPerawatan.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/DlgKasirRalan.java</file>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/simrskhanza/frmUtama.java</file>
         </group>
     </open-files>
 </project-private>
