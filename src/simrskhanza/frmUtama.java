@@ -1119,6 +1119,7 @@ import setting.DlgJamDietPasien;
 import setting.DlgPasswordBPJS;
 import setting.DlgRuangOperasi;
 import setting.DlgSetHargaToko;
+import setting.DlgSetResepPerCaraBayar;
 import smsui.frmSmsView;
 import surat.MasterTemplatePersetujuanPenolakanTindakan;
 import surat.PengumumanEPasien;
@@ -8860,7 +8861,6 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         isTutup();
         this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
         DlgAdmin admin=new DlgAdmin(this,false);
-        admin.tampil();
         admin.emptTeks();
         admin.setSize(PanelUtama.getWidth(),PanelUtama.getHeight());
         admin.setLocationRelativeTo(PanelUtama);
@@ -23737,6 +23737,17 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    private void btnSetResepPerCaraBayarActionPerformed(java.awt.event.ActionEvent evt) {   
+        isTutup();
+        DlgHome.dispose();
+        this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+        DlgSetResepPerCaraBayar aplikasi=new DlgSetResepPerCaraBayar(this,false);
+        aplikasi.setSize(PanelUtama.getWidth(), PanelUtama.getHeight());
+        aplikasi.setLocationRelativeTo(PanelUtama);
+        aplikasi.setVisible(true);
+        this.setCursor(Cursor.getDefaultCursor());
+    }
+    
     /**
     * @param args the command line arguments
     */
@@ -24459,7 +24470,7 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
             btnSuratPermintaanBinrohtal,btnSuratPermintaanPerlindunganDariKekerasan,btnSuratPermohonanPrivasi,btnSuratPermintaanSecondOpinion,btnSuratKeteranganBerobat,btnSuratPenolakanResusitasi,btnCatatanObservasiRuangOperasi,
             btnHasilUSGAbdomen,btnIntervensiNyeriFarmakologi,btnIntervensiNyeriNonFarmakologi,btnSuratPengajuanCutiPerawatan,btnChecklistKriteriaMasukIsolasi,btnMapingTarifTindakanRalanKPTLSatuSehat,
             btnMapingTarifTindakanRanapKPTLSatuSehat,btnMapingTarifTindakanRadiologiKPTLSatuSehat,btnMapingTarifTindakanLabKPTLSatuSehat,btnMapingTarifTindakanOperasiKPTLSatuSehat,btnMapingTarifKamarKPTLSatuSehat,
-            btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain;
+            btnChecklistKriteriaKeluarIsolasi,btnBridgingTTESatuSehat,btnBridgingCompositionRMESatuSehat,btnRingkasanHutangVendorAsetInventaris,btnRingkasanBebanHutangLain,btnSetResepPerCaraBayar;
     
     public void isWall(){
         try{            
@@ -30645,6 +30656,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 Panelmenu.add(btnRuangOperasi);
                 jmlmenu++;
             }
+            
+            if(akses.getset_resep_per_cara_bayar()==true){
+                Panelmenu.add(btnSetResepPerCaraBayar);
+                jmlmenu++;
+            }
         }    
     }
 
@@ -36673,6 +36689,11 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         
         if(akses.getruang_ok()==true){
             Panelmenu.add(btnRuangOperasi);
+            jmlmenu++;
+        }
+        
+        if(akses.getset_resep_per_cara_bayar()==true){
+            Panelmenu.add(btnSetResepPerCaraBayar);
             jmlmenu++;
         }
     }
@@ -45129,6 +45150,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
                 jmlmenu++;
             }                
         }
+        
+        if(akses.getset_resep_per_cara_bayar()==true){
+            if(btnSetResepPerCaraBayar.getText().toLowerCase().trim().contains(TCari.getText().toLowerCase().trim())){
+                Panelmenu.add(btnSetResepPerCaraBayar);
+                jmlmenu++;
+            } 
+        }
     }
 
     private void initKhanza() {
@@ -51150,5 +51178,13 @@ private void MnGantiPasswordBtnLogActionPerformed(java.awt.event.ActionEvent evt
         btnRingkasanBebanHutangLain.setName("btnRingkasanBebanHutangLain"); 
         btnRingkasanBebanHutangLain.setPreferredSize(new java.awt.Dimension(200, 90));
         btnRingkasanBebanHutangLain.addActionListener(this::btnRingkasanBebanHutangLainActionPerformed);
+        
+        btnSetResepPerCaraBayar = new widget.ButtonBig();
+        btnSetResepPerCaraBayar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/48x48/medicament_18179836.png")));
+        btnSetResepPerCaraBayar.setText("Set Resep Per Cara Bayar");
+        btnSetResepPerCaraBayar.setIconTextGap(0);
+        btnSetResepPerCaraBayar.setName("btnSetResepPerCaraBayar"); 
+        btnSetResepPerCaraBayar.setPreferredSize(new java.awt.Dimension(200, 90));
+        btnSetResepPerCaraBayar.addActionListener(this::btnSetResepPerCaraBayarActionPerformed);
     }
 }
