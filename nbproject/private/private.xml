@@ -24,9 +24,6 @@
         </group>
         <group>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/rekammedis/RMRiwayatPerawatan.java</file>
-        </group>
-        <group>
-            <file>file:/I:/Khanza/SIMRS-Khanza/src/rekammedis/RMRiwayatPerawatan.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/permintaan/DlgPermintaanRanap.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/bridging/SatuSehatKirimCompositionRME.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/.gitignore</file>
@@ -42,5 +39,6 @@
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/src/rekammedis/RMTriaseIGD.java</file>
             <file>file:/Users/windiartonugroho/Documents/Pekerjaan/SIMRSKhanza/setting/database.xml</file>
         </group>
+        <group/>
     </open-files>
 </project-private>
