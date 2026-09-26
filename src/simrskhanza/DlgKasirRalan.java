@@ -875,7 +875,7 @@ public final class DlgKasirRalan extends javax.swing.JDialog {
         cmbStatus = new widget.ComboBox();
         jLabel20 = new widget.Label();
         cmbStatusBayar = new widget.ComboBox();
-        TabRawat = new javax.swing.JTabbedPane();
+        TabRawat = new widget.TabPane();
         Scroll1 = new widget.ScrollPane();
         tbKasirRalan = new widget.Table();
         Scroll2 = new widget.ScrollPane();
@@ -16319,7 +16319,7 @@ private void MnDataPemberianObatActionPerformed(java.awt.event.ActionEvent evt) 
     private widget.TextBox TNoRw;
     private widget.TextBox TNoRwCari;
     private widget.TextBox TPasienCari;
-    private javax.swing.JTabbedPane TabRawat;
+    private widget.TabPane TabRawat;
     private widget.TextBox Tanggal;
     private widget.Tanggal TglSakit1;
     private widget.Tanggal TglSakit2;
