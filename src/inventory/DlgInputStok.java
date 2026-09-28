@@ -684,6 +684,11 @@ public class DlgInputStok extends javax.swing.JDialog {
 
         TCari.setName("TCari"); // NOI18N
         TCari.setPreferredSize(new java.awt.Dimension(425, 23));
+        TCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TCariActionPerformed(evt);
+            }
+        });
         TCari.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 TCariKeyPressed(evt);
@@ -2011,6 +2016,10 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         // TODO add your handling code here:
     }//GEN-LAST:event_cbUrutNomorActionPerformed
 
+    private void TCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TCariActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_TCariActionPerformed
+
     /**
     * @param args the command line arguments
     */
@@ -2087,6 +2096,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
             file.createNewFile();
             fileWriter = new FileWriter(file);
             StringBuilder iyembuilder = new StringBuilder();
+            System.out.println("di tampil 1");
             pstampil=koneksi.prepareStatement(
                 "select databarang.kode_brng,databarang.nama_brng,jenis.nama,databarang.kode_sat,databarang."+hppfarmasi+" as dasar,"+
                 "if(databarang.expire='0000-00-00','',databarang.expire) as expire from databarang inner join jenis "+
@@ -2132,7 +2142,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
         } else {
             order="order by databarang.nama_brng asc";
         }
-        //System.out.println("di sini");
+        System.out.println("di sini");
         try{  
             jml=0;
             for(i=0;i<tbDokter.getRowCount();i++){

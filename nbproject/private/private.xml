@@ -19,7 +19,6 @@
         </file>
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
         <group>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/inventory/DlgBarang.java</file>
         </group>
@@ -30,6 +29,9 @@
         <group>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/keuangan/DlgRBObatDokterRalan.java</file>
             <file>file:/I:/Khanza/SIMRS-Khanza/src/bridging/BPJSResponseLogger.java</file>
+        </group>
+        <group>
+            <file>file:/I:/Khanza/SIMRS-Khanza/src/rekammedis/RMRiwayatPerawatan.java</file>
         </group>
     </open-files>
 </project-private>
