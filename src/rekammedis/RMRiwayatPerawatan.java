@@ -641,7 +641,7 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         WindowPhrase.getContentPane().add(internalFrame8, java.awt.BorderLayout.CENTER);
 
         Tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "12-09-2026 09:48:08" }));
+        Tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "28-09-2026 08:57:25" }));
         Tanggal.setDisplayFormat("dd-MM-yyyy HH:mm:ss");
         Tanggal.setName("Tanggal"); // NOI18N
 
@@ -976,11 +976,6 @@ public final class RMRiwayatPerawatan extends javax.swing.JDialog {
         chkProsedurTindakan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         chkProsedurTindakan.setName("chkProsedurTindakan"); // NOI18N
         chkProsedurTindakan.setPreferredSize(new java.awt.Dimension(245, 22));
-        chkProsedurTindakan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                chkProsedurTindakanActionPerformed(evt);
-            }
-        });
         FormMenu.add(chkProsedurTindakan);
 
         chkSEPBPJS.setSelected(true);
@@ -5181,6 +5176,8 @@ private void BtnPasienKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event
                             }
                         }
                        
+                        
+                        
                         try{
                             rs2=koneksi.prepareStatement(
                                     "select laporan_operasi.tanggal,laporan_operasi.diagnosa_preop,laporan_operasi.diagnosa_postop,laporan_operasi.jaringan_dieksekusi,laporan_operasi.selesaioperasi,laporan_operasi.permintaan_pa,laporan_operasi.laporan_operasi,"+
