@@ -179,7 +179,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
             }
         });
 
-        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Telusur Kunjungan Pasien ]::", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
+        internalFrame1.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(240, 245, 235)), "::[ Telusur Kunjungan Pasien ]::.", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 11), new java.awt.Color(50, 50, 50))); // NOI18N
         internalFrame1.setName("internalFrame1"); // NOI18N
         internalFrame1.setLayout(new java.awt.BorderLayout(1, 1));
 
@@ -187,7 +187,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         Scroll.setName("Scroll"); // NOI18N
         Scroll.setPreferredSize(new java.awt.Dimension(360, 421));
 
-        tbKamar.setAutoCreateRowSorter(false);
+        tbKamar.setAutoCreateRowSorter(true);
         tbKamar.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbKamar.setName("tbKamar"); // NOI18N
         tbKamar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -289,7 +289,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         Scroll1.setName("Scroll1"); // NOI18N
         Scroll1.setOpaque(true);
 
-        tbRegistrasi.setAutoCreateRowSorter(false);
+        tbRegistrasi.setAutoCreateRowSorter(true);
         tbRegistrasi.setToolTipText("Silahkan klik untuk memilih data yang mau diedit ataupun dihapus");
         tbRegistrasi.setName("tbRegistrasi"); // NOI18N
         Scroll1.setViewportView(tbRegistrasi);
@@ -540,8 +540,8 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
             Valid.tabelKosong(tabModeRegistrasi);
             try{     
                 ps=koneksi.prepareStatement(
-                    "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_ktp,pasien.umur, pasien.jk,pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, "+
-                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat,pasien.no_tlp "+
+                    "select pasien.no_rkm_medis, pasien.nm_pasien, pasien.no_tlp, pasien.umur, pasien.jk,pasien.tmp_lahir, pasien.tgl_lahir,pasien.nm_ibu, "+
+                    "concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) as alamat, pasien.no_ktp "+
                     "from pasien inner join kelurahan inner join kecamatan inner join kabupaten inner join propinsi on pasien.kd_kel=kelurahan.kd_kel "+
                     "and pasien.kd_prop=propinsi.kd_prop and pasien.kd_kec=kecamatan.kd_kec and pasien.kd_kab=kabupaten.kd_kab "+
                     "where concat(pasien.alamat,', ',kelurahan.nm_kel,', ',kecamatan.nm_kec,', ',kabupaten.nm_kab,', ',propinsi.nm_prop) like ? or "+
@@ -558,10 +558,10 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
                     while(rs.next()){
                         tabMode.addRow(new Object[]{
                             rs.getString("no_rkm_medis"),rs.getString("nm_pasien"),
-                            rs.getString("no_ktp"),rs.getString("umur"),
+                            rs.getString("no_tlp"),rs.getString("umur"),
                             rs.getString("jk"),rs.getString("tmp_lahir"),
                             rs.getString("tgl_lahir"),rs.getString("nm_ibu"),
-                            rs.getString("alamat"),rs.getString("no_tlp")
+                            rs.getString("alamat"),rs.getString("no_ktp")
                         });
                     }
                 } catch (Exception e) {
