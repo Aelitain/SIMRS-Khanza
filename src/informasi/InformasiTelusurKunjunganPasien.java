@@ -61,7 +61,7 @@ public final class InformasiTelusurKunjunganPasien extends javax.swing.JDialog {
         setSize(628,674);
 
         tabMode=new DefaultTableModel(null,new String[]{
-                "No.R.M","Nama Pasien","No.SIM/KTP","Umur","J.K.","Tmp.Lahir","Tgl.Lahir","Nama Ibu","Alamat","No.Telp"
+                "No.R.M","Nama Pasien","No.Telp","Umur","J.K.","Tmp.Lahir","Tgl.Lahir","Nama Ibu","Alamat","No.SIM/KTP"
             }){
               @Override public boolean isCellEditable(int rowIndex, int colIndex){return false;}
         };
