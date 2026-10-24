@@ -2107,7 +2107,7 @@ public class frmUtama extends javax.swing.JFrame {
 
         tanggal.setEditable(false);
         tanggal.setForeground(new java.awt.Color(50, 70, 50));
-        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "20/10/2026" }));
+        tanggal.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "21/10/2026" }));
         tanggal.setDisplayFormat("dd/MM/yyyy");
         tanggal.setName("tanggal"); // NOI18N
 
@@ -7505,7 +7505,7 @@ public class frmUtama extends javax.swing.JFrame {
         internalFrame4.add(jSeparator8);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jLabel1.setText("Versi 26.1016");
+        jLabel1.setText("Versi 26.1022");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jLabel1.setName("jLabel1"); // NOI18N
         internalFrame4.add(jLabel1);
@@ -8036,7 +8036,6 @@ public class frmUtama extends javax.swing.JFrame {
         MnAnjungan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/picture/family24.png"))); // NOI18N
         MnAnjungan.setText("Anjungan Registrasi Mandiri");
         MnAnjungan.setName("MnAnjungan"); // NOI18N
-        MnAnjungan.setPreferredSize(new java.awt.Dimension(205, 30));
         MnAnjungan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MnAnjunganActionPerformed(evt);
