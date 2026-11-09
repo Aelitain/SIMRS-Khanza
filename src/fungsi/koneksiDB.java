@@ -79,7 +79,7 @@ public class koneksiDB {
         try (FileInputStream fis =new FileInputStream("setting/database.xml")) {
             prop.loadFromXML(fis);
         }
-        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&tcpKeepAlive=true&connectTimeout=100000&socketTimeout=600000&maintainTimeStats=false&autoReconnect=true");
+        dataSource.setURL("jdbc:mysql://"+EnkripsiAES.decrypt(prop.getProperty("HOST"))+":"+EnkripsiAES.decrypt(prop.getProperty("PORT"))+"/"+EnkripsiAES.decrypt(prop.getProperty("DATABASE"))+"?zeroDateTimeBehavior=convertToNull&tcpKeepAlive=true&connectTimeout=100000&socketTimeout=600000&maintainTimeStats=false&autoReconnect=true&useSSL=false");
         dataSource.setUser(EnkripsiAES.decrypt(prop.getProperty("USER")));
         dataSource.setPassword(EnkripsiAES.decrypt(prop.getProperty("PAS")));
         dataSource.setCachePreparedStatements(true);

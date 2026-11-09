@@ -2137,7 +2137,7 @@ private void BtnGudangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIR
     }
     
     private void tampil2() {
-                if (cbUrutNomor.isSelected()) {
+        if (cbUrutNomor.isSelected()) {
             order="order by databarang.kode_sat asc";
         } else {
             order="order by databarang.nama_brng asc";
