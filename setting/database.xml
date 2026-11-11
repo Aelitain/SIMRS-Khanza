@@ -115,6 +115,7 @@
     <entry key="SECRETKEYSATUSEHAT">wuTIi8XBUaNakMr/4HQBDAnD3Ws9jsaLhL/3x0Jv6owBaXTThaU9Kha9NYIkUpp3KbYbRjASt0IyvJhrctNaHWhmXYDcGkuqBz46ckVpzLQ=</entry>
     <entry key="URLAUTHSATUSEHAT">https://api-satusehat.kemkes.go.id/oauth2/v1</entry> 
     <entry key="URLFHIRSATUSEHAT">https://api-satusehat.kemkes.go.id/fhir-r4/v1</entry>
+    <entry key="URLRMESATUSEHAT">https://api-satusehat.kemkes.go.id/ssrme/v2/ntl</entry>
     <entry key="IDSATUSEHAT">lJ2tyNM81PlAMKY7t1wIgg==</entry>
     <entry key="URLAPPLINKSATUSEHAT">https://applink-stg.dto.kemkes.go.id/ssm/tte</entry>
     <entry key="IDORGBPJSSATUSEHAT">1000279522</entry>
