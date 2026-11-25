@@ -46,6 +46,7 @@ import javax.swing.WindowConstants;
  * @author perpustakaan
  */
 public final class RMPenilaianLanjutanRisikoJatuhAnak extends javax.swing.JDialog {
+    private Timer timerJam;
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -1808,7 +1809,8 @@ public final class RMPenilaianLanjutanRisikoJatuhAnak extends javax.swing.JDialo
             }
         };
         // Timer
-        new Timer(1240, taskPerformer).start();
+        timerJam = new javax.swing.Timer(1240, taskPerformer);
+        timerJam.start();
     }
 
     private void ganti() {
@@ -1906,7 +1908,18 @@ public final class RMPenilaianLanjutanRisikoJatuhAnak extends javax.swing.JDialo
     
     @Override
     public void dispose() {
+        if (timerJam != null) {
+            timerJam.stop();
+        }
         executor.shutdownNow();
         super.dispose();
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
     }
 }

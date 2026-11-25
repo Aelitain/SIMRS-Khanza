@@ -36,6 +36,15 @@ import javax.swing.table.TableColumn;
  * @author dosen
  */
 public final class DlgUbahNilaiLab extends javax.swing.JDialog {
+    private Timer timerJam;
+
+    @Override
+    public void dispose() {
+        if (timerJam != null) {
+            timerJam.stop();
+        }
+        super.dispose();
+    }
     private final DefaultTableModel tabMode;
     private sekuel Sequel=new sekuel();
     private validasi Valid=new validasi();
@@ -458,7 +467,16 @@ public final class DlgUbahNilaiLab extends javax.swing.JDialog {
             }
         };
         // Timer
-        new Timer(1000, taskPerformer).start();
+        timerJam = new javax.swing.Timer(1000, taskPerformer);
+        timerJam.start();
     }
 
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
+    }
 }

@@ -60,6 +60,8 @@ import org.jfree.data.general.DefaultPieDataset;
  * @author perpustakaan
  */
 public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
+    private Timer timerJam;
+    private Timer timerJam2;
     private final DefaultTableModel tabMode;
     private Connection koneksi=koneksiDB.condb();
     private sekuel Sequel=new sekuel();
@@ -1924,7 +1926,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         };
         // Timer
-        new Timer(1000, taskPerformer).start();
+        timerJam = new javax.swing.Timer(1000, taskPerformer);
+        timerJam.start();
     }
     
     private void jam2(){
@@ -1977,7 +1980,8 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
             }
         };
         // Timer
-        new Timer(1000, taskPerformer).start();
+        timerJam2 = new javax.swing.Timer(1000, taskPerformer);
+        timerJam2.start();
     }
     
     private void runBackground(Runnable task) {
@@ -2008,7 +2012,24 @@ public final class DlgDataInsidenKeselamatan extends javax.swing.JDialog {
     
     @Override
     public void dispose() {
+        if (timerJam != null) {
+            timerJam.stop();
+        }
+        if (timerJam2 != null) {
+            timerJam2.stop();
+        }
         executor.shutdownNow();
         super.dispose();
+    }
+    
+    @Override
+    public void addNotify() {
+        super.addNotify();
+        if (timerJam != null && !timerJam.isRunning()) {
+            timerJam.start();
+        }
+        if (timerJam2 != null && !timerJam2.isRunning()) {
+            timerJam2.start();
+        }
     }
 }

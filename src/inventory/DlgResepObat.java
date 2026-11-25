@@ -43,7 +43,6 @@ import javax.swing.WindowConstants;
 import javax.swing.event.DocumentEvent;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
-import javax.swing.text.Document;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.StyleSheet;
 import kepegawaian.DlgCariDokter;
@@ -223,9 +222,8 @@ public final class DlgResepObat extends javax.swing.JDialog {
                 ".isi9 td{font: 8.5px tahoma;border:none;height:12px;background: #ffffff;color:#969696;}"
         );
         
-        Document doc = kit.createDefaultDocument();
-        LoadHTML.setDocument(doc);
-        LoadHTML2.setDocument(doc);
+        LoadHTML.setDocument(kit.createDefaultDocument());
+        LoadHTML2.setDocument(kit.createDefaultDocument());
     }
 
     /** This method is called from within the constructor to
@@ -2096,11 +2094,10 @@ private void ChkInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRS
             }else{
                 this.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
                 InventoryTelaahResep aplikasi=new InventoryTelaahResep(null,false);
-                aplikasi.emptTeks();
                 aplikasi.isCek();
-                aplikasi.setNoRm(NoResep.getText(),TNoRw.getText(),DTPCari2.getDate());
                 aplikasi.setSize(internalFrame1.getWidth()-20,internalFrame1.getHeight()-20);
                 aplikasi.setLocationRelativeTo(internalFrame1);
+                aplikasi.setNoRm(NoResep.getText(),TNoRw.getText(),DTPCari2.getDate());
                 aplikasi.setVisible(true);
                 this.setCursor(Cursor.getDefaultCursor());
             }

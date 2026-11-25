@@ -1378,6 +1378,10 @@ public class PanelDiagnosa extends widget.panelisi {
         this.setCursor(Cursor.getDefaultCursor());
     }
     
+    public void tutup() {
+        executor.shutdownNow();
+    }
+
     private void runBackground(Runnable task) {
         if (ceksukses) return;
         if (executor.isShutdown() || executor.isTerminated()) return;

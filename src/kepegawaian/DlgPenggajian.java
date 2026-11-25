@@ -70,7 +70,7 @@ public class DlgPenggajian extends javax.swing.JDialog {
         initComponents();
         initComponents2();
         try {
-            prop.loadFromXML(new FileInputStream("setting/database.xml"));                                
+            try (FileInputStream fisx = new FileInputStream("setting/database.xml")) { prop.loadFromXML(fisx); }                                
         } catch (Exception e) {
         }
     }
@@ -93,12 +93,16 @@ public class DlgPenggajian extends javax.swing.JDialog {
         Platform.runLater(new Runnable() {
 
             public void run() {
+                if (engine != null) {
+                    return;
+                }
                 WebView view = new WebView();
                 
-                engine = view.getEngine();
-                engine.setJavaScriptEnabled(true);
+                final WebEngine we = view.getEngine();
+                engine = we;
+                we.setJavaScriptEnabled(true);
                 
-                engine.setCreatePopupHandler(new Callback<PopupFeatures, WebEngine>() {
+                we.setCreatePopupHandler(new Callback<PopupFeatures, WebEngine>() {
                     @Override
                     public WebEngine call(PopupFeatures p) {
                         Stage stage = new Stage(StageStyle.TRANSPARENT);
@@ -106,9 +110,9 @@ public class DlgPenggajian extends javax.swing.JDialog {
                     }
                 });
                 
-                engine.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
+                we.titleProperty().addListener((ObservableValue<? extends String> observable, String oldValue, final String newValue) -> {
                     SwingUtilities.invokeLater(() -> {
-                        if(engine.getLocation().contains("/webapps/penggajian/index.php?act=HomeAdmin")){
+                        if(we.getLocation().contains("/webapps/penggajian/index.php?act=HomeAdmin")){
                             try{            
                                 if(prop.getProperty("MENUTRANSPARAN").equals("yes")){
                                     DlgPenggajian.this.setOpacity(0.77f);
@@ -128,27 +132,27 @@ public class DlgPenggajian extends javax.swing.JDialog {
                 });
                 
                 
-                engine.setOnStatusChanged((final WebEvent<String> event) -> {
+                we.setOnStatusChanged((final WebEvent<String> event) -> {
                     SwingUtilities.invokeLater(() -> {
                         lblStatus.setText(event.getData());
                     });
                 });
                 
                 
-                engine.getLoadWorker().workDoneProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldValue, final Number newValue) -> {
+                we.getLoadWorker().workDoneProperty().addListener((ObservableValue<? extends Number> observableValue, Number oldValue, final Number newValue) -> {
                     SwingUtilities.invokeLater(() -> {
                         progressBar.setValue(newValue.intValue());
                     });                                                   
                 });
                 
-                engine.getLoadWorker().exceptionProperty().addListener((ObservableValue<? extends Throwable> o, Throwable old, final Throwable value) -> {
-                    if (engine.getLoadWorker().getState() == FAILED) {
+                we.getLoadWorker().exceptionProperty().addListener((ObservableValue<? extends Throwable> o, Throwable old, final Throwable value) -> {
+                    if (we.getLoadWorker().getState() == FAILED) {
                         SwingUtilities.invokeLater(() -> {
                             JOptionPane.showMessageDialog(
                                     panel,
                                     (value != null) ?
-                                            engine.getLocation() + "\n" + value.getMessage() :
-                                            engine.getLocation() + "\nUnexpected Catatan.",
+                                            we.getLocation() + "\n" + value.getMessage() :
+                                            we.getLocation() + "\nUnexpected Catatan.",
                                     "Loading Catatan...",
                                     JOptionPane.ERROR_MESSAGE);
                         });
@@ -156,23 +160,23 @@ public class DlgPenggajian extends javax.swing.JDialog {
                 });
                 
                 
-                engine.locationProperty().addListener((ObservableValue<? extends String> ov, String oldValue, final String newValue) -> {
+                we.locationProperty().addListener((ObservableValue<? extends String> ov, String oldValue, final String newValue) -> {
                     SwingUtilities.invokeLater(() -> {
                         txtURL.setText(newValue);
                     });
                 });
                 
-                engine.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
+                we.getLoadWorker().stateProperty().addListener(new ChangeListener<State>() {
                     @Override
                     public void changed(ObservableValue ov, State oldState, State newState) {
                         if (newState == State.SUCCEEDED) {
                             try {
-                                if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
+                                if(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("penggajian/pages")){
                                     setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-                                    Valid.panggilUrl(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
-                                    engine.executeScript("history.back()");
+                                    Valid.panggilUrl(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+"/"+prop.getProperty("HYBRIDWEB")+"/",""));
+                                    we.executeScript("history.back()");
                                     setCursor(Cursor.getDefaultCursor());
-                                }else if(engine.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
+                                }else if(we.getLocation().replaceAll("http://"+koneksiDB.HOSTHYBRIDWEB()+":"+prop.getProperty("PORTWEB")+"/"+prop.getProperty("HYBRIDWEB")+"/","").contains("Keluar")){
                                     dispose();    
                                 }
                             } catch (Exception ex) {
@@ -198,10 +202,9 @@ public class DlgPenggajian extends javax.swing.JDialog {
         }
         
         Platform.runLater(() -> {
-            try {
-                engine.load(url);
-            }catch (Exception exception) {
-                engine.load(url);
+            final WebEngine eng = engine;
+            if (eng != null) {
+                eng.load(url);
             }
         });        
     }    
@@ -318,6 +321,20 @@ public class DlgPenggajian extends javax.swing.JDialog {
     
     @Override
     public void dispose() {
+        try {
+            Platform.runLater(() -> {
+                try {
+                    WebEngine eng = engine;
+                    engine = null;
+                    if (eng != null) {
+                        eng.load(null);
+                    }
+                    jfxPanel.setScene(null);
+                } catch (Exception ignore) {
+                }
+            });
+        } catch (Exception ignore) {
+        }
         executor.shutdownNow();
         super.dispose();
     }
