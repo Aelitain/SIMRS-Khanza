@@ -109,7 +109,7 @@ public class Jurnal {
                                         try {
                                             rs=koneksi.prepareStatement("select sum(detailjurnal.debet),sum(detailjurnal.kredit) from detailjurnal where detailjurnal.no_jurnal='"+nojur+"'").executeQuery();
                                             while(rs.next()){
-                                                if(rs.getInt(1)!=rs.getInt(2)){
+                                                if(rs.getDouble(1)!=rs.getDouble(2)){
                                                     sukses=false;
                                                     System.out.println("Notif : Debet dan Kredit tidak sama 1");
                                                 }
